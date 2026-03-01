@@ -14,14 +14,14 @@ export const ConciergeChat: React.FC<ConciergeChatProps> = ({ onQuoteClick }) =>
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100]">
+    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[1000]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-20 right-0 w-80 bg-charcoal border border-white/10 rounded-xl shadow-2xl overflow-hidden"
+            className="absolute bottom-16 right-0 sm:bottom-20 w-[calc(100vw-2rem)] sm:w-80 bg-charcoal border border-white/10 rounded-xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
             <div className="bg-black p-4 border-b border-white/10 flex items-center justify-between">
@@ -97,7 +97,7 @@ export const ConciergeChat: React.FC<ConciergeChatProps> = ({ onQuoteClick }) =>
 
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 rounded-full gold-gradient shadow-xl flex items-center justify-center text-black hover:scale-110 transition-transform duration-300 group"
+        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full gold-gradient shadow-xl flex items-center justify-center text-black hover:scale-110 transition-transform duration-300 group"
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} className="group-hover:rotate-12 transition-transform" />}
         {!isOpen && (

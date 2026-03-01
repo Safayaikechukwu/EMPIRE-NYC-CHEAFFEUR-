@@ -8,32 +8,47 @@
   
   --color-gold: #C5A059;
   --color-charcoal: #121212;
+
+  /* Fluid Spacing & Typography */
+  --spacing-fluid-sm: clamp(1rem, 2vw, 1.5rem);
+  --spacing-fluid-md: clamp(2rem, 4vw, 4rem);
+  --spacing-fluid-lg: clamp(4rem, 8vw, 8rem);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
-    @apply bg-black text-white font-sans antialiased;
+    @apply bg-black text-white font-sans antialiased overflow-x-hidden;
+    font-size: clamp(0.875rem, 0.5vw + 0.75rem, 1.125rem);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif tracking-tight;
   }
+
+  h1 { font-size: clamp(2.5rem, 8vw, 6rem); }
+  h2 { font-size: clamp(2rem, 5vw, 4rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
 }
 
 @utility glass-panel {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
 }
 
 @utility gold-card {
-  @apply glass-panel transition-all duration-500 hover:border-gold/50 hover:shadow-[0_0_30px_rgba(197,160,89,0.15)];
+  @apply glass-panel transition-all duration-700 hover:border-gold/40 hover:shadow-[0_0_50px_rgba(197,160,89,0.1)];
 }
 
 @utility primary-button {
-  @apply bg-white text-black py-4 px-8 text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold hover:text-white transition-all duration-300 flex items-center justify-center;
+  @apply relative overflow-hidden bg-white text-black py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-gold hover:text-white transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
 }
 
 @utility secondary-button {
-  @apply border border-white/20 text-white py-4 px-8 text-xs uppercase tracking-[0.3em] font-bold hover:bg-white/5 transition-all duration-300 flex items-center justify-center;
+  @apply border border-white/20 text-white py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-white/5 transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
 }
 
 @utility gold-gradient {

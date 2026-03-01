@@ -30,13 +30,13 @@ export const BookingModule = () => {
   }
 
   return (
-    <div className="w-full max-w-5xl bg-black/40 backdrop-blur-xl border border-white/10 p-8 rounded-sm shadow-2xl shadow-black/50">
-      <div className="mb-8 text-left">
-        <h3 className="text-xl font-serif text-white">Request Your <span className="italic text-gold">Private Chauffeur</span></h3>
-        <p className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
+    <div className="w-full max-w-5xl bg-black/40 backdrop-blur-xl border border-white/10 p-5 sm:p-8 rounded-sm shadow-2xl shadow-black/50">
+      <div className="mb-6 sm:mb-8 text-left">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-white">Request Your <span className="italic text-gold">Private Chauffeur</span></h3>
+        <p className="text-white/40 text-[9px] sm:text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {/* Row 1 */}
         <div className="space-y-1.5 text-left">
           <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold block">First Name</label>
@@ -44,7 +44,7 @@ export const BookingModule = () => {
             required
             type="text" 
             placeholder="First Name"
-            className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+            className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
           />
         </div>
 
@@ -54,7 +54,7 @@ export const BookingModule = () => {
             required
             type="text" 
             placeholder="Last Name"
-            className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+            className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
           />
         </div>
 
@@ -62,7 +62,7 @@ export const BookingModule = () => {
           <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold block">Event Type</label>
           <div className="relative">
             <Briefcase size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <select required className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none">
+            <select required className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none">
               <option value="" className="bg-charcoal">Select Event</option>
               <option value="corporate" className="bg-charcoal">Corporate</option>
               <option value="wedding" className="bg-charcoal">Wedding</option>
@@ -80,7 +80,7 @@ export const BookingModule = () => {
               required
               type="email" 
               placeholder="Email"
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
             />
           </div>
         </div>
@@ -93,7 +93,7 @@ export const BookingModule = () => {
             <input 
               required
               type="date" 
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
             />
           </div>
         </div>
@@ -105,7 +105,7 @@ export const BookingModule = () => {
             <input 
               required
               type="time" 
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
             />
           </div>
         </div>
@@ -119,7 +119,7 @@ export const BookingModule = () => {
               type="number" 
               min="1"
               placeholder="Hours"
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
             />
           </div>
         </div>
@@ -133,13 +133,13 @@ export const BookingModule = () => {
               type="number" 
               min="1"
               placeholder="Guests"
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
             />
           </div>
         </div>
 
         {/* Row 3 */}
-        <div className="space-y-1.5 text-left md:col-span-2">
+        <div className="space-y-1.5 text-left sm:col-span-2">
           <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold block">Phone Number</label>
           <div className="relative">
             <Phone size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
@@ -147,12 +147,12 @@ export const BookingModule = () => {
               required
               type="tel" 
               placeholder="Phone Number"
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
             />
           </div>
         </div>
 
-        <div className="space-y-1.5 text-left md:col-span-2">
+        <div className="space-y-1.5 text-left sm:col-span-2">
           <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold block">Pick up City</label>
           <div className="relative">
             <MapPin size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
@@ -160,12 +160,12 @@ export const BookingModule = () => {
               required
               type="text" 
               placeholder="e.g. Manhattan, NYC"
-              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
+              className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-white/20"
             />
           </div>
         </div>
 
-        <div className="md:col-span-2 lg:col-span-4 mt-2">
+        <div className="sm:col-span-2 lg:col-span-4 mt-2">
           <button className="primary-button w-full group">
             <span>Submit for Review to Call</span>
             <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />

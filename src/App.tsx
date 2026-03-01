@@ -53,22 +53,22 @@ export default function App() {
         <Testimonials />
 
         {/* Section: Our Services */}
-        <section id="services" className="py-24 bg-charcoal">
+        <section id="services" className="py-16 md:py-24 lg:py-32 bg-charcoal">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            <div className="text-center mb-12 md:mb-20">
+              <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                 Excellence in Motion
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Our Premium Services</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">Our Premium Services</h2>
               <div className="w-24 h-px bg-gold mx-auto" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
               {SERVICES.map((service, index) => (
                 <motion.div 
                   key={index}
                   whileHover={{ y: -10 }}
-                  className="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
+                  className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img 
@@ -77,10 +77,10 @@ export default function App() {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end">
+                  <div className="absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-end">
                     <div className="w-12 h-px bg-gold mb-4 group-hover:w-24 transition-all duration-500" />
-                    <h3 className="text-2xl font-serif text-white mb-3">{service.title}</h3>
-                    <p className="text-white/60 text-sm max-w-sm mb-6 font-light leading-relaxed">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white mb-3">{service.title}</h3>
+                    <p className="text-white/60 text-xs sm:text-sm max-w-sm mb-6 font-light leading-relaxed">
                       {service.description}
                     </p>
                     <button 
@@ -98,30 +98,30 @@ export default function App() {
         </section>
 
         {/* Section: Airport Coverage */}
-        <section className="py-24 bg-charcoal">
+        <section className="py-16 md:py-24 lg:py-32 bg-charcoal">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
               <div className="max-w-2xl">
-                <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+                <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   Airport Coverage
                 </span>
-                <h2 className="text-3xl md:text-5xl font-serif text-white">Serving All Major NYC Hubs</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white">Serving All Major NYC Hubs</h2>
               </div>
-              <p className="text-white/40 text-sm max-w-sm font-light leading-relaxed">
+              <p className="text-white/40 text-xs sm:text-sm max-w-sm font-light leading-relaxed">
                 Reliable, fixed-rate transfers with real-time flight monitoring and professional meet-and-greet service.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {AIRPORTS.map((airport, index) => (
-                <div key={index} className="gold-card p-10 rounded-sm group relative overflow-hidden">
+                <div key={index} className="gold-card p-8 sm:p-10 rounded-sm group relative overflow-hidden flex flex-col h-full">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gold/20 group-hover:bg-gold transition-colors duration-500" />
                   <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-black transition-all">
                     <Plane size={24} />
                   </div>
-                  <h3 className="text-2xl font-serif text-white mb-2">{airport.name}</h3>
-                  <p className="text-gold text-[10px] uppercase tracking-widest font-bold mb-6">{airport.fullName}</p>
-                  <p className="text-white/60 text-sm font-light leading-relaxed mb-8">
+                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-2">{airport.name}</h3>
+                  <p className="text-gold text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-6">{airport.fullName}</p>
+                  <p className="text-white/60 text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
                     {airport.description}
                   </p>
                   <button 
@@ -194,20 +194,20 @@ export default function App() {
         </section>
 
         {/* Section: Fleet */}
-        <section id="fleet" className="py-24 bg-charcoal">
+        <section id="fleet" className="py-16 md:py-24 lg:py-32 bg-charcoal">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            <div className="text-center mb-12 md:mb-20">
+              <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                 The Fleet
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Immaculate Luxury Vehicles</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">Immaculate Luxury Vehicles</h2>
               <div className="w-24 h-px bg-gold mx-auto" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {VEHICLES.map((vehicle) => (
-                <div key={vehicle.id} className="group flex flex-col gold-card p-6 rounded-sm">
-                  <div className="relative h-64 overflow-hidden rounded-sm mb-6">
+                <div key={vehicle.id} className="group flex flex-col gold-card p-5 sm:p-6 rounded-sm h-full">
+                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-sm mb-6">
                     <img 
                       src={vehicle.image} 
                       alt={vehicle.name}
@@ -215,21 +215,21 @@ export default function App() {
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 border border-white/10">
-                      <span className="text-[10px] uppercase tracking-widest text-white/80">{vehicle.category}</span>
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-white/80">{vehicle.category}</span>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-serif text-white mb-2">{vehicle.name}</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-2">{vehicle.name}</h3>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="flex items-center space-x-1.5 text-white/40">
                       <Users size={14} />
-                      <span className="text-xs">{vehicle.passengers} Passengers</span>
+                      <span className="text-[10px] sm:text-xs">{vehicle.passengers} Passengers</span>
                     </div>
                     <div className="flex items-center space-x-1.5 text-white/40">
                       <Briefcase size={14} />
-                      <span className="text-xs">{vehicle.luggage} Luggage</span>
+                      <span className="text-[10px] sm:text-xs">{vehicle.luggage} Luggage</span>
                     </div>
                   </div>
-                  <p className="text-white/40 text-sm font-light leading-relaxed mb-6 flex-grow">
+                  <p className="text-white/40 text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow">
                     {vehicle.description}
                   </p>
                   <button 
@@ -245,20 +245,20 @@ export default function App() {
         </section>
 
         {/* Section: Corporate */}
-        <section id="corporate" className="py-24 bg-black relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gold/5 -skew-x-12 translate-x-1/2" />
+        <section id="corporate" className="py-16 md:py-24 lg:py-32 bg-black relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-gold/5 -skew-x-12 translate-x-1/2 hidden lg:block" />
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
-                <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+                <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   Corporate Accounts
                 </span>
-                <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">Seamless Mobility for <br />Your Executive Team</h2>
-                <p className="text-white/60 text-lg font-light leading-relaxed mb-10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-8">Seamless Mobility for <br />Your Executive Team</h2>
+                <p className="text-white/60 text-base sm:text-lg font-light leading-relaxed mb-10">
                   Empire Chauffeur NYC provides dedicated support and priority booking for corporate clients. Simplify your travel management with our comprehensive billing solutions.
                 </p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
                   {[
                     'Monthly Billing',
                     'Dedicated Support Line',
@@ -268,37 +268,37 @@ export default function App() {
                     'Detailed Reporting'
                   ].map((benefit, i) => (
                     <div key={i} className="flex items-center space-x-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-                      <span className="text-sm text-white/80">{benefit}</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                      <span className="text-xs sm:text-sm text-white/80">{benefit}</span>
                     </div>
                   ))}
                 </div>
 
-                <button className="primary-button">
+                <button className="primary-button w-full sm:w-auto">
                   Open Corporate Account
                 </button>
               </div>
 
-              <div className="glass-panel p-12 rounded-sm">
-                <h3 className="text-2xl font-serif text-white mb-8 text-center">Inquire About Corporate Rates</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-2 gap-6">
+              <div className="glass-panel p-6 sm:p-12 rounded-sm">
+                <h3 className="text-xl sm:text-2xl font-serif text-white mb-8 text-center">Inquire About Corporate Rates</h3>
+                <form className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-1.5">
                       <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">First Name</label>
-                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Last Name</label>
-                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
                     </div>
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Company Email</label>
-                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Company Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
                   </div>
                   <button className="primary-button w-full">
                     Submit Inquiry
@@ -310,7 +310,7 @@ export default function App() {
         </section>
 
         {/* Section: Final CTA */}
-        <section className="py-32 bg-charcoal relative overflow-hidden">
+        <section className="py-20 md:py-32 bg-charcoal relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <img 
               src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=2070&auto=format&fit=crop" 
@@ -320,19 +320,19 @@ export default function App() {
             />
           </div>
           <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <h2 className="text-4xl md:text-7xl font-serif text-white mb-10">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-10">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
               <button 
                 onClick={() => setIsBookingModalOpen(true)}
-                className="primary-button w-full md:w-auto"
+                className="primary-button w-full md:w-auto min-w-[280px]"
               >
                 Submit for Review to Call
               </button>
-              <a href="tel:+13053219622" className="secondary-button w-full md:w-auto space-x-3">
+              <a href="tel:+13053219622" className="secondary-button w-full md:w-auto min-w-[280px] space-x-3">
                 <Phone size={18} className="text-gold" />
                 <span>Call (305) 321-9622</span>
               </a>
-              <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border border-emerald-500/30 bg-emerald-500/5 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-emerald-500/10 transition-all w-full md:w-auto">
+              <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border border-emerald-500/30 bg-emerald-500/5 px-8 sm:px-12 py-4 sm:py-5 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-emerald-500/10 transition-all w-full md:w-auto min-w-[280px]">
                 <MessageCircle size={18} className="text-emerald-500" />
                 <span>WhatsApp</span>
               </a>

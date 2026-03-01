@@ -20,7 +20,9 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-  ChevronRight
+  ChevronRight,
+  MessageCircle,
+  Globe
 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -309,9 +311,13 @@ export default function App() {
               <button className="bg-white text-black px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 w-full md:w-auto">
                 Book Online Now
               </button>
-              <a href="tel:+12125550123" className="flex items-center justify-center space-x-3 border border-white/20 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-white/5 transition-all w-full md:w-auto">
+              <a href="tel:+13053219622" className="flex items-center justify-center space-x-3 border border-white/20 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-white/5 transition-all w-full md:w-auto">
                 <Phone size={18} className="text-gold" />
-                <span>Call (212) 555-0123</span>
+                <span>Call (305) 321-9622</span>
+              </a>
+              <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border border-emerald-500/30 bg-emerald-500/5 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-emerald-500/10 transition-all w-full md:w-auto">
+                <MessageCircle size={18} className="text-emerald-500" />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
@@ -380,11 +386,15 @@ export default function App() {
                 </li>
                 <li className="flex items-center space-x-3">
                   <Phone size={18} className="text-gold shrink-0" />
-                  <span className="text-white/40 text-sm font-light">(212) 555-0123</span>
+                  <a href="tel:+13053219622" className="text-white/40 hover:text-white transition-colors text-sm font-light">(305) 321-9622</a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Mail size={18} className="text-gold shrink-0" />
-                  <span className="text-white/40 text-sm font-light">concierge@empirechauffeur.nyc</span>
+                  <a href="mailto:concierge@empirechauffeurnyc.com" className="text-white/40 hover:text-white transition-colors text-sm font-light">concierge@empirechauffeurnyc.com</a>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Globe size={18} className="text-gold shrink-0" />
+                  <a href="https://www.empirechauffeurnyc.com/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors text-sm font-light">empirechauffeurnyc.com</a>
                 </li>
               </ul>
             </div>

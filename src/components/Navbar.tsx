@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,13 +71,23 @@ export const Navbar = () => {
         </div>
 
         {/* Desktop Actions - Improved legibility */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-6">
           <a 
-            href="tel:+12125550123" 
+            href="https://wa.me/13053219622"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-white hover:text-emerald-500 transition-all duration-300"
+            title="WhatsApp Us"
+          >
+            <MessageCircle size={16} className="text-emerald-500" />
+            <span className="text-[11px] font-medium uppercase tracking-wider">WhatsApp</span>
+          </a>
+          <a 
+            href="tel:+13053219622" 
             className="flex items-center space-x-3 text-white hover:text-gold transition-all duration-300"
           >
             <Phone size={14} className="text-gold" />
-            <span className="text-[12px] font-semibold tracking-wider">(212) 555-0123</span>
+            <span className="text-[12px] font-semibold tracking-wider">(305) 321-9622</span>
           </a>
           <a 
             href="#booking"
@@ -88,8 +98,11 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center space-x-3">
-          <a href="tel:+12125550123" className="text-gold p-2">
+        <div className="lg:hidden flex items-center space-x-2">
+          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2">
+            <MessageCircle size={20} />
+          </a>
+          <a href="tel:+13053219622" className="text-gold p-2">
             <Phone size={18} />
           </a>
           <button 
@@ -150,23 +163,22 @@ export const Navbar = () => {
             <div className="p-8 border-t border-white/10 space-y-4 bg-charcoal/50 backdrop-blur-md">
               <div className="grid grid-cols-2 gap-4">
                 <a 
-                  href="tel:+12125550123" 
+                  href="tel:+13053219622" 
                   className="flex flex-col items-center justify-center p-4 border border-white/10 rounded-sm hover:bg-white/5 transition-all group"
                 >
                   <Phone size={20} className="text-gold mb-2 group-hover:scale-110 transition-transform" />
                   <span className="text-[10px] uppercase tracking-widest text-white/60">Call Us</span>
-                  <span className="text-xs font-bold text-white mt-1">(212) 555-0123</span>
+                  <span className="text-xs font-bold text-white mt-1">(305) 321-9622</span>
                 </a>
                 <a 
-                  href="#booking"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex flex-col items-center justify-center p-4 bg-gold rounded-sm hover:bg-white transition-all group"
+                  href="https://wa.me/13053219622"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center justify-center p-4 border border-white/10 rounded-sm hover:bg-white/5 transition-all group"
                 >
-                  <div className="text-black mb-2 group-hover:scale-110 transition-transform">
-                    <Phone size={20} />
-                  </div>
-                  <span className="text-[10px] uppercase tracking-widest text-black/60">Book Now</span>
-                  <span className="text-xs font-bold text-black mt-1">Online</span>
+                  <MessageCircle size={20} className="text-emerald-500 mb-2 group-hover:scale-110 transition-transform" />
+                  <span className="text-[10px] uppercase tracking-widest text-white/60">WhatsApp</span>
+                  <span className="text-xs font-bold text-white mt-1">Chat Now</span>
                 </a>
               </div>
               

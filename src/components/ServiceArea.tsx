@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
@@ -6,6 +6,19 @@ import L from 'leaflet';
 
 // Fix for Leaflet default icon issue in Vite
 import 'leaflet/dist/leaflet.css';
+
+// This is a common fix for Leaflet icons in Vite/Webpack
+// Even if using DivIcon, it's good to have this
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const areas = [
   { name: 'Manhattan', coords: [40.7831, -73.9712], description: 'Financial District, Midtown, Upper East & West Side' },
@@ -18,10 +31,22 @@ const areas = [
   { name: 'The Hamptons', coords: [40.8943, -72.4303], description: 'Luxury weekend getaways and events' }
 ];
 
-// Custom component to handle map movement
+// Custom component to handle map movement and sizing
 const MapController = ({ center }: { center: [number, number] }) => {
   const map = useMap();
-  map.setView(center, map.getZoom(), { animate: true });
+  
+  useEffect(() => {
+    // Small delay to ensure container is fully rendered
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [map]);
+
+  useEffect(() => {
+    map.setView(center, map.getZoom(), { animate: true });
+  }, [center, map]);
+
   return null;
 };
 

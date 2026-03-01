@@ -1,9 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, X, Send, Phone } from 'lucide-react';
+import { MessageSquare, X, Send, Phone, MessageCircle } from 'lucide-react';
 
 export const ConciergeChat = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleWhatsApp = () => {
+    window.open('https://wa.me/13053219622', '_blank');
+  };
 
   return (
     <div className="fixed bottom-8 right-8 z-[100]">
@@ -58,14 +62,22 @@ export const ConciergeChat = () => {
                   <Send size={16} />
                 </button>
               </div>
-              <div className="mt-3 flex items-center justify-center space-x-4">
-                <a href="tel:+12125550123" className="flex items-center space-x-1 text-[10px] text-white/40 hover:text-gold transition-colors">
+              <div className="mt-3 flex items-center justify-center space-x-3">
+                <a href="tel:+13053219622" className="flex items-center space-x-1 text-[10px] text-white/40 hover:text-gold transition-colors">
                   <Phone size={12} />
-                  <span>Call Us</span>
+                  <span>Call</span>
                 </a>
                 <div className="w-px h-3 bg-white/10" />
+                <button 
+                  onClick={handleWhatsApp}
+                  className="flex items-center space-x-1 text-[10px] text-white/40 hover:text-emerald-500 transition-colors"
+                >
+                  <MessageCircle size={12} />
+                  <span>WhatsApp</span>
+                </button>
+                <div className="w-px h-3 bg-white/10" />
                 <button className="text-[10px] text-white/40 hover:text-gold transition-colors">
-                  Instant Quote
+                  Quote
                 </button>
               </div>
             </div>

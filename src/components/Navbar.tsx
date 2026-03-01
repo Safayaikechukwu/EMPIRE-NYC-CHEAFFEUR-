@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex flex-col group">
+        <a href="#" className="flex flex-col group shrink-0">
           <span className="text-lg md:text-xl font-serif font-bold tracking-widest text-white transition-colors group-hover:text-gold">
             EMPIRE <span className="text-gold group-hover:text-white">CHAUFFEUR</span>
           </span>
@@ -95,22 +95,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           </a>
           <button 
             onClick={onBookClick}
-            className="bg-white text-black px-5 py-2.5 text-[10px] uppercase tracking-[0.15em] font-bold hover:bg-gold hover:text-white transition-all duration-300"
+            className="primary-button py-2.5 px-6"
           >
-            Submit for Review
+            Submit for Review to Call
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center space-x-2">
-          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2">
+        <div className="lg:hidden flex items-center space-x-1 sm:space-x-3">
+          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2 hover:bg-white/5 rounded-full transition-colors">
             <MessageCircle size={20} />
           </a>
-          <a href="tel:+13053219622" className="text-gold p-2">
-            <Phone size={18} />
+          <a href="tel:+13053219622" className="text-gold p-2 hover:bg-white/5 rounded-full transition-colors">
+            <Phone size={20} />
           </a>
           <button 
-            className="text-white p-2"
+            className="text-white p-2 hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -135,14 +135,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                 <span className="text-lg font-serif font-bold tracking-widest text-white">
                   EMPIRE <span className="text-gold">CHAUFFEUR</span>
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.3em] text-white/60">New York City</span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/60 -mt-1">New York City</span>
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)} 
                 className="text-white p-2 hover:text-gold transition-colors"
                 aria-label="Close Menu"
               >
-                <X size={32} />
+                <X size={28} />
               </button>
             </div>
             
@@ -191,9 +191,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                   setIsMobileMenuOpen(false);
                   onBookClick();
                 }}
-                className="w-full py-4 bg-white text-black text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold hover:text-white transition-all text-center block"
+                className="primary-button w-full"
               >
-                Submit for Review
+                Submit for Review to Call
               </button>
             </div>
           </motion.div>

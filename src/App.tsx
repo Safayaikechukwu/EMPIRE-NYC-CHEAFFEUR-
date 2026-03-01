@@ -68,7 +68,7 @@ export default function App() {
                 <motion.div 
                   key={index}
                   whileHover={{ y: -10 }}
-                  className="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer"
+                  className="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img 
@@ -78,16 +78,17 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end">
+                    <div className="w-12 h-px bg-gold mb-4 group-hover:w-24 transition-all duration-500" />
                     <h3 className="text-2xl font-serif text-white mb-3">{service.title}</h3>
                     <p className="text-white/60 text-sm max-w-sm mb-6 font-light leading-relaxed">
                       {service.description}
                     </p>
                     <button 
                       onClick={() => setIsBookingModalOpen(true)}
-                      className="flex items-center space-x-2 text-gold text-xs uppercase tracking-widest font-bold group-hover:translate-x-2 transition-transform"
+                      className="primary-button w-full"
                     >
-                      <span>Request a Call</span>
-                      <ArrowRight size={14} />
+                      <span>Submit for Review to Call</span>
+                      <ArrowRight size={14} className="ml-2" />
                     </button>
                   </div>
                 </motion.div>
@@ -113,7 +114,8 @@ export default function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {AIRPORTS.map((airport, index) => (
-                <div key={index} className="glass-panel p-10 rounded-sm hover:border-gold/30 transition-all duration-500 group">
+                <div key={index} className="gold-card p-10 rounded-sm group relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gold/20 group-hover:bg-gold transition-colors duration-500" />
                   <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-black transition-all">
                     <Plane size={24} />
                   </div>
@@ -124,10 +126,10 @@ export default function App() {
                   </p>
                   <button 
                     onClick={() => setIsBookingModalOpen(true)}
-                    className="inline-flex items-center space-x-2 text-white/40 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold"
+                    className="primary-button w-full mt-auto"
                   >
-                    <span>Request a Call</span>
-                    <ChevronRight size={14} />
+                    <span>Submit for Review to Call</span>
+                    <ChevronRight size={14} className="ml-2" />
                   </button>
                 </div>
               ))}
@@ -183,7 +185,7 @@ export default function App() {
                   ))}
                 </div>
 
-                <button className="mt-12 bg-white text-black px-10 py-4 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300">
+                <button className="mt-12 primary-button">
                   Our Chauffeur Standards
                 </button>
               </div>
@@ -204,7 +206,7 @@ export default function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {VEHICLES.map((vehicle) => (
-                <div key={vehicle.id} className="group flex flex-col">
+                <div key={vehicle.id} className="group flex flex-col gold-card p-6 rounded-sm">
                   <div className="relative h-64 overflow-hidden rounded-sm mb-6">
                     <img 
                       src={vehicle.image} 
@@ -230,8 +232,11 @@ export default function App() {
                   <p className="text-white/40 text-sm font-light leading-relaxed mb-6 flex-grow">
                     {vehicle.description}
                   </p>
-                  <button className="w-full border border-white/10 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">
-                    View Vehicle Details
+                  <button 
+                    onClick={() => setIsBookingModalOpen(true)}
+                    className="primary-button w-full"
+                  >
+                    Submit for Review to Call
                   </button>
                 </div>
               ))}
@@ -269,7 +274,7 @@ export default function App() {
                   ))}
                 </div>
 
-                <button className="gold-gradient text-black px-10 py-4 text-xs uppercase tracking-widest font-bold hover:brightness-110 transition-all">
+                <button className="primary-button">
                   Open Corporate Account
                 </button>
               </div>
@@ -295,7 +300,7 @@ export default function App() {
                     <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Company Name</label>
                     <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
                   </div>
-                  <button className="w-full border border-gold text-gold py-4 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-black transition-all">
+                  <button className="primary-button w-full">
                     Submit Inquiry
                   </button>
                 </form>
@@ -319,11 +324,11 @@ export default function App() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <button 
                 onClick={() => setIsBookingModalOpen(true)}
-                className="bg-white text-black px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 w-full md:w-auto"
+                className="primary-button w-full md:w-auto"
               >
                 Submit for Review to Call
               </button>
-              <a href="tel:+13053219622" className="flex items-center justify-center space-x-3 border border-white/20 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-white/5 transition-all w-full md:w-auto">
+              <a href="tel:+13053219622" className="secondary-button w-full md:w-auto space-x-3">
                 <Phone size={18} className="text-gold" />
                 <span>Call (305) 321-9622</span>
               </a>

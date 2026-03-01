@@ -87,7 +87,7 @@ export const ConciergeChat: React.FC<ConciergeChatProps> = ({ onQuoteClick }) =>
                   }}
                   className="text-[10px] text-white/40 hover:text-gold transition-colors"
                 >
-                  Quote
+                  Submit for Review
                 </button>
               </div>
             </div>

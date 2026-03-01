@@ -139,23 +139,26 @@ export const ServiceArea = () => {
             </MapContainer>
 
             {/* Map Overlays */}
-            <div className="absolute inset-0 pointer-events-none border-[12px] border-charcoal/50 z-[1000]" />
-            <div className="absolute top-6 left-6 z-[1000] bg-black/80 backdrop-blur-md px-4 py-2 border border-white/10">
+            <div className="absolute inset-0 pointer-events-none border-[12px] border-charcoal/50 z-[50]" />
+            <div className="absolute top-6 left-6 z-[100] bg-black/80 backdrop-blur-md px-4 py-2 border border-white/10">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                 <span className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Live Service Map</span>
               </div>
             </div>
 
-            <div className="absolute bottom-8 left-8 right-8 z-[1000] bg-black/90 backdrop-blur-xl p-6 border border-white/10">
-              <div className="flex justify-between items-end">
+            <div className="absolute bottom-6 left-6 right-6 z-[100] bg-black/90 backdrop-blur-xl p-4 border border-white/10 rounded-sm">
+              <div className="flex justify-between items-center">
                 <div>
-                  <h3 className="text-xl font-serif text-white mb-1">Tri-State Network</h3>
-                  <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold">24/7 Executive Dispatch</p>
+                  <h3 className="text-lg font-serif text-white">Tri-State Network</h3>
+                  <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">24/7 Executive Dispatch</p>
                 </div>
-                <div className="text-right">
-                  <span className="text-gold text-2xl font-serif">100%</span>
-                  <p className="text-white/30 text-[8px] uppercase tracking-tighter">On-Time Guarantee</p>
+                <div className="flex items-center space-x-4">
+                  <div className="h-8 w-px bg-white/10" />
+                  <div className="text-right">
+                    <span className="text-gold text-xl font-serif">100%</span>
+                    <p className="text-white/30 text-[7px] uppercase tracking-tighter">On-Time Guarantee</p>
+                  </div>
                 </div>
               </div>
             </div>

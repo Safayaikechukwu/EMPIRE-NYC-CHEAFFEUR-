@@ -45,7 +45,7 @@ export const Safety = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 border border-white/5 bg-charcoal/30 rounded-sm"
+              className="gold-card p-8"
             >
               <standard.icon size={32} className="text-gold mb-6" />
               <h3 className="text-xl font-serif text-white mb-3">{standard.title}</h3>

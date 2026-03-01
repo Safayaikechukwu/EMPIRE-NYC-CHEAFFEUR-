@@ -23,7 +23,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -36,12 +36,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-2xl bg-charcoal border border-white/10 rounded-sm shadow-2xl overflow-hidden"
+            className="relative w-full max-w-2xl bg-black/60 backdrop-blur-2xl border border-white/10 rounded-sm shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-black p-6 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-black/40 p-6 border-b border-white/10 flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-serif text-white">Request a <span className="italic text-gold">Chauffeur</span></h2>
+                <h2 className="text-2xl font-serif text-white">Request Your <span className="italic text-gold">Private Chauffeur</span></h2>
                 <p className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
               </div>
               <button 
@@ -216,7 +216,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
 
                   <button 
                     type="submit"
-                    className="w-full bg-white text-black py-4 text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold hover:text-white transition-all duration-300 mt-4"
+                    className="primary-button w-full mt-4"
                   >
                     Submit for Review to Call
                   </button>

@@ -49,7 +49,7 @@ export const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass-panel p-10 rounded-sm relative group"
+              className="gold-card p-10 rounded-sm relative group"
             >
               <Quote size={40} className="text-gold/10 absolute top-8 right-8 group-hover:text-gold/20 transition-colors" />
               
@@ -80,7 +80,7 @@ export const Testimonials = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="glass-panel p-8 rounded-sm relative"
+              className="gold-card p-8 rounded-sm relative"
             >
               <Quote size={32} className="text-gold/10 absolute top-6 right-6" />
               

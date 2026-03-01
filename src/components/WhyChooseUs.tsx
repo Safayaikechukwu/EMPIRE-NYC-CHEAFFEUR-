@@ -72,7 +72,7 @@ export const WhyChooseUs = () => {
             {duplicatedReasons.map((reason, index) => (
               <div
                 key={index}
-                className="w-[350px] md:w-[450px] glass-panel p-10 rounded-sm hover:border-gold/30 transition-all duration-500 group shrink-0"
+                className="gold-card w-[350px] md:w-[450px] p-10 rounded-sm shrink-0 group"
               >
                 <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-black transition-all border border-white/10">
                   <reason.icon size={28} />

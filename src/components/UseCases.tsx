@@ -54,7 +54,7 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               onClick={onBookClick}
-              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm cursor-pointer"
+              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
             >
               <img 
                 src={item.image} 
@@ -65,6 +65,7 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
               <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-all duration-500" />
               
               <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end">
+                <div className="w-12 h-px bg-gold mb-4 group-hover:w-24 transition-all duration-500" />
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/20 backdrop-blur-md flex items-center justify-center mb-3 md:mb-6 border border-gold/30">
                   <item.icon size={16} className="text-gold md:hidden" />
                   <item.icon size={20} className="text-gold hidden md:block" />
@@ -83,7 +84,7 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
             onClick={onBookClick}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-gold transition-colors flex items-center space-x-2 group"
           >
-            <span>Submit for Review</span>
+            <span>Submit for Review to Call</span>
             <div className="w-8 h-px bg-white/20 group-hover:bg-gold transition-colors" />
           </button>
         </div>

@@ -24,6 +24,18 @@
   @apply bg-white/5 backdrop-blur-md border border-white/10;
 }
 
+@utility gold-card {
+  @apply glass-panel transition-all duration-500 hover:border-gold/50 hover:shadow-[0_0_30px_rgba(197,160,89,0.15)];
+}
+
+@utility primary-button {
+  @apply bg-white text-black py-4 px-8 text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold hover:text-white transition-all duration-300 flex items-center justify-center;
+}
+
+@utility secondary-button {
+  @apply border border-white/20 text-white py-4 px-8 text-xs uppercase tracking-[0.3em] font-bold hover:bg-white/5 transition-all duration-300 flex items-center justify-center;
+}
+
 @utility gold-gradient {
   background: linear-gradient(135deg, #C5A059 0%, #E8D2A6 50%, #C5A059 100%);
 }

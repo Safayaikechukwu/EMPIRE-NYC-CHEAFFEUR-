@@ -166,9 +166,9 @@ export const BookingModule = () => {
         </div>
 
         <div className="md:col-span-2 lg:col-span-4 mt-2">
-          <button className="w-full gold-gradient text-black font-bold py-4 text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center space-x-2 group">
+          <button className="primary-button w-full group">
             <span>Submit for Review to Call</span>
-            <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+            <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </form>

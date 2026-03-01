@@ -33,16 +33,19 @@ import { ServiceArea } from './components/ServiceArea';
 import { Testimonials } from './components/Testimonials';
 import { UseCases } from './components/UseCases';
 import { Safety } from './components/Safety';
+import { BookingModal } from './components/BookingModal';
 import { SERVICES, AIRPORTS, VEHICLES } from './constants';
 
 export default function App() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = React.useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
     <div className="min-h-screen bg-black selection:bg-gold selection:text-black">
-      <Navbar />
-      <ConciergeChat />
+      <Navbar onBookClick={() => setIsBookingModalOpen(true)} />
+      <ConciergeChat onQuoteClick={() => setIsBookingModalOpen(true)} />
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
       
       <main>
         <Hero />
@@ -79,10 +82,13 @@ export default function App() {
                     <p className="text-white/60 text-sm max-w-sm mb-6 font-light leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="flex items-center space-x-2 text-gold text-xs uppercase tracking-widest font-bold group-hover:translate-x-2 transition-transform">
-                      <span>Learn More</span>
+                    <button 
+                      onClick={() => setIsBookingModalOpen(true)}
+                      className="flex items-center space-x-2 text-gold text-xs uppercase tracking-widest font-bold group-hover:translate-x-2 transition-transform"
+                    >
+                      <span>Request a Call</span>
                       <ArrowRight size={14} />
-                    </div>
+                    </button>
                   </div>
                 </motion.div>
               ))}
@@ -116,17 +122,20 @@ export default function App() {
                   <p className="text-white/60 text-sm font-light leading-relaxed mb-8">
                     {airport.description}
                   </p>
-                  <a href={airport.link} className="inline-flex items-center space-x-2 text-white/40 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold">
-                    <span>View Rates</span>
+                  <button 
+                    onClick={() => setIsBookingModalOpen(true)}
+                    className="inline-flex items-center space-x-2 text-white/40 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold"
+                  >
+                    <span>Request a Call</span>
                     <ChevronRight size={14} />
-                  </a>
+                  </button>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <UseCases />
+        <UseCases onBookClick={() => setIsBookingModalOpen(true)} />
         <ServiceArea />
         <Safety />
         <WhyChooseUs />
@@ -308,8 +317,11 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <h2 className="text-4xl md:text-7xl font-serif text-white mb-10">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <button className="bg-white text-black px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 w-full md:w-auto">
-                Book Online Now
+              <button 
+                onClick={() => setIsBookingModalOpen(true)}
+                className="bg-white text-black px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-white transition-all duration-300 w-full md:w-auto"
+              >
+                Submit for Review to Call
               </button>
               <a href="tel:+13053219622" className="flex items-center justify-center space-x-3 border border-white/20 px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-white/5 transition-all w-full md:w-auto">
                 <Phone size={18} className="text-gold" />
@@ -390,7 +402,7 @@ export default function App() {
                 </li>
                 <li className="flex items-center space-x-3">
                   <Mail size={18} className="text-gold shrink-0" />
-                  <a href="mailto:concierge@empirechauffeurnyc.com" className="text-white/40 hover:text-white transition-colors text-sm font-light">concierge@empirechauffeurnyc.com</a>
+                  <a href="mailto:hello@empirechauffeurnyc.com" className="text-white/40 hover:text-white transition-colors text-sm font-light">hello@empirechauffeurnyc.com</a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Globe size={18} className="text-gold shrink-0" />

@@ -2,7 +2,11 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Phone, MessageCircle } from 'lucide-react';
 
-export const ConciergeChat = () => {
+interface ConciergeChatProps {
+  onQuoteClick: () => void;
+}
+
+export const ConciergeChat: React.FC<ConciergeChatProps> = ({ onQuoteClick }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleWhatsApp = () => {
@@ -76,7 +80,13 @@ export const ConciergeChat = () => {
                   <span>WhatsApp</span>
                 </button>
                 <div className="w-px h-3 bg-white/10" />
-                <button className="text-[10px] text-white/40 hover:text-gold transition-colors">
+                <button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    onQuoteClick();
+                  }}
+                  className="text-[10px] text-white/40 hover:text-gold transition-colors"
+                >
                   Quote
                 </button>
               </div>

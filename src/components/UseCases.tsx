@@ -29,7 +29,11 @@ const cases = [
   }
 ];
 
-export const UseCases = () => {
+interface UseCasesProps {
+  onBookClick: () => void;
+}
+
+export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
   return (
     <section className="py-24 bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -49,7 +53,8 @@ export const UseCases = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm"
+              onClick={onBookClick}
+              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm cursor-pointer"
             >
               <img 
                 src={item.image} 
@@ -74,8 +79,11 @@ export const UseCases = () => {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <button className="text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-gold transition-colors flex items-center space-x-2 group">
-            <span>View All Premium Services</span>
+          <button 
+            onClick={onBookClick}
+            className="text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-gold transition-colors flex items-center space-x-2 group"
+          >
+            <span>Submit for Review</span>
             <div className="w-8 h-px bg-white/20 group-hover:bg-gold transition-colors" />
           </button>
         </div>

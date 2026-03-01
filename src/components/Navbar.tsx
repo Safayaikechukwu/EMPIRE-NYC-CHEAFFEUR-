@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
-export const Navbar = () => {
+interface NavbarProps {
+  onBookClick: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -89,12 +93,12 @@ export const Navbar = () => {
             <Phone size={14} className="text-gold" />
             <span className="text-[12px] font-semibold tracking-wider">(305) 321-9622</span>
           </a>
-          <a 
-            href="#booking"
+          <button 
+            onClick={onBookClick}
             className="bg-white text-black px-5 py-2.5 text-[10px] uppercase tracking-[0.15em] font-bold hover:bg-gold hover:text-white transition-all duration-300"
           >
-            Book Now
-          </a>
+            Submit for Review
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -182,13 +186,15 @@ export const Navbar = () => {
                 </a>
               </div>
               
-              <a 
-                href="#booking"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onBookClick();
+                }}
                 className="w-full py-4 bg-white text-black text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold hover:text-white transition-all text-center block"
               >
-                Reserve Your Chauffeur
-              </a>
+                Submit for Review
+              </button>
             </div>
           </motion.div>
         )}

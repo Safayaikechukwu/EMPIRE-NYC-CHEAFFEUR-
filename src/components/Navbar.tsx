@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Phone, MessageCircle, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeContext';
@@ -11,6 +12,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -31,13 +33,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Services', href: '#services' },
-    { name: 'Fleet', href: '#fleet' },
-    { name: 'Corporate', href: '#corporate' },
-    { name: 'About', href: '#about' },
-    { name: 'Safety', href: '#safety' },
+    { name: 'Home', href: '/' },
+    { name: 'Fleet', href: '/fleet' },
+    { name: 'Services', href: '/services' },
+    { name: 'Service Areas', href: '/service-areas' },
+    { name: 'Locations', href: '/locations' },
+    { name: 'Beyond Airport', href: '/beyond-airport' },
+    { name: 'Safety', href: '/#safety' },
   ];
 
   const scrolledTextColor = 'text-text-primary';
@@ -58,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex flex-col group shrink-0">
+        <Link to="/" className="flex flex-col group shrink-0">
           <span className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-widest transition-colors ${
             isScrolled ? scrolledTextColor : 'text-white'
           }`}>
@@ -69,21 +77,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           }`}>
             New York City
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-6 xl:space-x-10 ml-8">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
-                isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
-              }`}
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
-            </a>
+            link.href.startsWith('/#') ? (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
+                  isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
+                }`}
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
+              </a>
+            ) : (
+              <Link 
+                key={link.name} 
+                to={link.href}
+                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
+                  isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
+                }`}
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
+              </Link>
+            )
           ))}
         </div>
 
@@ -179,17 +200,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             {/* Mobile Menu Links - Reduced size */}
             <div className="flex-grow flex flex-col justify-center items-center space-y-6 p-6 py-10 overflow-y-auto">
               {navLinks.map((link, i) => (
-                <motion.a 
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
-                  key={link.name} 
-                  href={link.href}
-                  className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </motion.a>
+                link.href.startsWith('/#') ? (
+                  <motion.a 
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                    key={link.name} 
+                    href={link.href}
+                    className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </motion.a>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                    key={link.name}
+                  >
+                    <Link 
+                      to={link.href}
+                      className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                )
               ))}
             </div>
 

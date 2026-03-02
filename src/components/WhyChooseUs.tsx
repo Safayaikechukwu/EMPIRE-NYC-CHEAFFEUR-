@@ -40,21 +40,21 @@ export const WhyChooseUs = () => {
   const duplicatedReasons = [...reasons, ...reasons, ...reasons];
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden border-y border-white/5">
+    <section className="py-24 bg-bg-primary relative overflow-hidden border-y border-border-primary">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <div className="text-center">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             The Empire Standard
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Why Choose Empire Chauffeur?</h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Empire Chauffeur?</h2>
           <div className="w-24 h-px bg-gold mx-auto" />
         </div>
       </div>
 
       <div className="relative">
         {/* Gradient Masks */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg-primary via-bg-primary/80 to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-primary via-bg-primary/80 to-transparent z-10" />
 
         <div className="flex">
           <motion.div
@@ -74,11 +74,11 @@ export const WhyChooseUs = () => {
                 key={index}
                 className="gold-card w-[350px] md:w-[450px] p-10 rounded-sm shrink-0 group"
               >
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-black transition-all border border-white/10">
+                <div className="w-14 h-14 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all border border-border-primary">
                   <reason.icon size={28} />
                 </div>
-                <h3 className="text-2xl font-serif text-white mb-4">{reason.title}</h3>
-                <p className="text-white/40 text-sm font-light leading-relaxed">
+                <h3 className="text-2xl font-serif text-text-primary mb-4">{reason.title}</h3>
+                <p className="text-text-secondary text-sm font-light leading-relaxed">
                   {reason.description}
                 </p>
               </div>
@@ -87,11 +87,6 @@ export const WhyChooseUs = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-16 text-center">
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-bold">
-          Experience the difference of a professional chauffeur service
-        </p>
-      </div>
     </section>
   );
 };

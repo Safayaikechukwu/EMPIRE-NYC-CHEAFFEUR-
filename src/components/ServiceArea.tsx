@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { MapPin, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { useTheme } from './ThemeContext';
 
 // Fix for Leaflet default icon issue in Vite
 import 'leaflet/dist/leaflet.css';
@@ -58,6 +59,7 @@ const customIcon = new L.DivIcon({
 });
 
 export const ServiceArea = () => {
+  const { theme } = useTheme();
   const [activeCoords, setActiveCoords] = useState<[number, number]>([40.7128, -74.0060]);
   const [hoveredArea, setHoveredArea] = useState<string | null>(null);
 
@@ -69,8 +71,8 @@ export const ServiceArea = () => {
             <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
               Coverage
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">Our Service Areas</h2>
-            <p className="text-white/60 text-lg font-light leading-relaxed mb-10">
+            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Our Service Areas</h2>
+            <p className="text-text-secondary text-lg font-light leading-relaxed mb-10">
               Empire Chauffeur NYC provides comprehensive executive transportation across the entire Tri-State area. We offer seamless transfers between all major hubs and residential enclaves.
             </p>
             
@@ -89,35 +91,38 @@ export const ServiceArea = () => {
                   onMouseLeave={() => setHoveredArea(null)}
                   className={`flex items-start space-x-3 p-3 rounded-sm transition-all duration-300 cursor-pointer border ${
                     hoveredArea === area.name 
-                      ? 'bg-white/5 border-gold/30 translate-x-2' 
+                      ? 'bg-text-primary/5 border-gold/30 translate-x-2' 
                       : 'bg-transparent border-transparent'
                   }`}
                 >
                   <MapPin size={18} className={`${hoveredArea === area.name ? 'text-gold' : 'text-gold/50'} mt-1 shrink-0 transition-colors`} />
                   <div>
-                    <h4 className="text-white font-medium text-sm">{area.name}</h4>
-                    <p className="text-white/30 text-[10px] font-light leading-tight">{area.description}</p>
+                    <h4 className="text-text-primary font-medium text-sm">{area.name}</h4>
+                    <p className="text-text-secondary/70 text-[10px] font-light leading-tight">{area.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-10 flex items-center space-x-4 text-white/40">
+            <div className="mt-10 flex items-center space-x-4 text-text-secondary">
               <Navigation size={16} className="text-gold" />
               <span className="text-xs uppercase tracking-widest font-medium">Real-time coverage across NY, NJ, & CT</span>
             </div>
           </div>
 
-          <div className="relative h-[550px] rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative h-[550px] rounded-sm overflow-hidden border border-border-primary shadow-2xl">
             <MapContainer 
               center={[40.7128, -74.0060]} 
               zoom={10} 
-              style={{ height: '100%', width: '100%', background: '#121212' }}
+              style={{ height: '100%', width: '100%', background: theme === 'dark' ? '#121212' : '#f5f5f5' }}
               zoomControl={false}
               scrollWheelZoom={false}
             >
               <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                url={theme === 'dark' 
+                  ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                  : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                }
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               />
               <MapController center={activeCoords} />
@@ -131,7 +136,7 @@ export const ServiceArea = () => {
                   <Popup className="custom-popup">
                     <div className="p-1">
                       <h3 className="font-serif text-gold font-bold">{area.name}</h3>
-                      <p className="text-xs text-charcoal">{area.description}</p>
+                      <p className={`text-xs ${theme === 'dark' ? 'text-white/70' : 'text-black/70'}`}>{area.description}</p>
                     </div>
                   </Popup>
                 </Marker>
@@ -140,24 +145,24 @@ export const ServiceArea = () => {
 
             {/* Map Overlays */}
             <div className="absolute inset-0 pointer-events-none border-[12px] border-charcoal/50 z-[50]" />
-            <div className="absolute top-6 left-6 z-[100] bg-black/80 backdrop-blur-md px-4 py-2 border border-white/10">
+            <div className="absolute top-6 left-6 z-[100] bg-bg-primary/80 backdrop-blur-md px-4 py-2 border border-border-primary">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                <span className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Live Service Map</span>
+                <span className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Live Service Map</span>
               </div>
             </div>
 
-            <div className="absolute bottom-6 left-6 right-6 z-[100] bg-black/90 backdrop-blur-xl p-4 border border-white/10 rounded-sm">
+            <div className="absolute bottom-6 left-6 right-6 z-[100] bg-bg-primary/90 backdrop-blur-xl p-4 border border-border-primary rounded-sm">
               <div className="flex justify-between items-center">
                 <div>
-                  <h3 className="text-lg font-serif text-white">Tri-State Network</h3>
-                  <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">24/7 Executive Dispatch</p>
+                  <h3 className="text-lg font-serif text-text-primary">Tri-State Network</h3>
+                  <p className="text-text-secondary text-[9px] uppercase tracking-widest font-bold">24/7 Executive Dispatch</p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="h-8 w-px bg-white/10" />
+                  <div className="h-8 w-px bg-border-primary" />
                   <div className="text-right">
                     <span className="text-gold text-xl font-serif">100%</span>
-                    <p className="text-white/30 text-[7px] uppercase tracking-tighter">On-Time Guarantee</p>
+                    <p className="text-text-secondary/70 text-[7px] uppercase tracking-tighter">On-Time Guarantee</p>
                   </div>
                 </div>
               </div>
@@ -168,16 +173,16 @@ export const ServiceArea = () => {
 
       <style>{`
         .leaflet-container {
-          filter: grayscale(0.2) contrast(1.1);
+          filter: ${theme === 'dark' ? 'grayscale(0.2) contrast(1.1)' : 'none'};
         }
         .custom-popup .leaflet-popup-content-wrapper {
-          background: #121212;
-          color: white;
+          background: ${theme === 'dark' ? '#121212' : '#ffffff'};
+          color: ${theme === 'dark' ? '#ffffff' : '#1a1a1a'};
           border-radius: 2px;
           border: 1px solid rgba(197, 160, 89, 0.3);
         }
         .custom-popup .leaflet-popup-tip {
-          background: #121212;
+          background: ${theme === 'dark' ? '#121212' : '#ffffff'};
         }
         .leaflet-bar {
           border: none !important;

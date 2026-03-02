@@ -42,10 +42,10 @@ export const Hero = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Layered Overlays for Depth and Readability */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        {/* Layered Overlays for Depth and Readability - Always dark to protect white text */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="absolute inset-0 bg-hero-radial z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 z-10" />
+        <div className="hero-overlay" />
       </div>
 
       {/* Content - Using flex-grow and padding to ensure it stays below navbar and centered in remaining space */}
@@ -54,9 +54,9 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
+          className="flex flex-col items-center space-y-4 mb-8"
         >
-          <span className="text-gold text-[9px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] font-bold bg-black/60 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 text-shadow-sm whitespace-nowrap">
+          <span className="text-gold text-[9px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] font-bold bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 text-shadow-sm whitespace-nowrap">
             Private Executive Transportation
           </span>
         </motion.div>
@@ -65,7 +65,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-white mb-8 leading-[1.1] tracking-tight text-shadow-md"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-white mb-8 leading-[1.1] tracking-tight shadow-black/50 [text-shadow:0_4px_8px_rgba(0,0,0,0.8)]"
         >
           New York's Premier <br />
           <span className="italic text-white/90">Executive Chauffeur</span>

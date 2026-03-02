@@ -30,13 +30,13 @@ export const Testimonials = () => {
   const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-24 bg-bg-primary relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Social Proof
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Don't Just Take Our Word For It</h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Don't Just Take Our Word For It</h2>
           <div className="w-24 h-px bg-gold mx-auto" />
         </div>
 
@@ -59,12 +59,12 @@ export const Testimonials = () => {
                 ))}
               </div>
 
-              <p className="text-white/70 text-lg font-light italic mb-8 leading-relaxed">
+              <p className="text-text-secondary text-lg font-light italic mb-8 leading-relaxed">
                 "{testimonial.text}"
               </p>
 
               <div>
-                <h4 className="text-white font-serif text-xl mb-1">{testimonial.name}</h4>
+                <h4 className="text-text-primary font-serif text-xl mb-1">{testimonial.name}</h4>
                 <p className="text-gold text-[10px] uppercase tracking-widest font-bold">{testimonial.role}</p>
               </div>
             </motion.div>
@@ -90,12 +90,12 @@ export const Testimonials = () => {
                 ))}
               </div>
 
-              <p className="text-white/70 text-base font-light italic mb-8 leading-relaxed">
+              <p className="text-text-secondary text-base font-light italic mb-8 leading-relaxed">
                 "{testimonials[activeIndex].text}"
               </p>
 
               <div>
-                <h4 className="text-white font-serif text-lg mb-1">{testimonials[activeIndex].name}</h4>
+                <h4 className="text-text-primary font-serif text-lg mb-1">{testimonials[activeIndex].name}</h4>
                 <p className="text-gold text-[9px] uppercase tracking-widest font-bold">{testimonials[activeIndex].role}</p>
               </div>
             </motion.div>
@@ -104,14 +104,14 @@ export const Testimonials = () => {
           <div className="flex justify-start items-center space-x-4 mt-8">
             <button 
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all"
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
             </button>
             <button 
               onClick={next}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all"
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />
@@ -131,9 +131,9 @@ export const Testimonials = () => {
                 <Star key={i} size={14} className="text-[#FBBC05] fill-[#FBBC05]" />
               ))}
             </div>
-            <span className="text-white font-medium">4.9/5</span>
+            <span className="text-text-primary font-medium">4.9/5</span>
           </div>
-          <p className="text-white/40 text-xs uppercase tracking-widest">Based on 500+ Verified Google Reviews</p>
+          <p className="text-text-secondary/50 text-xs uppercase tracking-widest">Based on 500+ Verified Google Reviews</p>
         </div>
       </div>
     </section>

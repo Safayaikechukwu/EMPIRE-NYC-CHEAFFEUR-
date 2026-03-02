@@ -6,13 +6,38 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   
-  --color-gold: #C5A059;
-  --color-charcoal: #121212;
+  --color-gold: var(--gold-accent);
+  --color-charcoal: var(--charcoal);
+  --color-bg-primary: var(--bg-primary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-primary: var(--border-primary);
 
   /* Fluid Spacing & Typography */
   --spacing-fluid-sm: clamp(1rem, 2vw, 1.5rem);
   --spacing-fluid-md: clamp(2rem, 4vw, 4rem);
   --spacing-fluid-lg: clamp(4rem, 8vw, 8rem);
+}
+
+:root {
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.4);
+  --border-primary: rgba(255, 255, 255, 0.05);
+  --charcoal: #121212;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --gold-accent: #D4AF37; /* Classic Metallic Gold */
+}
+
+.light {
+  --bg-primary: #FDFBF7; /* Alabaster / Premium Off-White */
+  --text-primary: #1A1A1A; /* Deep Charcoal for better readability */
+  --text-secondary: rgba(26, 26, 26, 0.6);
+  --border-primary: rgba(26, 26, 26, 0.08);
+  --charcoal: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --gold-accent: #8E793E; /* Deep Satin Gold for Light Mode */
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 @layer base {
@@ -22,7 +47,7 @@
   }
 
   body {
-    @apply bg-black text-white font-sans antialiased overflow-x-hidden;
+    @apply bg-bg-primary text-text-primary font-sans antialiased overflow-x-hidden transition-colors duration-300;
     font-size: clamp(0.875rem, 0.5vw + 0.75rem, 1.125rem);
   }
   
@@ -36,7 +61,8 @@
 }
 
 @utility glass-panel {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  background-color: var(--glass-bg);
+  @apply backdrop-blur-xl border border-border-primary;
 }
 
 @utility gold-card {
@@ -44,15 +70,15 @@
 }
 
 @utility primary-button {
-  @apply relative overflow-hidden bg-white text-black py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-gold hover:text-white transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
+  @apply relative overflow-hidden bg-text-primary text-bg-primary py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-gold hover:text-white transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
 }
 
 @utility secondary-button {
-  @apply border border-white/20 text-white py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-white/5 transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
+  @apply border border-border-primary text-text-primary py-3.5 px-8 text-[10px] sm:text-xs uppercase tracking-[0.15em] font-semibold hover:bg-text-primary/5 transition-all duration-500 flex items-center justify-center active:scale-95 whitespace-nowrap;
 }
 
 @utility gold-gradient {
-  background: linear-gradient(135deg, #C5A059 0%, #E8D2A6 50%, #C5A059 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #F9E4B7 50%, #D4AF37 100%);
 }
 
 @utility text-gold-gradient {
@@ -60,15 +86,20 @@
 }
 
 @utility text-shadow-sm {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px var(--shadow-color, rgba(0, 0, 0, 0.5));
 }
 
 @utility text-shadow-md {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 4px 8px var(--shadow-color, rgba(0, 0, 0, 0.6));
 }
 
 @utility bg-hero-radial {
-  background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  background: radial-gradient(circle at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+}
+
+@utility hero-overlay {
+  @apply absolute inset-0 z-10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 100%);
 }
 
 /* Custom scrollbar for luxury feel */
@@ -77,13 +108,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-black;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/20 rounded-full;
+  background: var(--text-primary, rgba(255, 255, 255, 0.2));
+  opacity: 0.2;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-white/30;
+  background: var(--gold);
 }

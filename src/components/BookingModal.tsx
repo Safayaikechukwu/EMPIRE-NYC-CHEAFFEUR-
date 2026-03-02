@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Calendar, Clock, Users, MapPin, Phone, Mail, Briefcase, Send } from 'lucide-react';
+import { AddressInput } from './AddressInput';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface BookingModalProps {
 
 export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [pickupCity, setPickupCity] = useState('');
+  const [dropoffCity, setDropoffCity] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,17 +39,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-2xl bg-black/60 backdrop-blur-2xl border border-white/10 rounded-sm shadow-2xl overflow-hidden"
+            className="relative w-full max-w-2xl glass-panel rounded-sm shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-black/40 p-6 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-charcoal/40 p-6 border-b border-border-primary flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-serif text-white">Request Your <span className="italic text-gold">Private Chauffeur</span></h2>
-                <p className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
+                <h2 className="text-2xl font-serif text-text-primary">Request Your <span className="italic text-gold">Private Chauffeur</span></h2>
+                <p className="text-text-secondary/40 text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
               </div>
               <button 
                 onClick={onClose}
-                className="text-white/40 hover:text-white transition-colors"
+                className="text-text-secondary hover:text-text-primary transition-colors"
               >
                 <X size={24} />
               </button>
@@ -63,8 +66,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="w-20 h-20 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Send className="text-gold" size={32} />
                   </div>
-                  <h3 className="text-2xl font-serif text-white mb-2">Request Submitted</h3>
-                  <p className="text-white/60 text-sm max-w-xs mx-auto">
+                  <h3 className="text-2xl font-serif text-text-primary mb-2">Request Submitted</h3>
+                  <p className="text-text-secondary text-sm max-w-xs mx-auto">
                     Your request has been sent for review. A concierge will contact you shortly to finalize your booking.
                   </p>
                 </motion.div>
@@ -73,22 +76,22 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* First Name */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">First Name</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">First Name</label>
                       <input 
                         required
                         type="text" 
                         placeholder="John"
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 px-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                       />
                     </div>
                     {/* Last Name */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Last Name</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Last Name</label>
                       <input 
                         required
                         type="text" 
                         placeholder="Doe"
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 px-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                       />
                     </div>
                   </div>
@@ -96,12 +99,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Event Type */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Event Type</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Event Type</label>
                       <div className="relative">
                         <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <select 
                           required
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors appearance-none"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors appearance-none"
                         >
                           <option value="" className="bg-charcoal">Select Event Type</option>
                           <option value="corporate" className="bg-charcoal">Corporate Travel</option>
@@ -114,14 +117,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                     </div>
                     {/* Emails */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Email Address</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Email Address</label>
                       <div className="relative">
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
                           required
                           type="email" 
                           placeholder="john@example.com"
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -130,25 +133,25 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Date Requested */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Date Requested</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Date Requested</label>
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
                           required
                           type="date" 
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
                     {/* Pick up Time */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Pick up Time</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Pick up Time</label>
                       <div className="relative">
                         <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
                           required
                           type="time" 
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors [color-scheme:dark]"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -157,7 +160,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Number of Hours */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Number of Hours</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Number of Hours</label>
                       <div className="relative">
                         <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
@@ -165,13 +168,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                           type="number" 
                           min="1"
                           placeholder="Minimum 2 hours"
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
                     {/* Approximate Passengers */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Passengers</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Passengers</label>
                       <div className="relative">
                         <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
@@ -179,7 +182,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                           type="number" 
                           min="1"
                           placeholder="Number of guests"
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -188,30 +191,40 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Phone */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Phone Number</label>
+                      <label className="text-[10px] uppercase tracking-widest text-text-secondary/70 font-bold">Phone Number</label>
                       <div className="relative">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
                         <input 
                           required
                           type="tel" 
                           placeholder="(305) 000-0000"
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+                          className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold/50 transition-colors"
                         />
                       </div>
                     </div>
                     {/* Pick up City */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Pick up City</label>
-                      <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />
-                        <input 
-                          required
-                          type="text" 
-                          placeholder="e.g. Manhattan, NYC"
-                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
-                        />
-                      </div>
-                    </div>
+                    <AddressInput
+                      required
+                      label="Pick up City"
+                      placeholder="e.g. Manhattan, NYC"
+                      value={pickupCity}
+                      onChange={setPickupCity}
+                      icon={<MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />}
+                      className="space-y-2"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-6">
+                    {/* Drop off City */}
+                    <AddressInput
+                      required
+                      label="Drop off City / Destination"
+                      placeholder="e.g. JFK Airport, Queens"
+                      value={dropoffCity}
+                      onChange={setDropoffCity}
+                      icon={<MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gold/50" size={16} />}
+                      className="space-y-2"
+                    />
                   </div>
 
                   <button 

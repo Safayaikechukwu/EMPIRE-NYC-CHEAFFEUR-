@@ -27,13 +27,13 @@ const standards = [
 
 export const Safety = () => {
   return (
-    <section id="safety" className="py-24 bg-black">
+    <section id="safety" className="py-24 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Trust & Security
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Safety & Licensing</h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Safety & Licensing</h2>
           <div className="w-24 h-px bg-gold mx-auto" />
         </div>
 
@@ -48,8 +48,8 @@ export const Safety = () => {
               className="gold-card p-8"
             >
               <standard.icon size={32} className="text-gold mb-6" />
-              <h3 className="text-xl font-serif text-white mb-3">{standard.title}</h3>
-              <p className="text-white/40 text-sm font-light leading-relaxed">
+              <h3 className="text-xl font-serif text-text-primary mb-3">{standard.title}</h3>
+              <p className="text-text-secondary text-sm font-light leading-relaxed">
                 {standard.description}
               </p>
             </motion.div>

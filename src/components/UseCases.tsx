@@ -35,13 +35,13 @@ interface UseCasesProps {
 
 export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
   return (
-    <section className="py-24 bg-black overflow-hidden">
+    <section className="py-24 bg-bg-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Versatility
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Beyond the Airport</h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Beyond the Airport</h2>
           <div className="w-24 h-px bg-gold mx-auto" />
         </div>
 
@@ -54,7 +54,7 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               onClick={onBookClick}
-              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
+              className="group relative h-[200px] md:h-[350px] overflow-hidden rounded-sm cursor-pointer border border-border-primary hover:border-gold/30 transition-all duration-500"
             >
               <img 
                 src={item.image} 
@@ -82,10 +82,10 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
         <div className="mt-12 flex justify-center">
           <button 
             onClick={onBookClick}
-            className="text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-gold transition-colors flex items-center space-x-2 group"
+            className="text-[10px] uppercase tracking-[0.3em] text-text-secondary/50 hover:text-gold transition-colors flex items-center space-x-2 group"
           >
             <span>Submit for Review to Call</span>
-            <div className="w-8 h-px bg-white/20 group-hover:bg-gold transition-colors" />
+            <div className="w-8 h-px bg-border-primary group-hover:bg-gold transition-colors" />
           </button>
         </div>
       </div>

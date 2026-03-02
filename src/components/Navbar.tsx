@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, Sun, Moon } from 'lucide-react';
+import { useTheme } from './ThemeContext';
 
 interface NavbarProps {
   onBookClick: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -38,84 +40,120 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     { name: 'Safety', href: '#safety' },
   ];
 
+  const scrolledTextColor = 'text-text-primary';
+  const scrolledSecondaryTextColor = 'text-text-secondary';
+  const scrolledHoverColor = 'hover:text-gold';
+
   return (
-    <nav 
+    <header 
       className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out ${
-        isMobileMenuOpen ? 'z-[1001] bg-black' : 'z-[1000]'
+        isMobileMenuOpen ? 'z-[1001] bg-bg-primary' : 'z-[1000]'
       } ${
         !isMobileMenuOpen && isScrolled 
-          ? 'bg-black/95 backdrop-blur-xl py-2.5 border-b border-white/10 shadow-2xl shadow-black/50' 
-          : !isMobileMenuOpen ? 'bg-transparent py-4 md:py-6 border-b border-transparent' : 'py-3'
+          ? 'bg-bg-primary/95 backdrop-blur-xl py-2.5 border-b border-border-primary shadow-lg' 
+          : !isMobileMenuOpen 
+            ? 'bg-black/20 backdrop-blur-sm py-4 md:py-6 border-b border-white/5' 
+            : 'py-3'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex flex-col group shrink-0">
-          <span className="text-sm sm:text-base md:text-lg font-serif font-bold tracking-widest text-white transition-colors group-hover:text-gold">
-            EMPIRE <span className="text-gold group-hover:text-white">CHAUFFEUR</span>
+          <span className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-widest transition-colors ${
+            isScrolled ? scrolledTextColor : 'text-white'
+          }`}>
+            EMPIRE <span className="text-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]">CHAUFFEUR</span>
           </span>
-          <span className="text-[6px] sm:text-[7px] md:text-[8px] uppercase tracking-[0.3em] text-white/60 -mt-1">
+          <span className={`text-[6px] sm:text-[7px] md:text-[8px] uppercase tracking-[0.4em] -mt-1 font-medium transition-colors ${
+            isScrolled ? scrolledSecondaryTextColor : 'text-white/60'
+          }`}>
             New York City
           </span>
         </a>
 
-        {/* Desktop Links - More compact spacing */}
+        {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-6 xl:space-x-10 ml-8">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
-              className="text-[9px] xl:text-[10px] uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-all duration-300 relative group py-2"
+              className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
+                isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
+              }`}
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
 
-        {/* Desktop Actions - More compact */}
+        {/* Desktop Actions */}
         <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
           <a 
             href="https://wa.me/13053219622"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-white hover:text-emerald-500 transition-all duration-300 group"
+            className={`flex items-center space-x-2 transition-all duration-300 group ${
+              isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white hover:text-emerald-500'
+            }`}
           >
             <MessageCircle size={14} className="text-emerald-500 group-hover:scale-110 transition-transform" />
-            <span className="text-[9px] xl:text-[10px] font-medium uppercase tracking-wider">WhatsApp</span>
+            <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider">WhatsApp</span>
           </a>
           <a 
             href="tel:+13053219622" 
-            className="flex items-center space-x-2 text-white hover:text-gold transition-all duration-300 group"
+            className={`flex items-center space-x-2 transition-all duration-300 group ${
+              isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white hover:text-gold'
+            }`}
           >
             <Phone size={12} className="text-gold group-hover:scale-110 transition-transform" />
-            <span className="text-[10px] xl:text-[11px] font-semibold tracking-wider whitespace-nowrap">(305) 321-9622</span>
+            <span className="text-[10px] xl:text-[11px] font-bold tracking-widest whitespace-nowrap">(305) 321-9622</span>
           </a>
           <button 
             onClick={onBookClick}
-            className="primary-button py-2 px-4 xl:px-5 text-[8px] xl:text-[9px] tracking-[0.15em] whitespace-nowrap"
+            className="primary-button py-2 px-4 xl:px-6 text-[8px] xl:text-[9px] tracking-[0.2em] whitespace-nowrap shadow-md hover:shadow-gold/20"
           >
             Book Now
+          </button>
+          <button
+            onClick={toggleTheme}
+            className={`p-2 transition-colors rounded-full hover:bg-text-primary/5 ${
+              isScrolled ? scrolledSecondaryTextColor + ' hover:text-gold' : 'text-white/60 hover:text-gold'
+            }`}
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden flex items-center space-x-1 sm:space-x-3">
-          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2 hover:bg-white/5 rounded-full transition-colors">
+          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2 hover:bg-text-primary/5 rounded-full transition-colors">
             <MessageCircle size={20} />
           </a>
-          <a href="tel:+13053219622" className="text-gold p-2 hover:bg-white/5 rounded-full transition-colors">
+          <a href="tel:+13053219622" className="text-gold p-2 hover:bg-text-primary/5 rounded-full transition-colors">
             <Phone size={20} />
           </a>
           <button 
-            className="text-white p-2 hover:bg-white/5 rounded-full transition-colors"
+            className={`p-2 hover:bg-text-primary/5 rounded-full transition-colors ${
+              isScrolled ? scrolledTextColor : 'text-white'
+            }`}
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button 
+            className={`p-2 hover:bg-text-primary/5 rounded-full transition-colors ${
+              isScrolled ? scrolledTextColor : 'text-white'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu - Full Screen Overlay */}
       <AnimatePresence>
@@ -125,19 +163,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed inset-0 bg-black z-[1001] lg:hidden flex flex-col"
+              className="fixed inset-0 bg-bg-primary z-[1001] lg:hidden flex flex-col"
             >
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <div className="flex items-center justify-between p-6 border-b border-border-primary">
               <div className="flex flex-col">
-                <span className="text-lg font-serif font-bold tracking-widest text-white">
+                <span className="text-lg font-serif font-bold tracking-widest text-text-primary">
                   EMPIRE <span className="text-gold">CHAUFFEUR</span>
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.3em] text-white/60 -mt-1">New York City</span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-text-secondary -mt-1">New York City</span>
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)} 
-                className="text-white p-2 hover:text-gold transition-colors"
+                className="text-text-primary p-2 hover:text-gold transition-colors"
                 aria-label="Close Menu"
               >
                 <X size={28} />
@@ -153,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                   transition={{ delay: 0.1 + i * 0.05 }}
                   key={link.name} 
                   href={link.href}
-                  className="text-xl sm:text-2xl font-serif text-white hover:text-gold transition-colors py-1"
+                  className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -162,25 +200,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             </div>
 
             {/* Mobile Menu Footer / CTAs */}
-            <div className="p-6 pb-10 border-t border-white/10 space-y-6 bg-charcoal/80 backdrop-blur-xl">
+            <div className="p-6 pb-10 border-t border-border-primary space-y-6 bg-charcoal/80 backdrop-blur-xl">
               <div className="grid grid-cols-2 gap-3">
                 <a 
                   href="tel:+13053219622" 
-                  className="flex flex-col items-center justify-center py-4 px-2 border border-white/10 rounded-sm hover:bg-white/5 transition-all group"
+                  className="flex flex-col items-center justify-center py-4 px-2 border border-border-primary rounded-sm hover:bg-text-primary/5 transition-all group"
                 >
                   <Phone size={18} className="text-gold mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-[9px] uppercase tracking-widest text-white/40">Call Us</span>
-                  <span className="text-[11px] font-bold text-white mt-1">(305) 321-9622</span>
+                  <span className="text-[9px] uppercase tracking-widest text-text-secondary">Call Us</span>
+                  <span className="text-[11px] font-bold text-text-primary mt-1">(305) 321-9622</span>
                 </a>
                 <a 
                   href="https://wa.me/13053219622"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center py-4 px-2 border border-white/10 rounded-sm hover:bg-white/5 transition-all group"
+                  className="flex flex-col items-center justify-center py-4 px-2 border border-border-primary rounded-sm hover:bg-text-primary/5 transition-all group"
                 >
                   <MessageCircle size={18} className="text-emerald-500 mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-[9px] uppercase tracking-widest text-white/40">WhatsApp</span>
-                  <span className="text-[11px] font-bold text-white mt-1">Chat Now</span>
+                  <span className="text-[9px] uppercase tracking-widest text-text-secondary">WhatsApp</span>
+                  <span className="text-[11px] font-bold text-text-primary mt-1">Chat Now</span>
                 </a>
               </div>
               
@@ -197,6 +235,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };

@@ -22,12 +22,14 @@ import {
   Twitter,
   ChevronRight,
   MessageCircle,
-  Globe
+  Globe,
+  Moon,
+  Sun
 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustBar } from './components/TrustBar';
-import { ConciergeChat } from './components/ConciergeChat';
+import { TawkChat } from './components/TawkChat';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { ServiceArea } from './components/ServiceArea';
 import { Testimonials } from './components/Testimonials';
@@ -35,16 +37,22 @@ import { UseCases } from './components/UseCases';
 import { Safety } from './components/Safety';
 import { BookingModal } from './components/BookingModal';
 import { SERVICES, AIRPORTS, VEHICLES } from './constants';
+import { useTheme } from './components/ThemeContext';
 
 export default function App() {
+  const { theme, toggleTheme } = useTheme();
   const [isBookingModalOpen, setIsBookingModalOpen] = React.useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
+  useEffect(() => {
+    // Geoapify doesn't require a global loader like Google Maps
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black selection:bg-gold selection:text-black">
+    <div className="min-h-screen bg-bg-primary selection:bg-gold selection:text-bg-primary">
       <Navbar onBookClick={() => setIsBookingModalOpen(true)} />
-      <ConciergeChat onQuoteClick={() => setIsBookingModalOpen(true)} />
+      <TawkChat />
       <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
       
       <main>
@@ -59,7 +67,7 @@ export default function App() {
               <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                 Excellence in Motion
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">Our Premium Services</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Our Premium Services</h2>
               <div className="w-24 h-px bg-gold mx-auto" />
             </div>
 
@@ -68,7 +76,7 @@ export default function App() {
                 <motion.div 
                   key={index}
                   whileHover={{ y: -10 }}
-                  className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500"
+                  className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm cursor-pointer border border-border-primary hover:border-gold/30 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img 
@@ -105,9 +113,9 @@ export default function App() {
                 <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   Airport Coverage
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white">Serving All Major NYC Hubs</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary">Serving All Major NYC Hubs</h2>
               </div>
-              <p className="text-white/40 text-xs sm:text-sm max-w-sm font-light leading-relaxed">
+              <p className="text-text-secondary text-xs sm:text-sm max-w-sm font-light leading-relaxed">
                 Reliable, fixed-rate transfers with real-time flight monitoring and professional meet-and-greet service.
               </p>
             </div>
@@ -116,12 +124,12 @@ export default function App() {
               {AIRPORTS.map((airport, index) => (
                 <div key={index} className="gold-card p-8 sm:p-10 rounded-sm group relative overflow-hidden flex flex-col h-full">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gold/20 group-hover:bg-gold transition-colors duration-500" />
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-black transition-all">
+                  <div className="w-12 h-12 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all">
                     <Plane size={24} />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-2">{airport.name}</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{airport.name}</h3>
                   <p className="text-gold text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-6">{airport.fullName}</p>
-                  <p className="text-white/60 text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
+                  <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
                     {airport.description}
                   </p>
                   <button 
@@ -143,7 +151,7 @@ export default function App() {
         <WhyChooseUs />
 
         {/* Section: Why Empire (Original, now redundant but kept for specific standards button) */}
-        <section id="about" className="py-24 bg-black overflow-hidden">
+        <section id="about" className="py-24 bg-bg-primary overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
@@ -155,9 +163,9 @@ export default function App() {
                   className="rounded-sm shadow-2xl relative z-10"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-black/80 backdrop-blur-md p-8 border border-white/10 text-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-bg-primary/80 backdrop-blur-md p-8 border border-border-primary text-center">
                   <span className="text-4xl font-serif text-gold block mb-1">20+</span>
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/60">Years of Excellence</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-text-secondary">Years of Excellence</span>
                 </div>
               </div>
 
@@ -165,7 +173,7 @@ export default function App() {
                 <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   The Empire Standard
                 </span>
-                <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">Professional Chauffeurs. <br /><span className="italic">Not Drivers.</span></h2>
+                <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Professional Chauffeurs. <br /><span className="italic">Not Drivers.</span></h2>
                 
                 <div className="space-y-8">
                   {[
@@ -178,8 +186,8 @@ export default function App() {
                         <CheckCircle2 size={20} className="text-gold" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-serif text-white mb-1">{item.title}</h4>
-                        <p className="text-white/40 text-sm font-light leading-relaxed">{item.desc}</p>
+                        <h4 className="text-lg font-serif text-text-primary mb-1">{item.title}</h4>
+                        <p className="text-text-secondary text-sm font-light leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -200,7 +208,7 @@ export default function App() {
               <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                 The Fleet
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">Immaculate Luxury Vehicles</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Immaculate Luxury Vehicles</h2>
               <div className="w-24 h-px bg-gold mx-auto" />
             </div>
 
@@ -214,22 +222,22 @@ export default function App() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 border border-white/10">
-                      <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-white/80">{vehicle.category}</span>
+                    <div className="absolute top-4 left-4 bg-bg-primary/80 backdrop-blur-md px-3 py-1 border border-border-primary">
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-text-secondary">{vehicle.category}</span>
                     </div>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-white mb-2">{vehicle.name}</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{vehicle.name}</h3>
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="flex items-center space-x-1.5 text-white/40">
+                    <div className="flex items-center space-x-1.5 text-text-secondary">
                       <Users size={14} />
                       <span className="text-[10px] sm:text-xs">{vehicle.passengers} Passengers</span>
                     </div>
-                    <div className="flex items-center space-x-1.5 text-white/40">
+                    <div className="flex items-center space-x-1.5 text-text-secondary">
                       <Briefcase size={14} />
                       <span className="text-[10px] sm:text-xs">{vehicle.luggage} Luggage</span>
                     </div>
                   </div>
-                  <p className="text-white/40 text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow">
+                  <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow">
                     {vehicle.description}
                   </p>
                   <button 
@@ -245,7 +253,7 @@ export default function App() {
         </section>
 
         {/* Section: Corporate */}
-        <section id="corporate" className="py-16 md:py-24 lg:py-32 bg-black relative overflow-hidden">
+        <section id="corporate" className="py-16 md:py-24 lg:py-32 bg-bg-primary relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-gold/5 -skew-x-12 translate-x-1/2 hidden lg:block" />
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -253,8 +261,8 @@ export default function App() {
                 <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   Corporate Accounts
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-8">Seamless Mobility for <br />Your Executive Team</h2>
-                <p className="text-white/60 text-base sm:text-lg font-light leading-relaxed mb-10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-8">Seamless Mobility for <br />Your Executive Team</h2>
+                <p className="text-text-secondary text-base sm:text-lg font-light leading-relaxed mb-10">
                   Empire Chauffeur NYC provides dedicated support and priority booking for corporate clients. Simplify your travel management with our comprehensive billing solutions.
                 </p>
                 
@@ -269,7 +277,7 @@ export default function App() {
                   ].map((benefit, i) => (
                     <div key={i} className="flex items-center space-x-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                      <span className="text-xs sm:text-sm text-white/80">{benefit}</span>
+                      <span className="text-xs sm:text-sm text-text-primary/80">{benefit}</span>
                     </div>
                   ))}
                 </div>
@@ -280,25 +288,25 @@ export default function App() {
               </div>
 
               <div className="glass-panel p-6 sm:p-12 rounded-sm">
-                <h3 className="text-xl sm:text-2xl font-serif text-white mb-8 text-center">Inquire About Corporate Rates</h3>
+                <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-8 text-center">Inquire About Corporate Rates</h3>
                 <form className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-1.5">
-                      <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">First Name</label>
-                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                      <label className="text-[9px] uppercase tracking-widest text-text-secondary font-semibold">First Name</label>
+                      <input type="text" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Last Name</label>
-                      <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                      <label className="text-[9px] uppercase tracking-widest text-text-secondary font-semibold">Last Name</label>
+                      <input type="text" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" />
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Company Email</label>
-                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                    <label className="text-[9px] uppercase tracking-widest text-text-secondary font-semibold">Company Email</label>
+                    <input type="email" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[9px] uppercase tracking-widest text-white/50 font-semibold">Company Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors" />
+                    <label className="text-[9px] uppercase tracking-widest text-text-secondary font-semibold">Company Name</label>
+                    <input type="text" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" />
                   </div>
                   <button className="primary-button w-full">
                     Submit Inquiry
@@ -310,8 +318,8 @@ export default function App() {
         </section>
 
         {/* Section: Final CTA */}
-        <section className="py-20 md:py-32 bg-charcoal relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
+        <section className="py-20 md:py-32 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 opacity-40">
             <img 
               src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=2070&auto=format&fit=crop" 
               alt="NYC Night"
@@ -319,20 +327,21 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-10">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-10" />
+          <div className="max-w-7xl mx-auto px-6 relative z-20 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-10 shadow-2xl">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
               <button 
                 onClick={() => setIsBookingModalOpen(true)}
-                className="primary-button w-full md:w-auto min-w-[280px]"
+                className="primary-button w-full md:w-auto min-w-[280px] !bg-white !text-black hover:!bg-gold hover:!text-white"
               >
                 Submit for Review to Call
               </button>
-              <a href="tel:+13053219622" className="secondary-button w-full md:w-auto min-w-[280px] space-x-3">
+              <a href="tel:+13053219622" className="secondary-button w-full md:w-auto min-w-[280px] space-x-3 !border-white/20 !text-white hover:!bg-white/10">
                 <Phone size={18} className="text-gold" />
                 <span>Call (305) 321-9622</span>
               </a>
-              <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border border-emerald-500/30 bg-emerald-500/5 px-8 sm:px-12 py-4 sm:py-5 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-emerald-500/10 transition-all w-full md:w-auto min-w-[280px]">
+              <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 border border-emerald-500/30 bg-emerald-500/5 px-8 sm:px-12 py-4 sm:py-5 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-emerald-500/10 transition-all w-full md:w-auto min-w-[280px] text-white">
                 <MessageCircle size={18} className="text-emerald-500" />
                 <span>WhatsApp</span>
               </a>
@@ -342,89 +351,129 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="bg-black pt-24 pb-12 border-t border-white/5">
+      <footer id="contact" className="bg-bg-primary pt-24 pb-12 border-t border-border-primary">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
             <div className="space-y-6">
               <div className="flex flex-col">
-                <span className="text-2xl font-serif font-bold tracking-widest text-white">
+                <span className="text-2xl font-serif font-bold tracking-widest text-text-primary">
                   EMPIRE <span className="text-gold">CHAUFFEUR</span>
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/60 -mt-1">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-text-secondary -mt-1">
                   New York City
                 </span>
               </div>
-              <p className="text-white/40 text-sm font-light leading-relaxed">
+              <p className="text-text-secondary text-sm font-light leading-relaxed">
                 NYC's premier executive transportation firm. Providing discreet, reliable, and professional chauffeur services for over 20 years.
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all">
-                  <Instagram size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all">
-                  <Linkedin size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold transition-all">
-                  <Twitter size={18} />
-                </a>
+              <div className="flex items-center space-x-4">
+                <div className="flex space-x-4">
+                  <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
+                    <Instagram size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
+                    <Linkedin size={18} />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
+                    <Twitter size={18} />
+                  </a>
+                </div>
+                <div className="w-px h-8 bg-border-primary mx-2" />
+                <button 
+                  onClick={toggleTheme}
+                  className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+                  title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                >
+                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                </button>
               </div>
             </div>
 
             <div>
-              <h4 className="text-white text-xs uppercase tracking-widest font-bold mb-8">Trust & Authority</h4>
+              <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Trust & Authority</h4>
               <ul className="space-y-4">
                 {['About Empire Chauffeur', 'Safety & Licensing', 'Chauffeur Standards', 'Corporate Solutions', 'Terms & Conditions', 'Privacy Policy'].map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-white/40 hover:text-white transition-colors text-sm font-light">{link}</a>
+                    <a href="#" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">{link}</a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white text-xs uppercase tracking-widest font-bold mb-8">Airports</h4>
+              <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Airports</h4>
               <ul className="space-y-4">
                 {['JFK International', 'LaGuardia Airport', 'Newark Liberty', 'Teterboro (Private)', 'Westchester County', 'MacArthur Airport'].map((airport) => (
                   <li key={airport}>
-                    <a href="#" className="text-white/40 hover:text-white transition-colors text-sm font-light">{airport}</a>
+                    <a href="#" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">{airport}</a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white text-xs uppercase tracking-widest font-bold mb-8">Contact Us</h4>
+              <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Contact Us</h4>
               <ul className="space-y-6">
                 <li className="flex items-start space-x-3">
                   <MapPin size={18} className="text-gold mt-1 shrink-0" />
-                  <span className="text-white/40 text-sm font-light leading-relaxed">
+                  <span className="text-text-secondary text-sm font-light leading-relaxed">
                     750 Lexington Ave, <br />New York, NY 10022
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Phone size={18} className="text-gold shrink-0" />
-                  <a href="tel:+13053219622" className="text-white/40 hover:text-white transition-colors text-sm font-light">(305) 321-9622</a>
+                  <a href="tel:+13053219622" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">(305) 321-9622</a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Mail size={18} className="text-gold shrink-0" />
-                  <a href="mailto:hello@empirechauffeurnyc.com" className="text-white/40 hover:text-white transition-colors text-sm font-light">hello@empirechauffeurnyc.com</a>
+                  <a href="mailto:hello@empirechauffeurnyc.com" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">hello@empirechauffeurnyc.com</a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Globe size={18} className="text-gold shrink-0" />
-                  <a href="https://www.empirechauffeurnyc.com/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors text-sm font-light">empirechauffeurnyc.com</a>
+                  <a href="https://www.empirechauffeurnyc.com/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">empirechauffeurnyc.com</a>
                 </li>
               </ul>
+              
+              {/* Payment Methods */}
+              <div className="mt-10 pt-10 border-t border-border-primary">
+                <span className="text-[9px] uppercase tracking-[0.2em] text-text-secondary font-bold mb-4 block">Accepted Payments</span>
+                <div className="flex flex-wrap gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" referrerPolicy="no-referrer" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" referrerPolicy="no-referrer" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" className="h-6" referrerPolicy="no-referrer" />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-white/20 text-[10px] uppercase tracking-widest">
-              © 2025 Empire Chauffeur NYC. All Rights Reserved. TLC License #B02567.
-            </p>
+          <div className="pt-12 border-t border-border-primary flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+              <p className="text-text-secondary/70 text-[10px] uppercase tracking-widest">
+                © 2025 Empire Chauffeur NYC. All Rights Reserved. TLC License #B02567.
+              </p>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-border-primary hover:bg-text-primary/5 transition-all text-text-secondary hover:text-text-primary"
+                aria-label="Toggle Theme"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <Sun size={14} className="text-gold" />
+                    <span className="text-[10px] uppercase tracking-widest font-medium">Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon size={14} className="text-gold" />
+                    <span className="text-[10px] uppercase tracking-widest font-medium">Dark Mode</span>
+                  </>
+                )}
+              </button>
+            </div>
             <div className="flex space-x-8">
-              <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] uppercase tracking-widest">Privacy Policy</a>
-              <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] uppercase tracking-widest">Terms of Service</a>
-              <a href="#" className="text-white/20 hover:text-white transition-colors text-[10px] uppercase tracking-widest">Sitemap</a>
+              <a href="#" className="text-text-secondary/70 hover:text-text-primary transition-colors text-[10px] uppercase tracking-widest">Privacy Policy</a>
+              <a href="#" className="text-text-secondary/70 hover:text-text-primary transition-colors text-[10px] uppercase tracking-widest">Terms of Service</a>
+              <a href="#" className="text-text-secondary/70 hover:text-text-primary transition-colors text-[10px] uppercase tracking-widest">Sitemap</a>
             </div>
           </div>
         </div>

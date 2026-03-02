@@ -58,11 +58,9 @@ export const VEHICLES: Vehicle[] = [
 ];
 
 export const TRUST_FEATURES = [
-  { icon: Clock, text: '24/7 Service' },
   { icon: Shield, text: 'Licensed & Insured' },
   { icon: Plane, text: 'Flight Tracking' },
-  { icon: Star, text: '5-Star Rated' },
-  { icon: CheckCircle2, text: 'Flat-Rate Pricing' }
+  { icon: Star, text: '5-Star Rated' }
 ];
 
 export const SERVICES = [

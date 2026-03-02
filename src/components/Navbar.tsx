@@ -127,30 +127,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center space-x-1 sm:space-x-3">
-          <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="text-emerald-500 p-2 hover:bg-text-primary/5 rounded-full transition-colors">
-            <MessageCircle size={20} />
-          </a>
-          <a href="tel:+13053219622" className="text-gold p-2 hover:bg-text-primary/5 rounded-full transition-colors">
-            <Phone size={20} />
-          </a>
+        <div className="lg:hidden flex items-center">
           <button 
-            className={`p-2 hover:bg-text-primary/5 rounded-full transition-colors ${
-              isScrolled ? scrolledTextColor : 'text-white'
-            }`}
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button 
-            className={`p-2 hover:bg-text-primary/5 rounded-full transition-colors ${
+            className={`p-2 rounded-full transition-colors ${
               isScrolled ? scrolledTextColor : 'text-white'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </nav>
@@ -173,13 +158,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.3em] text-text-secondary -mt-1">New York City</span>
               </div>
-              <button 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="text-text-primary p-2 hover:text-gold transition-colors"
-                aria-label="Close Menu"
-              >
-                <X size={28} />
-              </button>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 text-text-secondary hover:text-gold transition-colors rounded-full border border-border-primary"
+                  aria-label="Toggle Theme"
+                >
+                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                  className="text-text-primary p-2 hover:text-gold transition-colors"
+                  aria-label="Close Menu"
+                >
+                  <X size={28} />
+                </button>
+              </div>
             </div>
             
             {/* Mobile Menu Links - Reduced size */}

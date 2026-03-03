@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   return (
     <footer id="contact" className="bg-bg-primary pt-24 pb-12 border-t border-border-primary">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           <div className="space-y-6">
             <div className="flex flex-col">
               <span className="text-2xl font-serif font-bold tracking-widest text-text-primary">
@@ -56,13 +56,34 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Quick Links</h4>
+            <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Company</h4>
             <ul className="space-y-4">
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Our Fleet', href: '/fleet' },
-                { name: 'Services', href: '/services' },
                 { name: 'Locations', href: '/locations' },
+                { name: 'About Us', href: '/about' },
+                { name: 'Contact', href: '/contact' }
+              ].map((link) => (
+                <li key={link.name}>
+                  {link.href.startsWith('/#') ? (
+                    <a href={link.href} className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">{link.name}</a>
+                  ) : (
+                    <Link to={link.href} className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">{link.name}</Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Services</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'Airport Transfers', href: '/services/airport-transfers' },
+                { name: 'Executive Car Service', href: '/services/executive-car-service' },
+                { name: 'Hourly Chauffeur', href: '/services/hourly-chauffeur' },
+                { name: 'City-to-City', href: '/services/city-to-city' },
                 { name: 'Beyond Airport', href: '/beyond-airport' },
                 { name: 'Service Areas', href: '/service-areas' }
               ].map((link) => (

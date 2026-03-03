@@ -2,9 +2,12 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { MapPin, CheckCircle2, ArrowRight, Globe, Navigation, Building2 } from 'lucide-react';
 import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
 import { ServiceArea } from '../components/ServiceArea';
+import { useBooking } from '../context/BookingContext';
 
 export const ServiceAreas: React.FC = () => {
+  const { openBookingModal } = useBooking();
   const REGIONS = [
     {
       name: 'New York City',
@@ -30,7 +33,11 @@ export const ServiceAreas: React.FC = () => {
 
   return (
     <Layout>
-      <div className="pt-32 pb-24 bg-bg-primary">
+      <SEO 
+        title="Service Areas & Coverage | Empire Chauffeur NYC"
+        description="View our extensive service coverage across New York, New Jersey, Connecticut, and the entire Northeast corridor."
+      />
+      <div className="pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">
@@ -106,16 +113,19 @@ export const ServiceAreas: React.FC = () => {
               />
             </div>
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">Don't See Your Location?</h2>
-              <p className="max-w-2xl mx-auto text-white/60 text-lg font-light mb-12">
+              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Don't See Your Location?</h2>
+              <p className="max-w-2xl mx-auto text-text-secondary text-lg font-light mb-12">
                 We often accommodate requests outside our standard service areas for long-distance and special event bookings. Contact our dispatch team to discuss your requirements.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="primary-button w-full sm:w-auto">
+                <button 
+                  onClick={openBookingModal}
+                  className="primary-button w-full sm:w-auto"
+                >
                   <span>Inquire About Custom Route</span>
                   <ArrowRight size={14} className="ml-2" />
                 </button>
-                <a href="tel:+13053219622" className="secondary-button w-full sm:w-auto !text-white !border-white/20 hover:!bg-white/10">
+                <a href="tel:+13053219622" className="secondary-button w-full sm:w-auto">
                   Call (305) 321-9622
                 </a>
               </div>

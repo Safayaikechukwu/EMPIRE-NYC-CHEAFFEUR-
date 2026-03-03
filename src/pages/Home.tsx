@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { 
   Shield, 
@@ -31,16 +32,48 @@ import { Safety } from '../components/Safety';
 import { SERVICES, AIRPORTS, VEHICLES } from '../constants';
 import { useTheme } from '../components/ThemeContext';
 import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
+
+import { useBooking } from '../context/BookingContext';
 
 export const Home = () => {
   const { theme } = useTheme();
-  const [isBookingModalOpen, setIsBookingModalOpen] = React.useState(false);
+  const { openBookingModal } = useBooking();
+
+  const SERVICE_LINKS = [
+    '/services/airport-transfers',
+    '/services/executive-car-service',
+    '/services/hourly-chauffeur',
+    '/services/city-to-city'
+  ];
 
   return (
     <Layout>
+      <SEO 
+        title="Empire Chauffeur NYC | Premier Executive Transportation & Limo Service"
+        description="Experience the ultimate in NYC luxury transportation. Empire Chauffeur offers professional airport transfers, corporate travel, and bespoke chauffeur services across the Northeast."
+      />
       <Hero />
       <TrustBar />
       <Testimonials />
+
+      {/* Section: Corporate Partners */}
+      <section className="py-12 bg-bg-primary border-y border-border-primary overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="shrink-0">
+              <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">Trusted By</span>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+              {['FORTUNE 500', 'GLOBAL BANKING', 'TECH LEADERS', 'LUXURY REALTY', 'PRIVATE EQUITY'].map((partner) => (
+                <span key={partner} className="text-sm md:text-lg font-serif tracking-[0.2em] text-text-primary font-bold whitespace-nowrap">
+                  {partner}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Section: Our Services */}
       <section id="services" className="py-16 md:py-24 lg:py-32 bg-charcoal">
@@ -58,8 +91,9 @@ export const Home = () => {
               <motion.div 
                 key={index}
                 whileHover={{ y: -10 }}
-                className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm cursor-pointer border border-border-primary hover:border-gold/30 transition-all duration-500"
+                className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm border border-border-primary hover:border-gold/30 transition-all duration-500"
               >
+                <Link to={SERVICE_LINKS[index]} className="absolute inset-0 z-30" />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                 <img 
                   src={service.image} 
@@ -73,13 +107,10 @@ export const Home = () => {
                   <p className="text-white/60 text-xs sm:text-sm max-w-sm mb-6 font-light leading-relaxed">
                     {service.description}
                   </p>
-                  <button 
-                    onClick={() => setIsBookingModalOpen(true)}
-                    className="primary-button w-full"
-                  >
-                    <span>Submit for Review to Call</span>
+                  <div className="primary-button w-full">
+                    <span>Explore Service</span>
                     <ArrowRight size={14} className="ml-2" />
-                  </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -97,9 +128,9 @@ export const Home = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary">Serving All Major NYC Hubs</h2>
             </div>
-            <p className="text-text-secondary text-xs sm:text-sm max-w-sm font-light leading-relaxed">
-              Reliable, fixed-rate transfers with real-time flight monitoring and professional meet-and-greet service.
-            </p>
+            <Link to="/services/airport-transfers" className="text-gold hover:text-white transition-colors text-xs uppercase tracking-widest font-bold flex items-center">
+              View All Airports <ChevronRight size={14} className="ml-1" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -114,20 +145,17 @@ export const Home = () => {
                 <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
                   {airport.description}
                 </p>
-                <button 
-                  onClick={() => setIsBookingModalOpen(true)}
-                  className="primary-button w-full mt-auto"
-                >
-                  <span>Submit for Review to Call</span>
+                <Link to="/services/airport-transfers" className="primary-button w-full mt-auto text-center">
+                  <span>Explore {airport.name}</span>
                   <ChevronRight size={14} className="ml-2" />
-                </button>
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <UseCases onBookClick={() => setIsBookingModalOpen(true)} />
+      <UseCases onBookClick={openBookingModal} />
       <ServiceArea />
       <Safety />
       <WhyChooseUs />
@@ -175,9 +203,9 @@ export const Home = () => {
                 ))}
               </div>
 
-              <button className="mt-12 primary-button">
+              <Link to="/services" className="mt-12 primary-button inline-flex">
                 Our Chauffeur Standards
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -195,7 +223,7 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {VEHICLES.map((vehicle) => (
+            {VEHICLES.slice(0, 3).map((vehicle) => (
               <div key={vehicle.id} className="group flex flex-col gold-card p-5 sm:p-6 rounded-sm h-full">
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-sm mb-6">
                   <img 
@@ -222,14 +250,17 @@ export const Home = () => {
                 <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow">
                   {vehicle.description}
                 </p>
-                <button 
-                  onClick={() => setIsBookingModalOpen(true)}
-                  className="primary-button w-full"
-                >
-                  Submit for Review to Call
-                </button>
+                <Link to="/fleet" className="primary-button w-full text-center">
+                  View Fleet Details
+                </Link>
               </div>
             ))}
+          </div>
+          <div className="mt-16 text-center">
+            <Link to="/fleet" className="secondary-button inline-flex">
+              <span>View Full Fleet</span>
+              <ArrowRight size={14} className="ml-2" />
+            </Link>
           </div>
         </div>
       </section>
@@ -264,7 +295,10 @@ export const Home = () => {
                 ))}
               </div>
 
-              <button className="primary-button w-full sm:w-auto">
+              <button 
+                onClick={openBookingModal}
+                className="primary-button w-full sm:w-auto"
+              >
                 Open Corporate Account
               </button>
             </div>
@@ -314,7 +348,7 @@ export const Home = () => {
           <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-10 shadow-2xl">Reserve Your Private <br /><span className="italic">Chauffeur Today</span></h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
             <button 
-              onClick={() => setIsBookingModalOpen(true)}
+              onClick={openBookingModal}
               className="primary-button w-full md:w-auto min-w-[280px] !bg-white !text-black hover:!bg-gold hover:!text-white"
             >
               Submit for Review to Call

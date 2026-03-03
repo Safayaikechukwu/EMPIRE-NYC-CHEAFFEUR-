@@ -25,35 +25,119 @@ export interface Vehicle {
   luggage: number;
   image: string;
   description: string;
+  status?: 'Available' | 'Reserved' | 'Sold Out';
 }
 
 export const VEHICLES: Vehicle[] = [
   {
-    id: 'exec-sedan',
-    name: 'Executive Sedan',
-    category: 'Mercedes-Benz S-Class or similar',
+    id: 's-class',
+    name: 'Mercedes-Benz S-Class',
+    category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
-    description: 'The pinnacle of executive travel. Perfect for individual executives or couples.'
+    description: 'The Sovereign of the Road. A masterclass in quiet authority, offering an impenetrable sanctuary of luxury and cutting-edge intelligence for the elite traveler.',
+    status: 'Available'
   },
   {
-    id: 'luxury-suv',
-    name: 'Luxury SUV',
-    category: 'Cadillac Escalade ESV or similar',
+    id: 'bmw-7',
+    name: 'BMW 7 Series',
+    category: 'Executive Sedan',
+    passengers: 3,
+    luggage: 3,
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Dynamic Sentinel. Engineered for those who demand both executive prestige and the agility of a high-performance operative. Power, refined.',
+    status: 'Available'
+  },
+  {
+    id: 'camry-exec',
+    name: 'Toyota Camry XSE',
+    category: 'Business Sedan',
+    passengers: 3,
+    luggage: 2,
+    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Stealth Operative. Efficient, reliable, and perfectly discreet. The ideal choice for high-stakes city maneuvers where blending in is the ultimate advantage.',
+    status: 'Available'
+  },
+  {
+    id: 'accord-exec',
+    name: 'Honda Accord Touring',
+    category: 'Business Sedan',
+    passengers: 3,
+    luggage: 2,
+    image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Precision Specialist. A balanced fusion of smart technology and smooth performance. Reliable support for the modern professional on the move.',
+    status: 'Reserved'
+  },
+  {
+    id: 'tesla-y',
+    name: 'Tesla Model Y',
+    category: 'Electric Executive',
+    passengers: 3,
+    luggage: 3,
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Silent Guardian. Zero emissions, maximum intelligence. A futuristic choice for the environmentally conscious executive who values silent, swift maneuvers.',
+    status: 'Available'
+  },
+  {
+    id: 'escalade',
+    name: 'Cadillac Escalade ESV',
+    category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
     image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
-    description: 'Spacious and commanding. Ideal for families or small executive teams with significant luggage.'
+    description: 'The Titan. An unshakeable icon of American power. With massive presence and uncompromising space, it commands the road and protects its passengers with absolute scale.',
+    status: 'Available'
   },
   {
-    id: 'premium-sprinter',
-    name: 'Premium Sprinter',
-    category: 'Mercedes-Benz Sprinter',
+    id: 'range-rover',
+    name: 'Range Rover Autobiography',
+    category: 'Luxury SUV',
+    passengers: 4,
+    luggage: 4,
+    image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2070&auto=format&fit=crop',
+    description: 'The All-Terrain Guardian. From city streets to rugged retreats, it offers a fortress of luxury that conquers any environment with effortless grace.',
+    status: 'Available'
+  },
+  {
+    id: 'suburban',
+    name: 'Chevrolet Suburban',
+    category: 'Luxury SUV',
+    passengers: 6,
+    luggage: 6,
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Tactical Command. The ultimate escort for groups. Spacious, secure, and built for the most demanding logistics with a discreet, professional profile.',
+    status: 'Available'
+  },
+  {
+    id: 'sprinter-exec',
+    name: 'Mercedes-Benz Sprinter',
+    category: 'Executive Sprinter',
     passengers: 14,
     luggage: 14,
     image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
-    description: 'The ultimate group transport. Configured for maximum comfort and productivity.'
+    description: 'The Mobile Fortress. A high-capacity executive command center on wheels. Designed for team collaboration and secure group transit in total comfort.',
+    status: 'Available'
+  },
+  {
+    id: 'rolls-ghost',
+    name: 'Rolls-Royce Ghost',
+    category: 'Specialty',
+    passengers: 3,
+    luggage: 2,
+    image: 'https://images.unsplash.com/photo-1631214524020-5e18d976517b?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Ethereal Phantom. A rare manifestation of automotive perfection. Silent, transcendent, and reserved exclusively for life\'s most significant milestones.',
+    status: 'Sold Out'
+  },
+  {
+    id: 'rolls-cullinan',
+    name: 'Rolls-Royce Cullinan',
+    category: 'Specialty',
+    passengers: 4,
+    luggage: 3,
+    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop',
+    description: 'The Apex Predator. The highest form of luxury and dominance. It stands alone at the summit of automotive achievement, offering a ride beyond compare.',
+    status: 'Available'
   }
 ];
 

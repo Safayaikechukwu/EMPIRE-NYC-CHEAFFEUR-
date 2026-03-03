@@ -1,13 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, Plane, Briefcase, Users, Shield, Clock, Star, MapPin, Globe } from 'lucide-react';
 import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
 import { SERVICES, AIRPORTS } from '../constants';
+import { useBooking } from '../context/BookingContext';
 
 export const Services: React.FC = () => {
+  const { openBookingModal } = useBooking();
+  const SERVICE_LINKS = [
+    '/services/airport-transfers',
+    '/services/executive-car-service',
+    '/services/hourly-chauffeur',
+    '/services/city-to-city'
+  ];
+
   return (
     <Layout>
-      <div className="pt-32 pb-24 bg-bg-primary">
+      <SEO 
+        title="Executive Chauffeur Services | Empire Chauffeur NYC"
+        description="Comprehensive luxury transportation solutions including airport transfers, corporate accounts, private aviation logistics, and special event chauffeur services."
+      />
+      <div className="pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">
@@ -76,13 +91,55 @@ export const Services: React.FC = () => {
                       </div>
                     ))}
                   </div>
-                  <button className="primary-button w-full">
-                    <span>Inquire About {service.title}</span>
+                  <Link to={SERVICE_LINKS[index]} className="primary-button w-full text-center">
+                    <span>Explore {service.title}</span>
                     <ArrowRight size={14} className="ml-2" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Private Aviation Section */}
+          <div className="mb-32 p-12 md:p-20 bg-charcoal rounded-sm border border-border-primary relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-full h-full opacity-20">
+              <img 
+                src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop" 
+                alt="Private Jet"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/90 to-transparent z-10" />
+            <div className="relative z-20 max-w-2xl">
+              <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">Elite Logistics</span>
+              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Private Aviation <br /><span className="italic text-gold">Transfers</span></h2>
+              <p className="text-text-secondary text-lg font-light leading-relaxed mb-10">
+                Specialized ground transportation for private jet travelers. We provide direct tarmac access (where permitted) and seamless coordination with FBOs at Teterboro, Westchester County, and all major regional airports.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {[
+                  'FBO Coordination',
+                  'Tarmac Meet & Greet',
+                  'Discreet Arrivals',
+                  'Luggage Logistics',
+                  'Teterboro Specialists',
+                  'Westchester (HPN) Experts'
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center space-x-3">
+                    <CheckCircle2 size={16} className="text-gold" />
+                    <span className="text-xs uppercase tracking-widest font-bold text-text-primary/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button 
+                onClick={openBookingModal}
+                className="primary-button"
+              >
+                <span>Inquire About Private Aviation</span>
+                <ArrowRight size={14} className="ml-2" />
+              </button>
+            </div>
           </div>
 
           {/* Airport Transfers Detail */}
@@ -144,17 +201,17 @@ export const Services: React.FC = () => {
             ].map((service, i) => (
               <div key={i} className="p-10 bg-charcoal rounded-sm border border-border-primary hover:border-gold/30 transition-all group">
                 <div className="text-gold mb-8 group-hover:scale-110 transition-transform duration-500">{service.icon}</div>
-                <h3 className="text-2xl font-serif text-white mb-4">{service.title}</h3>
-                <p className="text-white/60 text-sm font-light leading-relaxed mb-8">{service.desc}</p>
+                <h3 className="text-2xl font-serif text-text-primary mb-4">{service.title}</h3>
+                <p className="text-text-secondary text-sm font-light leading-relaxed mb-8">{service.desc}</p>
                 <div className="space-y-3 mb-10">
                   {service.features.map((f, j) => (
-                    <div key={j} className="flex items-center space-x-2 text-[10px] text-white/70 uppercase tracking-widest font-bold">
+                    <div key={j} className="flex items-center space-x-2 text-[10px] text-text-primary/70 uppercase tracking-widest font-bold">
                       <CheckCircle2 size={12} className="text-gold" />
                       <span>{f}</span>
                     </div>
                   ))}
                 </div>
-                <button className="secondary-button w-full !text-white !border-white/20 hover:!bg-white/10">
+                <button className="secondary-button w-full">
                   Learn More
                 </button>
               </div>

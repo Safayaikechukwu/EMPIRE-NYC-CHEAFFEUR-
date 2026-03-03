@@ -10,7 +10,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   const { theme, toggleTheme } = useTheme();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => typeof window !== 'undefined' ? window.scrollY > 50 : false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -40,40 +40,50 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
 
   const navLinks = [
     { name: 'Home', href: '/' },
+    { 
+      name: 'Services', 
+      href: '/services',
+      subLinks: [
+        { name: 'Airport Transfers', href: '/services/airport-transfers' },
+        { name: 'Executive Car Service', href: '/services/executive-car-service' },
+        { name: 'Hourly Chauffeur', href: '/services/hourly-chauffeur' },
+        { name: 'City-to-City', href: '/services/city-to-city' },
+        { name: 'Beyond Airport', href: '/beyond-airport' },
+        { name: 'Service Areas', href: '/service-areas' }
+      ]
+    },
     { name: 'Fleet', href: '/fleet' },
-    { name: 'Services', href: '/services' },
-    { name: 'Service Areas', href: '/service-areas' },
     { name: 'Locations', href: '/locations' },
-    { name: 'Beyond Airport', href: '/beyond-airport' },
-    { name: 'Safety', href: '/#safety' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   const scrolledTextColor = 'text-text-primary';
   const scrolledSecondaryTextColor = 'text-text-secondary';
   const scrolledHoverColor = 'hover:text-gold';
 
+  const isHomePage = location.pathname === '/';
+
   return (
     <header 
-      className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out ${
-        isMobileMenuOpen ? 'z-[1001] bg-bg-primary' : 'z-[1000]'
-      } ${
-        !isMobileMenuOpen && isScrolled 
+      className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out z-[1000] ${
+        isScrolled 
           ? 'bg-bg-primary/95 backdrop-blur-xl py-2.5 border-b border-border-primary shadow-lg' 
-          : !isMobileMenuOpen 
-            ? 'bg-black/20 backdrop-blur-sm py-4 md:py-6 border-b border-white/5' 
-            : 'py-3'
+          : isHomePage
+            ? 'bg-black/20 backdrop-blur-sm py-4 md:py-6 border-b border-white/5'
+            : 'bg-bg-primary py-4 md:py-6 border-b border-border-primary'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex flex-col group shrink-0">
           <span className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-widest transition-colors ${
-            isScrolled ? scrolledTextColor : 'text-white'
+            isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
           }`}>
             EMPIRE <span className="text-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]">CHAUFFEUR</span>
           </span>
           <span className={`text-[6px] sm:text-[7px] md:text-[8px] uppercase tracking-[0.4em] -mt-1 font-medium transition-colors ${
-            isScrolled ? scrolledSecondaryTextColor : 'text-white/60'
+            isScrolled || !isHomePage ? scrolledSecondaryTextColor : 'text-white/60'
           }`}>
             New York City
           </span>
@@ -82,29 +92,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-6 xl:space-x-10 ml-8">
           {navLinks.map((link) => (
-            link.href.startsWith('/#') ? (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
-                  isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
-                }`}
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
-              </a>
-            ) : (
+            <div key={link.name} className="relative group">
               <Link 
-                key={link.name} 
                 to={link.href}
-                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative group py-2 font-semibold ${
-                  isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
+                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative py-2 font-semibold flex items-center ${
+                  isScrolled || !isHomePage ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
                 }`}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
               </Link>
-            )
+              
+              {link.subLinks && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform group-hover:translate-y-0 translate-y-2 z-[1002]">
+                  <div className="bg-bg-primary/95 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 min-w-[280px] rounded-sm relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold/0 via-gold to-gold/0" />
+                    <div className="flex flex-col space-y-5">
+                      {link.subLinks.map((sub) => (
+                        <Link 
+                          key={sub.name}
+                          to={sub.href}
+                          className="text-[10px] uppercase tracking-[0.2em] text-text-secondary hover:text-gold transition-all font-bold flex items-center group/item"
+                        >
+                          <span className="w-0 group-hover/item:w-4 h-px bg-gold mr-0 group-hover/item:mr-3 transition-all duration-300" />
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
@@ -115,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center space-x-2 transition-all duration-300 group ${
-              isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white hover:text-emerald-500'
+              isScrolled || !isHomePage ? 'text-text-secondary hover:text-emerald-500' : 'text-white hover:text-emerald-500'
             }`}
           >
             <MessageCircle size={14} className="text-emerald-500 group-hover:scale-110 transition-transform" />
@@ -124,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           <a 
             href="tel:+13053219622" 
             className={`flex items-center space-x-2 transition-all duration-300 group ${
-              isScrolled ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white hover:text-gold'
+              isScrolled || !isHomePage ? 'text-text-secondary hover:text-gold' : 'text-white hover:text-gold'
             }`}
           >
             <Phone size={12} className="text-gold group-hover:scale-110 transition-transform" />
@@ -139,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           <button
             onClick={toggleTheme}
             className={`p-2 transition-colors rounded-full hover:bg-text-primary/5 ${
-              isScrolled ? scrolledSecondaryTextColor + ' hover:text-gold' : 'text-white/60 hover:text-gold'
+              isScrolled || !isHomePage ? scrolledSecondaryTextColor + ' hover:text-gold' : 'text-white/60 hover:text-gold'
             }`}
             aria-label="Toggle Theme"
           >
@@ -151,7 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
         <div className="lg:hidden flex items-center">
           <button 
             className={`p-2 rounded-full transition-colors ${
-              isScrolled ? scrolledTextColor : 'text-white'
+              isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -198,36 +216,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             </div>
             
             {/* Mobile Menu Links - Reduced size */}
-            <div className="flex-grow flex flex-col justify-center items-center space-y-6 p-6 py-10 overflow-y-auto">
+            <div className="flex-grow flex flex-col justify-start items-center space-y-4 p-6 py-10 overflow-y-auto">
               {navLinks.map((link, i) => (
-                link.href.startsWith('/#') ? (
-                  <motion.a 
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.05 }}
-                    key={link.name} 
-                    href={link.href}
-                    className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </motion.a>
-                ) : (
+                <div key={link.name} className="w-full text-center">
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
-                    key={link.name}
                   >
                     <Link 
                       to={link.href}
-                      className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1"
+                      className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1 block"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.name}
                     </Link>
                   </motion.div>
-                )
+                  
+                  {link.subLinks && (
+                    <div className="flex flex-col space-y-2 mt-2 mb-4">
+                      {link.subLinks.map((sub, j) => (
+                        <motion.div
+                          key={sub.name}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 + i * 0.05 + j * 0.03 }}
+                        >
+                          <Link
+                            to={sub.href}
+                            className="text-sm uppercase tracking-widest text-text-secondary hover:text-gold transition-colors py-1 block"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {sub.name}
+                          </Link>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
 

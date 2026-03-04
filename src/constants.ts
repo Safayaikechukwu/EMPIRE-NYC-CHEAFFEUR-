@@ -107,7 +107,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 30,
     luggage: 15,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://unlimitedcharters.com/wp-content/uploads/2025/04/36_pax_out_black.png.webp',
     description: 'Spacious and vibrant. Perfect for weddings and large group events.',
     status: 'Reserved'
   },
@@ -117,7 +117,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Short Bus',
     passengers: 14,
     luggage: 10,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.uscoachways.com/static/executiveMiniBus.png',
     description: 'Comfortable group transit with executive amenities.',
     status: 'Available'
   },

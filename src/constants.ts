@@ -37,7 +37,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://www.netcarshow.com/Mercedes-Benz-S-Class-2027-1280-19e372c3048a8ebcb15d991a7172866421.jpg',
+    image: 'https://vegaspreowned-ez360.imgix.net/W1K6G7GB3TA369235/W1K6G7GB3TA369235-2026-Mercedes-Benz-S-Class.sp_turntable_pic.1000.4x3-4032x3024-6432KB-4K.20260205090216.jpg?con=12&sat=15&shad=25&vib=NaN&rect=0%2C3%2C3824%2C2868',
     description: 'The Sovereign of the Road. A masterclass in quiet authority and cutting-edge luxury.',
     status: 'Available'
   },

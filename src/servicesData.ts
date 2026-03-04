@@ -15,7 +15,7 @@ export const EXECUTIVE_CAR_DATA = {
   title: 'Executive Car Service',
   subtitle: 'Corporate Mobility Solutions',
   description: 'Discreet, reliable, and professional transportation for high-level executives. Our corporate car service is designed to meet the demanding schedules of business leaders.',
-  image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2070&auto=format&fit=crop',
+  image: 'https://capitalexotic.com/wp-content/uploads/2024/07/Executive-Chauffeur-Service-Capital-Exotic-1536x806.webp',
   features: ['Discreet Vehicles', 'Professional Etiquette', 'Monthly Billing', 'Priority Booking'],
   benefits: [
     { title: 'Confidentiality', desc: 'Our chauffeurs sign strict NDAs to ensure your business discussions remain private and secure.' },
@@ -41,7 +41,7 @@ export const CITY_TO_CITY_DATA = {
   title: 'City-to-City Transfers',
   subtitle: 'Regional Interstate Travel',
   description: 'The premium alternative to regional flights or trains. Travel between NYC and major Northeast hubs in total comfort and privacy.',
-  image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+  image: 'https://transferando.ch/wp-content/uploads/2022/11/transferando-airport-transfer-Chauffeur-services-city-to-city-rides-limousine-services-car-transfer_23-2048x1366.jpg',
   features: ['Door-to-Door', 'Interstate Coverage', 'Premium Amenities', 'Fixed Long-Distance Rates'],
   benefits: [
     { title: 'Door-to-Door Service', desc: 'Avoid the hassle of terminals. We pick you up and drop you off at your exact locations.' },

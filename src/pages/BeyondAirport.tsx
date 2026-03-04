@@ -13,14 +13,14 @@ export const BeyondAirport: React.FC = () => {
       distance: '95 - 120 Miles',
       time: '2 - 3 Hours',
       desc: 'Experience the ultimate summer getaway with our premium transfers to East Hampton, Southampton, and Montauk.',
-      image: 'https://images.unsplash.com/photo-1534430480872-3498386e7a56?q=80&w=2070&auto=format&fit=crop'
+      image: 'https://www.travelnewyorknow.com/wp-content/uploads/2022/02/Sunset-over-the-Hamptons.jpg.webp'
     },
     {
       title: 'NYC to Philadelphia',
       distance: '95 Miles',
       time: '1.5 - 2 Hours',
       desc: 'Seamless executive travel between New York City and Philadelphia for business meetings and corporate events.',
-      image: 'https://images.unsplash.com/photo-1569330112436-248b395c653e?q=80&w=2070&auto=format&fit=crop'
+      image: 'https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltb9c89b7dd79e9322/67cb2a484f90666d9c8fcb6d/iStock-1410710980-Header_Desktop.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart&width=1920&height=1080'
     },
     {
       title: 'NYC to Boston',

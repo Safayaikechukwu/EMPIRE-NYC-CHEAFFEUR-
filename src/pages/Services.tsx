@@ -22,7 +22,7 @@ export const Services: React.FC = () => {
         title="Executive Chauffeur Services | Empire Chauffeur NYC"
         description="Comprehensive luxury transportation solutions including airport transfers, corporate accounts, private aviation logistics, and special event chauffeur services."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">

@@ -44,7 +44,7 @@ export const BeyondAirport: React.FC = () => {
         title="Long Distance & Regional Travel | Empire Chauffeur NYC"
         description="Bespoke city-to-city transfers and long-distance chauffeur services. Travel across the Northeast corridor in absolute comfort and safety."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">

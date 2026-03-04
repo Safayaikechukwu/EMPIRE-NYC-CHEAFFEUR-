@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Clock, Shield, Star, Plane, Briefcase, CheckCircle2 } from 'lucide-react';
+import { Clock, Shield, Star, Plane, Briefcase, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const reasons = [
   {
@@ -36,57 +36,69 @@ const reasons = [
 ];
 
 export const WhyChooseUs = () => {
-  // Triple the reasons for a longer seamless loop
-  const duplicatedReasons = [...reasons, ...reasons, ...reasons];
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="py-24 bg-bg-primary relative overflow-hidden border-y border-border-primary">
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <div className="text-center">
-          <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
-            The Empire Standard
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Empire Chauffeur?</h2>
-          <div className="w-24 h-px bg-gold mx-auto" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="text-left">
+            <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+              The Empire Standard
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Empire Chauffeur?</h2>
+            <div className="w-24 h-px bg-gold" />
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+              aria-label="Next"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="relative">
-        {/* Gradient Masks */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg-primary via-bg-primary/80 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-primary via-bg-primary/80 to-transparent z-10" />
-
-        <div className="flex">
-          <motion.div
-            className="flex space-x-8 px-8"
-            animate={{
-              x: [0, "-33.33%"],
-            }}
-            transition={{
-              duration: 50,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{ width: "fit-content" }}
-          >
-            {duplicatedReasons.map((reason, index) => (
-              <div
-                key={index}
-                className="gold-card w-[350px] md:w-[450px] p-10 rounded-sm shrink-0 group"
-              >
-                <div className="w-14 h-14 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all border border-border-primary">
-                  <reason.icon size={28} />
-                </div>
-                <h3 className="text-2xl font-serif text-text-primary mb-4">{reason.title}</h3>
-                <p className="text-text-secondary text-sm font-light leading-relaxed">
-                  {reason.description}
-                </p>
+        <div 
+          ref={scrollRef}
+          className="flex space-x-6 px-6 md:px-12 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+        >
+          {reasons.map((reason, index) => (
+            <div
+              key={index}
+              className="gold-card w-[300px] sm:w-[350px] md:w-[400px] p-8 md:p-10 rounded-sm shrink-0 group snap-center"
+            >
+              <div className="w-14 h-14 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all border border-border-primary">
+                <reason.icon size={28} />
               </div>
-            ))}
-          </motion.div>
+              <h3 className="text-xl md:text-2xl font-serif text-text-primary mb-4">{reason.title}</h3>
+              <p className="text-text-secondary text-sm font-light leading-relaxed">
+                {reason.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-
     </section>
   );
 };

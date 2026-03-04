@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
         title="Contact Us | Empire Chauffeur NYC"
         description="Get in touch with our 24/7 dispatch team. Book your executive transfer, inquire about corporate accounts, or plan your special event transportation."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">

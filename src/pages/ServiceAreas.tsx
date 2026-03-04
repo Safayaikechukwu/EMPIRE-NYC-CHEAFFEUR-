@@ -37,7 +37,7 @@ export const ServiceAreas: React.FC = () => {
         title="Service Areas & Coverage | Empire Chauffeur NYC"
         description="View our extensive service coverage across New York, New Jersey, Connecticut, and the entire Northeast corridor."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">

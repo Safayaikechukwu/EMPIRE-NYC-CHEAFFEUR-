@@ -58,24 +58,6 @@ export const Home = () => {
       <TrustBar />
       <Testimonials />
 
-      {/* Section: Corporate Partners */}
-      <section className="py-12 bg-bg-primary border-y border-border-primary overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="shrink-0">
-              <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">Trusted By</span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
-              {['FORTUNE 500', 'GLOBAL BANKING', 'TECH LEADERS', 'LUXURY REALTY', 'PRIVATE EQUITY'].map((partner) => (
-                <span key={partner} className="text-sm md:text-lg font-serif tracking-[0.2em] text-text-primary font-bold whitespace-nowrap">
-                  {partner}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Section: Our Services */}
       <section id="services" className="py-16 md:py-24 lg:py-32 bg-charcoal">
         <div className="max-w-7xl mx-auto px-6">
@@ -83,7 +65,7 @@ export const Home = () => {
             <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
               Excellence in Motion
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Our Premium Services</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Our Premium Services</h2>
             <div className="w-24 h-px bg-gold mx-auto" />
           </div>
 
@@ -119,6 +101,81 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Section: Fleet */}
+      <section id="fleet" className="py-16 md:py-24 lg:py-32 bg-charcoal border-y border-border-primary overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
+            <div className="text-left">
+              <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+                The Empire Collection
+              </span>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-2">Immaculate Luxury Vehicles</h2>
+              <p className="text-text-secondary text-sm font-light max-w-xl">Experience the pinnacle of automotive excellence with our meticulously maintained fleet.</p>
+            </div>
+            <Link to="/fleet" className="primary-button group hidden md:flex">
+              <span>View Full Fleet</span>
+              <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Mobile Horizontal Scroll / Desktop Grid */}
+          <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
+            <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+              {VEHICLES.slice(0, 6).map((vehicle) => (
+                <div key={vehicle.id} className="group flex flex-col gold-card p-5 sm:p-6 rounded-sm min-w-[280px] sm:min-w-[350px] md:min-w-0 snap-center h-full">
+                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-sm mb-6">
+                    <img 
+                      src={vehicle.image} 
+                      alt={vehicle.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-4 left-4 bg-bg-primary/80 backdrop-blur-md px-3 py-1 border border-border-primary">
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-text-secondary">{vehicle.category}</span>
+                    </div>
+                    {vehicle.status && (
+                      <div className={`absolute top-4 right-4 px-3 py-1 border backdrop-blur-md ${
+                        vehicle.status === 'Available' 
+                          ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-500' 
+                          : vehicle.status === 'Reserved'
+                            ? 'bg-amber-500/10 border-amber-500/50 text-amber-500'
+                            : 'bg-rose-500/10 border-rose-500/50 text-rose-500'
+                      }`}>
+                        <span className="text-[8px] uppercase tracking-widest font-bold">{vehicle.status}</span>
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{vehicle.name}</h3>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="flex items-center space-x-1.5 text-text-secondary">
+                      <Users size={14} />
+                      <span className="text-[10px] sm:text-xs">{vehicle.passengers} Passengers</span>
+                    </div>
+                    <div className="flex items-center space-x-1.5 text-text-secondary">
+                      <Briefcase size={14} />
+                      <span className="text-[10px] sm:text-xs">{vehicle.luggage} Luggage</span>
+                    </div>
+                  </div>
+                  <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow line-clamp-2">
+                    {vehicle.description}
+                  </p>
+                  <Link to="/fleet" className="primary-button w-full text-center py-3">
+                    View Details
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 md:hidden">
+            <Link to="/fleet" className="primary-button w-full text-center">
+              <span>View Full Fleet</span>
+              <ArrowRight size={14} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Section: Airport Coverage */}
       <section className="py-16 md:py-24 lg:py-32 bg-charcoal">
         <div className="max-w-7xl mx-auto px-6">
@@ -127,31 +184,41 @@ export const Home = () => {
               <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                 Airport Coverage
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary">Serving All Major NYC Hubs</h2>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-text-primary">Serving All Major NYC Hubs</h2>
             </div>
-            <Link to="/services/airport-transfers" className="text-gold hover:text-white transition-colors text-xs uppercase tracking-widest font-bold flex items-center">
-              View All Airports <ChevronRight size={14} className="ml-1" />
+            <Link to="/services/airport-transfers" className="primary-button group hidden md:flex">
+              <span>View All Airports</span>
+              <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {AIRPORTS.map((airport, index) => (
-              <div key={index} className="gold-card p-8 sm:p-10 rounded-sm group relative overflow-hidden flex flex-col h-full">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gold/20 group-hover:bg-gold transition-colors duration-500" />
-                <div className="w-12 h-12 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all">
-                  <Plane size={24} />
+          <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
+            <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+              {AIRPORTS.map((airport, index) => (
+                <div key={index} className="gold-card p-8 sm:p-10 rounded-sm group relative overflow-hidden flex flex-col h-full min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gold/20 group-hover:bg-gold transition-colors duration-500" />
+                  <div className="w-12 h-12 rounded-full bg-text-primary/5 flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all">
+                    <Plane size={24} />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{airport.name}</h3>
+                  <p className="text-gold text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-6">{airport.fullName}</p>
+                  <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
+                    {airport.description}
+                  </p>
+                  <Link to="/services/airport-transfers" className="text-gold hover:text-white transition-colors text-[10px] uppercase tracking-widest font-bold flex items-center mt-auto">
+                    Explore Details <ChevronRight size={14} className="ml-1" />
+                  </Link>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{airport.name}</h3>
-                <p className="text-gold text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-6">{airport.fullName}</p>
-                <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-8 flex-grow">
-                  {airport.description}
-                </p>
-                <Link to="/services/airport-transfers" className="primary-button w-full mt-auto text-center">
-                  <span>Explore {airport.name}</span>
-                  <ChevronRight size={14} className="ml-2" />
-                </Link>
-              </div>
-            ))}
+              ))}
+            </div>
+            
+            {/* Mobile CTA */}
+            <div className="mt-8 md:hidden">
+              <Link to="/services/airport-transfers" className="primary-button w-full justify-center">
+                <span>View All Airports</span>
+                <ArrowRight size={14} className="ml-2" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -208,60 +275,6 @@ export const Home = () => {
                 Our Chauffeur Standards
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section: Fleet */}
-      <section id="fleet" className="py-16 md:py-24 lg:py-32 bg-charcoal">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-20">
-            <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
-              The Fleet
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Immaculate Luxury Vehicles</h2>
-            <div className="w-24 h-px bg-gold mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {VEHICLES.slice(0, 3).map((vehicle) => (
-              <div key={vehicle.id} className="group flex flex-col gold-card p-5 sm:p-6 rounded-sm h-full">
-                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-sm mb-6">
-                  <img 
-                    src={vehicle.image} 
-                    alt={vehicle.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-4 left-4 bg-bg-primary/80 backdrop-blur-md px-3 py-1 border border-border-primary">
-                    <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-text-secondary">{vehicle.category}</span>
-                  </div>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-serif text-text-primary mb-2">{vehicle.name}</h3>
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="flex items-center space-x-1.5 text-text-secondary">
-                    <Users size={14} />
-                    <span className="text-[10px] sm:text-xs">{vehicle.passengers} Passengers</span>
-                  </div>
-                  <div className="flex items-center space-x-1.5 text-text-secondary">
-                    <Briefcase size={14} />
-                    <span className="text-[10px] sm:text-xs">{vehicle.luggage} Luggage</span>
-                  </div>
-                </div>
-                <p className="text-text-secondary text-xs sm:text-sm font-light leading-relaxed mb-6 flex-grow">
-                  {vehicle.description}
-                </p>
-                <Link to="/fleet" className="primary-button w-full text-center">
-                  View Fleet Details
-                </Link>
-              </div>
-            ))}
-          </div>
-          <div className="mt-16 text-center">
-            <Link to="/fleet" className="secondary-button inline-flex">
-              <span>View Full Fleet</span>
-              <ArrowRight size={14} className="ml-2" />
-            </Link>
           </div>
         </div>
       </section>

@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             </div>
             
             {/* Mobile Menu Links - Reduced size */}
-            <div className="flex-grow flex flex-col justify-start items-center space-y-4 p-6 py-10 overflow-y-auto">
+            <div className="flex-grow flex flex-col justify-center items-center space-y-6 p-6 py-12 overflow-y-auto">
               {navLinks.map((link, i) => (
                 <div key={link.name} className="w-full text-center">
                   <motion.div
@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                   >
                     <Link 
                       to={link.href}
-                      className="text-xl sm:text-2xl font-serif text-text-primary hover:text-gold transition-colors py-1 block"
+                      className="text-2xl sm:text-3xl font-serif text-text-primary hover:text-gold transition-colors py-2 block"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.name}
@@ -234,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                   </motion.div>
                   
                   {link.subLinks && (
-                    <div className="flex flex-col space-y-2 mt-2 mb-4">
+                    <div className="flex flex-col space-y-3 mt-3 mb-6">
                       {link.subLinks.map((sub, j) => (
                         <motion.div
                           key={sub.name}
@@ -244,7 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                         >
                           <Link
                             to={sub.href}
-                            className="text-sm uppercase tracking-widest text-text-secondary hover:text-gold transition-colors py-1 block"
+                            className="text-xs uppercase tracking-[0.3em] text-text-secondary hover:text-gold transition-colors py-1.5 block font-bold"
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {sub.name}

@@ -49,14 +49,14 @@ export const Hero = () => {
       </div>
 
       {/* Content - Using flex-grow and padding to ensure it stays below navbar and centered in remaining space */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-32 md:pt-44 lg:pt-52 pb-20 w-full flex-grow flex flex-col items-center justify-center text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-32 md:pt-40 lg:pt-48 pb-20 w-full flex-grow flex flex-col items-center justify-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center space-y-4 mb-8"
+          className="flex flex-col items-center space-y-4 mb-6"
         >
-          <span className="text-gold text-[9px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] font-bold bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 text-shadow-sm whitespace-nowrap">
+          <span className="text-gold text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] font-bold bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 text-shadow-sm whitespace-nowrap">
             Private Executive Transportation
           </span>
         </motion.div>
@@ -65,7 +65,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-white mb-8 leading-[1.1] tracking-tight shadow-black/50 [text-shadow:0_4px_8px_rgba(0,0,0,0.8)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white mb-6 leading-[1.1] tracking-tight shadow-black/50 [text-shadow:0_4px_8px_rgba(0,0,0,0.8)]"
         >
           New York's Premier <br />
           <span className="italic text-white/90">Executive Chauffeur</span>
@@ -75,9 +75,9 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80 max-w-3xl mb-12 font-light tracking-wide leading-relaxed text-shadow-sm"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mb-10 font-light tracking-wide leading-relaxed text-shadow-sm"
         >
-          Reliable, Professional, and Always On-Time. Experience the Gold Standard of NYC Transportation for over 20 Years.
+          Experience the Gold Standard of NYC Transportation for over 20 Years.
         </motion.p>
 
         <motion.div

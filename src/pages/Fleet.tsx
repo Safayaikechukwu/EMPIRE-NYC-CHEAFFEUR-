@@ -6,7 +6,7 @@ import { SEO } from '../components/SEO';
 import { VEHICLES } from '../constants';
 import { useBooking } from '../context/BookingContext';
 
-const CATEGORIES = ['All', 'Executive Sedan', 'Business Sedan', 'Luxury SUV', 'Executive Sprinter', 'Specialty'];
+const CATEGORIES = ['All', 'Executive Sedan', 'Luxury SUV', 'Sprinter Van', 'Party Bus', 'Short Bus', 'Shuttle', 'Specialty'];
 
 export const Fleet: React.FC = () => {
   const [activeCategory, setActiveCategory] = React.useState('All');
@@ -22,7 +22,7 @@ export const Fleet: React.FC = () => {
         title="Our Luxury Fleet | Empire Chauffeur NYC"
         description="Explore our immaculate collection of executive sedans, luxury SUVs, and executive sprinters. Meticulously maintained late-model vehicles for the discerning traveler."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-16">
@@ -37,7 +37,7 @@ export const Fleet: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-serif text-text-primary mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-8"
             >
               Our Immaculate <span className="italic text-gold">Fleet</span>
             </motion.h1>

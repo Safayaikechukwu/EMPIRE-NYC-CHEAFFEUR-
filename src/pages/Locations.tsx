@@ -41,7 +41,7 @@ export const Locations: React.FC = () => {
         title="NYC Service Locations | Empire Chauffeur NYC"
         description="Serving all major NYC airports and hubs. JFK, LGA, EWR, and private FBOs. Experience the Empire Standard at every major regional hub."
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">

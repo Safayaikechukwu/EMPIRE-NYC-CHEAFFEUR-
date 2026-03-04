@@ -27,33 +27,35 @@ const standards = [
 
 export const Safety = () => {
   return (
-    <section id="safety" className="py-24 bg-bg-primary">
+    <section id="safety" className="py-24 bg-bg-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Trust & Security
           </span>
           <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Safety & Licensing</h2>
-          <div className="w-24 h-px bg-gold mx-auto" />
+          <div className="w-24 h-px bg-gold" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {standards.map((standard, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="gold-card p-8"
-            >
-              <standard.icon size={32} className="text-gold mb-6" />
-              <h3 className="text-xl font-serif text-text-primary mb-3">{standard.title}</h3>
-              <p className="text-text-secondary text-sm font-light leading-relaxed">
-                {standard.description}
-              </p>
-            </motion.div>
-          ))}
+        <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
+          <div className="flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+            {standards.map((standard, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="gold-card p-8 min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center"
+              >
+                <standard.icon size={32} className="text-gold mb-6" />
+                <h3 className="text-xl font-serif text-text-primary mb-3">{standard.title}</h3>
+                <p className="text-text-secondary text-sm font-light leading-relaxed">
+                  {standard.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

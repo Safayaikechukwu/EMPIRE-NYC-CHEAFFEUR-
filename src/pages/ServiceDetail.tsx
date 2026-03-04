@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, Shield, Clock, CheckCircle2, Star, Users, Briefcase } from 'lucide-react';
 import { Layout } from '../components/Layout';
@@ -30,7 +31,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
         title={`${title} | Empire Chauffeur NYC`}
         description={description}
       />
-      <div className="pb-24 bg-bg-primary">
+      <div className="pt-40 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Hero Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
@@ -135,12 +136,12 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <p className="text-bg-primary/70 font-light">Choose from our immaculate fleet of luxury vehicles.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={openBookingModal}
-                className="px-8 py-4 bg-bg-primary text-gold text-xs uppercase tracking-widest font-bold hover:bg-charcoal transition-all"
+              <Link 
+                to="/fleet"
+                className="px-8 py-4 bg-bg-primary text-gold text-xs uppercase tracking-widest font-bold hover:bg-charcoal transition-all text-center"
               >
                 View Our Fleet
-              </button>
+              </Link>
               <button 
                 onClick={openBookingModal}
                 className="px-8 py-4 border border-bg-primary text-bg-primary text-xs uppercase tracking-widest font-bold hover:bg-bg-primary hover:text-gold transition-all"

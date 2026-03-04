@@ -19,7 +19,7 @@ export const TrustBar = () => {
             x: [0, "-50%"],
           }}
           transition={{
-            duration: 60,
+            duration: 40,
             repeat: Infinity,
             ease: "linear",
           }}

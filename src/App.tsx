@@ -18,6 +18,11 @@ import { ServiceAreas } from './pages/ServiceAreas';
 import { ServiceDetail } from './pages/ServiceDetail';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
+import { AdminLayout } from './admin/AdminLayout';
+import { AdminDashboard } from './admin/AdminDashboard';
+import { AdminBookings } from './admin/AdminBookings';
+import { AdminFleet } from './admin/AdminFleet';
+import { AdminChauffeurs } from './admin/AdminChauffeurs';
 import { 
   AIRPORT_TRANSFERS_DATA, 
   EXECUTIVE_CAR_DATA, 
@@ -45,6 +50,13 @@ export default function App() {
         <Route path="/service-areas" element={<ServiceAreas />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+        <Route path="/admin/bookings" element={<AdminLayout><AdminBookings /></AdminLayout>} />
+        <Route path="/admin/fleet" element={<AdminLayout><AdminFleet /></AdminLayout>} />
+        <Route path="/admin/chauffeurs" element={<AdminLayout><AdminChauffeurs /></AdminLayout>} />
+        <Route path="/admin/settings" element={<AdminLayout><div className="p-8 text-white/40 uppercase tracking-widest font-bold">Settings Coming Soon</div></AdminLayout>} />
       </Routes>
       </Router>
       </BookingProvider>

@@ -33,6 +33,7 @@ import { SERVICES, AIRPORTS, VEHICLES } from '../constants';
 import { useTheme } from '../components/ThemeContext';
 import { Layout } from '../components/Layout';
 import { SEO } from '../components/SEO';
+import { FAQ } from '../components/FAQ';
 
 import { useBooking } from '../context/BookingContext';
 
@@ -332,6 +333,8 @@ export const Home = () => {
           </div>
         </div>
       </section>
+
+      <FAQ />
 
       {/* Section: Final CTA */}
       <section className="py-20 md:py-32 bg-black relative overflow-hidden">

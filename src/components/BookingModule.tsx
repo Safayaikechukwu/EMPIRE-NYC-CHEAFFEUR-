@@ -8,10 +8,34 @@ export const BookingModule = () => {
   const [pickupCity, setPickupCity] = useState('');
   const [dropoffCity, setDropoffCity] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      customer_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+      customer_email: formData.get('email'),
+      customer_phone: formData.get('phone'),
+      pickup_location: pickupCity,
+      dropoff_location: dropoffCity,
+      pickup_time: `${formData.get('date')} ${formData.get('time')}`,
+      vehicle_id: 's-class', // Default for now
+      total_price: Number(formData.get('hours')) * 150 // Mock price calculation
+    };
+
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+    }
   };
 
   if (isSubmitted) {
@@ -45,6 +69,7 @@ export const BookingModule = () => {
           <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">First Name</label>
           <input 
             required
+            name="firstName"
             type="text" 
             placeholder="First Name"
             className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
@@ -55,6 +80,7 @@ export const BookingModule = () => {
           <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Last Name</label>
           <input 
             required
+            name="lastName"
             type="text" 
             placeholder="Last Name"
             className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
@@ -65,7 +91,7 @@ export const BookingModule = () => {
           <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Event Type</label>
           <div className="relative">
             <Briefcase size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <select required className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none text-text-primary">
+            <select required name="eventType" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none text-text-primary">
               <option value="" className="bg-charcoal">Select Event</option>
               <option value="corporate" className="bg-charcoal">Corporate</option>
               <option value="wedding" className="bg-charcoal">Wedding</option>
@@ -81,6 +107,7 @@ export const BookingModule = () => {
             <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="email"
               type="email" 
               placeholder="Email"
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
@@ -95,6 +122,7 @@ export const BookingModule = () => {
             <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="date"
               type="date" 
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
             />
@@ -107,6 +135,7 @@ export const BookingModule = () => {
             <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="time"
               type="time" 
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
             />
@@ -119,6 +148,7 @@ export const BookingModule = () => {
             <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="hours"
               type="number" 
               min="1"
               placeholder="Hours"
@@ -133,6 +163,7 @@ export const BookingModule = () => {
             <Users size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="passengers"
               type="number" 
               min="1"
               placeholder="Guests"
@@ -148,6 +179,7 @@ export const BookingModule = () => {
             <Phone size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
             <input 
               required
+              name="phone"
               type="tel" 
               placeholder="Phone Number"
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"

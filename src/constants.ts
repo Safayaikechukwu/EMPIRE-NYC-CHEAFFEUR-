@@ -157,7 +157,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://hips.hearstapps.com/hmg-prod/images/p90486128-2023-bmw-760i-xdr-1667835075.jpg?crop=1xw:1xh;center,top',
     description: 'The Dynamic Sentinel. Engineered for prestige and performance.',
     status: 'Available'
   },
@@ -167,7 +167,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 4,
     luggage: 4,
-    image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://hips.hearstapps.com/hmg-prod/images/2022-range-rover-se-lwb-109-1665593832.jpg?crop=0.619xw:0.525xh;0.345xw,0.434xh&resize=1200:*',
     description: 'The All-Terrain Guardian. A fortress of luxury for any environment.',
     status: 'Available'
   },
@@ -177,7 +177,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://inkasarmored.com/wp-content/uploads/inkas-armored-chevrolet-suburban-hero-social.webp',
     description: 'The Tactical Command. Ultimate escort for groups.',
     status: 'Available'
   },
@@ -187,7 +187,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Specialty',
     passengers: 3,
     luggage: 2,
-    image: 'https://images.unsplash.com/photo-1631214524020-5e18d976517b?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://imageio.forbes.com/specials-images/imageserve/617a778d66fbfc6c231e3a1a/The-new-Rolls-Royce-Ghost-Black-Badge/0x0.jpg?width=960&dpr=1.5',
     description: 'The Ethereal Phantom. Transcendent luxury for milestones.',
     status: 'Sold Out'
   },
@@ -197,7 +197,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Specialty',
     passengers: 4,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.topgear.com/sites/default/files/2023/05/BlackBadgeCullinanBlueShadow%281%29.jpg?w=1784&h=1004',
     description: 'The Apex Predator. The highest form of luxury and dominance.',
     status: 'Available'
   },
@@ -207,7 +207,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 40,
     luggage: 20,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/45-passenger-party-bus-exterior-1.png',
     description: 'Massive capacity for the biggest celebrations.',
     status: 'Sold Out'
   },
@@ -217,7 +217,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 25,
     luggage: 25,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/24-passenger-party-bus-exterior-1.png',
     description: 'Efficient group transport for corporate events.',
     status: 'Available'
   },
@@ -227,7 +227,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 2,
     luggage: 50,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/10-passenger-limo-sprinter-exterior-1.png',
     description: 'Perfect for equipment transport and logistics.',
     status: 'Available'
   },
@@ -237,7 +237,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.topgear.com/sites/default/files/2025/03/CADILLAC_23328_1.jpg?w=1784&h=1004',
     description: 'Elegant white Escalade for weddings and special events.',
     status: 'Reserved'
   },
@@ -247,8 +247,8 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
-    description: 'The pinnacle of the S-Class range. Unrivaled luxury.',
+    image: 'https://www.topgear.com/sites/default/files/cars-car/carousel/2021/05/210302sclassjl_0063.jpg?w=1784&h=1004',
+    description: 'The pinnacle of the S-Class range. Unrivalled luxury.',
     status: 'Sold Out'
   },
   {
@@ -257,7 +257,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Short Bus',
     passengers: 14,
     luggage: 10,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/18-passenger-party-bus-exterior-1.png',
     description: 'Upgraded interior for premium group travel.',
     status: 'Available'
   },
@@ -267,7 +267,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 10,
     luggage: 10,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/01/vip-shuttle-fuhrpark_1-1.webp',
     description: 'Private shuttle for small VIP groups.',
     status: 'Sold Out'
   },
@@ -277,17 +277,17 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 9,
     luggage: 9,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.topgear.com/sites/default/files/2024/01/VIPClassMercedes-BenzSprinterbyCliveSutton022.jpg?w=1784&h=1004',
     description: 'Mobile office setup for executives on the go.',
     status: 'Available'
   },
   {
     id: 'escalade-5',
-    name: 'Cadillac Escalade (Armored)',
+    name: 'Cadillac Escalade (Armoured)',
     category: 'Luxury SUV',
     passengers: 4,
     luggage: 4,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.topgear.com/sites/default/files/2024/07/2025-cadillac-escalade-v-101.jpg?w=1784&h=1004',
     description: 'Maximum security for high-profile clients.',
     status: 'Sold Out'
   },
@@ -297,7 +297,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.topgear.com/sites/default/files/2022/03/1-Mercedes-S-Class-plug-in.jpg?w=1784&h=1004',
     description: 'Eco-friendly luxury without compromise.',
     status: 'Available'
   },
@@ -307,7 +307,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 15,
     luggage: 5,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://riverdalesenior.org/wp-content/uploads/2022/01/New-York-party-bus-1.jpg',
     description: 'Intimate party setting for smaller groups.',
     status: 'Sold Out'
   },
@@ -317,7 +317,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 30,
     luggage: 30,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/03/vip-shuttle-fuhrpark_2-1-1.webp',
     description: 'High-capacity airport transfer specialist.',
     status: 'Sold Out'
   },
@@ -327,7 +327,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 4,
     luggage: 20,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/03/vip-shuttle-fuhrpark_6-5.webp',
     description: 'Customized for long-distance luxury travel.',
     status: 'Sold Out'
   }

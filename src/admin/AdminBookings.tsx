@@ -16,7 +16,8 @@ import {
   Calendar,
   MapPin,
   User,
-  Car
+  Car,
+  Mail
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -69,6 +70,18 @@ export const AdminBookings: React.FC = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status })
     }).then(() => fetchBookings());
+  };
+
+  const sendEmail = (id: number, type: string) => {
+    fetch(`/api/bookings/${id}/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message);
+    });
   };
 
   const filteredBookings = bookings.filter(b => {
@@ -218,6 +231,15 @@ export const AdminBookings: React.FC = () => {
                   </td>
                   <td className="px-8 py-6 border-b border-white/5 text-right">
                     <div className="flex items-center justify-end space-x-2">
+                      {booking.status === 'Confirmed' && (
+                        <button 
+                          onClick={() => sendEmail(booking.id, 'confirmation')}
+                          className="p-2 bg-gold/10 text-gold rounded-lg hover:bg-gold hover:text-black transition-all"
+                          title="Send Confirmation Email"
+                        >
+                          <Mail size={16} />
+                        </button>
+                      )}
                       {booking.status === 'Pending' && (
                         <button 
                           onClick={() => updateStatus(booking.id, 'Confirmed')}
@@ -227,7 +249,7 @@ export const AdminBookings: React.FC = () => {
                           <CheckCircle2 size={16} />
                         </button>
                       )}
-                      <button className="p-2 bg-white/5 text-white/40 rounded-lg hover:text-[#D4AF37] hover:bg-white/10 transition-all">
+                      <button className="p-2 bg-white/5 text-white/40 rounded-lg hover:text-gold hover:bg-white/10 transition-all">
                         <Eye size={16} />
                       </button>
                       <button className="p-2 bg-white/5 text-white/40 rounded-lg hover:text-white hover:bg-white/10 transition-all">

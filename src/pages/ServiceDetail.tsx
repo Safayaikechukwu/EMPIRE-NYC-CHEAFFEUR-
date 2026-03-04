@@ -80,27 +80,6 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
             </motion.div>
           </div>
 
-          {/* Benefits Section */}
-          <div className="mb-32">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Our {title}</h2>
-              <div className="w-24 h-px bg-gold mx-auto" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {benefits.map((benefit, i) => (
-                <div key={i} className="p-10 bg-charcoal rounded-sm border border-border-primary hover:border-gold/30 transition-all group">
-                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all">
-                    <Star size={24} />
-                  </div>
-                  <h3 className="text-2xl font-serif text-text-primary mb-4">{benefit.title}</h3>
-                  <p className="text-text-secondary text-sm font-light leading-relaxed">
-                    {benefit.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Service Process */}
           <div className="mb-32">
             <div className="bg-charcoal p-12 md:p-20 rounded-sm border border-border-primary relative overflow-hidden">
@@ -126,6 +105,27 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Benefits Section */}
+          <div className="mb-32">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Our {title}</h2>
+              <div className="w-24 h-px bg-gold mx-auto" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {benefits.map((benefit, i) => (
+                <div key={i} className="p-10 bg-charcoal rounded-sm border border-border-primary hover:border-gold/30 transition-all group">
+                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-bg-primary transition-all">
+                    <Star size={24} />
+                  </div>
+                  <h3 className="text-2xl font-serif text-text-primary mb-4">{benefit.title}</h3>
+                  <p className="text-text-secondary text-sm font-light leading-relaxed">
+                    {benefit.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 

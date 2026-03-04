@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   LayoutDashboard, 
   CalendarDays, 
@@ -40,38 +41,37 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   ];
 
   const handleLogout = () => {
-    // Simple logout logic
     navigate('/');
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white flex font-sans">
+    <div className="min-h-screen bg-[#050505] text-white flex font-sans selection:bg-gold/30">
       {/* Sidebar */}
       <aside className={cn(
-        "fixed inset-y-0 left-0 z-50 w-64 bg-[#111111] border-r border-white/5 transition-transform duration-300 lg:relative lg:translate-x-0",
-        !isSidebarOpen && "-translate-x-full lg:w-20"
+        "fixed inset-y-0 left-0 z-50 w-72 bg-[#0A0A0A] border-r border-white/5 transition-all duration-500 ease-in-out lg:relative lg:translate-x-0 shadow-2xl shadow-black",
+        !isSidebarOpen && "-translate-x-full lg:w-24"
       )}>
         <div className="h-full flex flex-col">
           {/* Logo */}
-          <div className="p-6 flex items-center justify-between">
-            <Link to="/admin" className={cn("flex flex-col transition-opacity", !isSidebarOpen && "lg:opacity-0")}>
-              <span className="text-lg font-serif font-bold tracking-widest text-white">
-                EMPIRE <span className="text-[#D4AF37]">ADMIN</span>
+          <div className="p-8 flex items-center justify-between">
+            <Link to="/admin" className={cn("flex flex-col transition-all duration-500", !isSidebarOpen && "lg:opacity-0 lg:scale-0")}>
+              <span className="text-xl font-serif font-bold tracking-[0.2em] text-white">
+                EMPIRE <span className="text-gold">ADMIN</span>
               </span>
-              <span className="text-[8px] uppercase tracking-[0.4em] text-white/50 -mt-1 font-bold">
-                Control Center
+              <span className="text-[9px] uppercase tracking-[0.5em] text-white/30 mt-1 font-bold">
+                Executive Control
               </span>
             </Link>
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="lg:hidden text-white/50 hover:text-white"
+              className="lg:hidden text-white/30 hover:text-gold transition-colors"
             >
               <X size={20} />
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-grow px-4 space-y-2 mt-4">
+          <nav className="flex-grow px-6 space-y-2 mt-8">
             {menuItems.map((item) => {
               const isActive = location.pathname === item.href;
               return (
@@ -79,64 +79,77 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "flex items-center space-x-3 px-4 py-3 rounded-lg transition-all group",
+                    "flex items-center space-x-4 px-5 py-4 rounded-sm transition-all duration-300 group relative overflow-hidden",
                     isActive 
-                      ? "bg-[#D4AF37] text-black font-bold shadow-lg shadow-[#D4AF37]/20" 
-                      : "text-white/60 hover:bg-white/5 hover:text-white"
+                      ? "bg-gold text-bg-primary font-bold shadow-xl shadow-gold/10" 
+                      : "text-white/40 hover:bg-white/5 hover:text-white"
                   )}
                 >
-                  <item.icon size={20} className={cn(isActive ? "text-black" : "text-white/40 group-hover:text-[#D4AF37]")} />
-                  <span className={cn("text-sm tracking-wide", !isSidebarOpen && "lg:hidden")}>{item.name}</span>
+                  <item.icon size={20} className={cn(isActive ? "text-bg-primary" : "text-white/20 group-hover:text-gold transition-colors")} />
+                  <span className={cn("text-sm tracking-widest uppercase font-bold transition-all duration-500", !isSidebarOpen && "lg:opacity-0 lg:translate-x-10")}>
+                    {item.name}
+                  </span>
+                  {isActive && (
+                    <motion.div 
+                      layoutId="activeNav"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-white/20"
+                    />
+                  )}
                 </Link>
               );
             })}
           </nav>
 
           {/* User Profile / Logout */}
-          <div className="p-4 border-t border-white/5">
+          <div className="p-6 border-t border-white/5">
             <button 
               onClick={handleLogout}
-              className="w-full flex items-center space-x-3 px-4 py-3 text-white/40 hover:text-red-400 hover:bg-red-400/5 rounded-lg transition-all group"
+              className="w-full flex items-center space-x-4 px-5 py-4 text-white/30 hover:text-red-400 hover:bg-red-400/5 rounded-sm transition-all group"
             >
               <LogOut size={20} />
-              <span className={cn("text-sm font-medium", !isSidebarOpen && "lg:hidden")}>Sign Out</span>
+              <span className={cn("text-xs uppercase tracking-widest font-bold", !isSidebarOpen && "lg:hidden")}>Sign Out</span>
             </button>
           </div>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col min-w-0">
+      <main className="flex-grow flex flex-col min-w-0 bg-[#050505]">
         {/* Top Header */}
-        <header className="h-16 bg-[#111111]/80 backdrop-blur-md border-b border-white/5 px-8 flex items-center justify-between sticky top-0 z-40">
-          <div className="flex items-center space-x-4">
+        <header className="h-20 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-white/5 px-10 flex items-center justify-between sticky top-0 z-40">
+          <div className="flex items-center space-x-6">
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="hidden lg:block text-white/40 hover:text-white"
+              className="hidden lg:block text-white/20 hover:text-gold transition-colors"
             >
-              <Menu size={20} />
+              <Menu size={22} />
             </button>
-            <div className="relative hidden md:block">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20" size={16} />
+            <div className="relative hidden md:block group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-gold transition-colors" size={18} />
               <input 
                 type="text" 
-                placeholder="Search bookings, vehicles..." 
-                className="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-xs focus:outline-none focus:border-[#D4AF37]/50 w-64 transition-all"
+                placeholder="Search operations..." 
+                className="bg-white/5 border border-white/10 rounded-sm py-2.5 pl-12 pr-6 text-xs focus:outline-none focus:border-gold/50 w-80 transition-all placeholder:text-white/10"
               />
             </div>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <button className="relative text-white/40 hover:text-white transition-colors">
-              <Bell size={20} />
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#D4AF37] rounded-full border-2 border-[#111111]" />
-            </button>
-            <div className="flex items-center space-x-3 pl-6 border-l border-white/10">
+          <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-4">
+              <button className="relative text-white/20 hover:text-gold transition-colors">
+                <Bell size={22} />
+                <span className="absolute top-0 right-0 w-2 h-2 bg-gold rounded-full border-2 border-[#0A0A0A]" />
+              </button>
+            </div>
+            
+            <div className="h-8 w-px bg-white/5" />
+
+            <div className="flex items-center space-x-4">
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-bold text-white">Admin User</p>
-                <p className="text-[10px] text-white/40 uppercase tracking-widest">Super Admin</p>
+                <p className="text-xs font-bold text-white tracking-wider">ADMINISTRATOR</p>
+                <p className="text-[9px] text-gold uppercase tracking-[0.3em] font-bold">Empire Chauffeur NYC</p>
               </div>
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8860B] flex items-center justify-center text-black font-bold text-xs">
+              <div className="w-10 h-10 rounded-sm bg-gold flex items-center justify-center text-bg-primary font-bold text-sm shadow-lg shadow-gold/10">
                 AD
               </div>
             </div>
@@ -144,8 +157,10 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         </header>
 
         {/* Page Content */}
-        <div className="p-8 flex-grow overflow-y-auto">
-          {children}
+        <div className="p-10 flex-grow overflow-y-auto">
+          <div className="max-w-7xl mx-auto">
+            {children}
+          </div>
         </div>
       </main>
     </div>

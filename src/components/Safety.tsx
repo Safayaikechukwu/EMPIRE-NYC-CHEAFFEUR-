@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, UserCheck, CarFront, FileText } from 'lucide-react';
+import { ShieldCheck, UserCheck, CarFront, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const standards = [
   {
@@ -26,6 +26,16 @@ const standards = [
 ];
 
 export const Safety = () => {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="safety" className="py-24 bg-bg-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -37,8 +47,11 @@ export const Safety = () => {
           <div className="w-24 h-px bg-gold" />
         </div>
 
-        <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-          <div className="flex md:grid md:grid-cols-4 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+        <div className="relative">
+          <div 
+            ref={scrollRef}
+            className="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8"
+          >
             {standards.map((standard, index) => (
               <motion.div
                 key={index}
@@ -46,7 +59,7 @@ export const Safety = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="gold-card p-8 min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center"
+                className="gold-card p-8 min-w-[280px] sm:min-w-[320px] md:w-[calc(25%-1.5rem)] snap-center shrink-0"
               >
                 <standard.icon size={32} className="text-gold mb-6" />
                 <h3 className="text-xl font-serif text-text-primary mb-3">{standard.title}</h3>
@@ -55,6 +68,24 @@ export const Safety = () => {
                 </p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Navigation Buttons Below */}
+          <div className="flex items-center justify-center space-x-4 mt-8">
+            <button 
+              onClick={() => scroll('left')}
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+              aria-label="Next"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
       </div>

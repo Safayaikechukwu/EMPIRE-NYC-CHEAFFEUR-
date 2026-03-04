@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Instagram, 
+  Facebook,
   Linkedin, 
   Twitter, 
   Sun, 
@@ -34,14 +35,19 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex items-center space-x-4">
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
+                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Instagram">
                   <Instagram size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
-                  <Linkedin size={18} />
+                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Facebook">
+                  <Facebook size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all">
-                  <Twitter size={18} />
+                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="TikTok">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                </a>
+                <a href="mailto:hello@empirechauffeurnyc.com" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Email">
+                  <Mail size={18} />
                 </a>
               </div>
               <div className="w-px h-8 bg-border-primary mx-2" />
@@ -131,11 +137,19 @@ export const Footer: React.FC = () => {
             {/* Payment Methods */}
             <div className="mt-10 pt-10 border-t border-border-primary">
               <span className="text-[9px] uppercase tracking-[0.2em] text-text-secondary font-bold mb-4 block">Accepted Payments</span>
-              <div className="flex flex-wrap gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" referrerPolicy="no-referrer" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" referrerPolicy="no-referrer" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" className="h-6" referrerPolicy="no-referrer" />
+              <div className="flex flex-wrap gap-4 opacity-70 hover:opacity-100 transition-all duration-500">
+                <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
+                </div>
+                <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" referrerPolicy="no-referrer" />
+                </div>
+                <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" referrerPolicy="no-referrer" />
+                </div>
+                <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" className="h-6" referrerPolicy="no-referrer" />
+                </div>
               </div>
             </div>
           </div>

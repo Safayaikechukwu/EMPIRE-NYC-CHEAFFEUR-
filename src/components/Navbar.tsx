@@ -165,32 +165,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center">
-          <button 
-            className={`p-2 rounded-full transition-colors ${
-              isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
-            }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </nav>
+      {/* Mobile Menu Toggle */}
+      <div className="lg:hidden flex items-center">
+        <button 
+          className={`p-2 rounded-full transition-colors ${
+            isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
+          }`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+    </nav>
 
-      {/* Mobile Menu - Full Screen Overlay */}
+    {/* Mobile Menu - Full Screen Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed inset-0 bg-bg-primary z-[1001] lg:hidden flex flex-col"
-            >
+          <motion.div 
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            className="fixed inset-0 z-[9999] lg:hidden flex flex-col shadow-2xl"
+            style={{ 
+              backgroundColor: 'var(--bg-primary)',
+              opacity: 1,
+              visibility: 'visible'
+            }}
+          >
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border-primary">
+            <div className="flex items-center justify-between p-6 border-b border-border-primary shrink-0 bg-bg-primary">
               <div className="flex flex-col">
                 <span className="text-lg font-serif font-bold tracking-widest text-text-primary">
                   EMPIRE <span className="text-gold">CHAUFFEUR</span>
@@ -216,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             </div>
             
             {/* Mobile Menu Links - Reduced size */}
-            <div className="flex-grow flex flex-col justify-center items-center space-y-6 p-6 py-12 overflow-y-auto">
+            <div className="flex-grow flex flex-col justify-center items-center space-y-6 p-6 py-12 overflow-y-auto bg-bg-primary">
               {navLinks.map((link, i) => (
                 <div key={link.name} className="w-full text-center">
                   <motion.div
@@ -258,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             </div>
 
             {/* Mobile Menu Footer / CTAs */}
-            <div className="p-6 pb-10 border-t border-border-primary space-y-6 bg-charcoal/80 backdrop-blur-xl">
+            <div className="p-6 pb-10 border-t border-border-primary space-y-6 bg-charcoal/80 backdrop-blur-xl shrink-0">
               <div className="grid grid-cols-2 gap-3">
                 <a 
                   href="tel:+13053219622" 

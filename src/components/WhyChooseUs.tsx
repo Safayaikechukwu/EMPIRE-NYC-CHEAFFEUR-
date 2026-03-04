@@ -50,31 +50,12 @@ export const WhyChooseUs = () => {
   return (
     <section className="py-24 bg-bg-primary relative overflow-hidden border-y border-border-primary">
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="text-left">
-            <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
-              The Empire Standard
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Empire Chauffeur?</h2>
-            <div className="w-24 h-px bg-gold" />
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <button 
-              onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button 
-              onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
-              aria-label="Next"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+        <div className="text-left">
+          <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            The Empire Standard
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Why Choose Empire Chauffeur?</h2>
+          <div className="w-24 h-px bg-gold" />
         </div>
       </div>
 
@@ -97,6 +78,24 @@ export const WhyChooseUs = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Navigation Buttons Below */}
+        <div className="flex items-center justify-center space-x-4 mt-12">
+          <button 
+            onClick={() => scroll('left')}
+            className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button 
+            onClick={() => scroll('right')}
+            className="w-12 h-12 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all"
+            aria-label="Next"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>

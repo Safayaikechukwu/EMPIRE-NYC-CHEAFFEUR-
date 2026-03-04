@@ -39,101 +39,123 @@ export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-bg-primary overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
-          >
-            Common Inquiries
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-serif text-text-primary mb-6"
-          >
-            Frequently Asked <span className="italic text-gold">Questions</span>
-          </motion.h2>
-          <div className="w-24 h-px bg-gold mx-auto" />
-        </div>
+    <section className="py-24 bg-bg-primary overflow-hidden border-t border-border-primary">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Left Side: Call to Action */}
+          <div className="lg:col-span-5 space-y-8">
+            <div>
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
+              >
+                Common Inquiries
+              </motion.span>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl md:text-5xl font-serif text-text-primary mb-6"
+              >
+                Frequently Asked <br />
+                <span className="italic text-gold">Questions</span>
+              </motion.h2>
+              <div className="w-24 h-px bg-gold" />
+            </div>
 
-        <div className="space-y-4">
-          {FAQ_DATA.map((item, index) => (
             <motion.div 
-              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className={cn(
-                "border border-border-primary rounded-sm overflow-hidden transition-all duration-500",
-                openIndex === index ? "bg-charcoal border-gold/30" : "bg-transparent hover:border-gold/20"
-              )}
+              transition={{ delay: 0.3 }}
+              className="p-8 bg-charcoal border border-border-primary rounded-sm"
             >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left group"
-              >
-                <span className={cn(
-                  "text-lg font-serif transition-colors duration-300",
-                  openIndex === index ? "text-gold" : "text-text-primary group-hover:text-gold"
-                )}>
-                  {item.question}
-                </span>
-                <div className={cn(
-                  "w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-500",
-                  openIndex === index ? "border-gold text-gold rotate-180" : "border-border-primary text-text-secondary"
-                )}>
-                  <ChevronDown size={18} />
-                </div>
-              </button>
-              
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="px-8 pb-8">
-                      <div className="w-full h-px bg-border-primary mb-6 opacity-30" />
-                      <p className="text-text-secondary text-base font-light leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <HelpCircle size={32} className="text-gold mb-6" />
+              <h3 className="text-xl font-serif text-text-primary mb-4">Still have questions?</h3>
+              <p className="text-text-secondary text-sm font-light mb-8 leading-relaxed">
+                Our 24/7 dispatch team is ready to assist you with any specific requirements, complex itineraries, or corporate account inquiries.
+              </p>
+              <div className="space-y-4">
+                <a href="tel:+13053219622" className="flex items-center space-x-4 group p-4 border border-border-primary rounded-sm hover:border-gold/50 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all">
+                    <HelpCircle size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Call 24/7</p>
+                    <p className="text-base font-serif text-text-primary">(305) 321-9622</p>
+                  </div>
+                </a>
+                <a href="mailto:hello@empirechauffeurnyc.com" className="flex items-center space-x-4 group p-4 border border-border-primary rounded-sm hover:border-gold/50 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all">
+                    <HelpCircle size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Email Dispatch</p>
+                    <p className="text-base font-serif text-text-primary">hello@empirechauffeurnyc.com</p>
+                  </div>
+                </a>
+              </div>
             </motion.div>
-          ))}
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 p-8 bg-charcoal border border-border-primary rounded-sm text-center"
-        >
-          <HelpCircle size={32} className="text-gold mx-auto mb-4" />
-          <h3 className="text-xl font-serif text-text-primary mb-2">Still have questions?</h3>
-          <p className="text-text-secondary text-sm font-light mb-6">Our 24/7 dispatch team is ready to assist you with any specific requirements or concerns.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="tel:+13053219622" className="text-gold text-xs uppercase tracking-widest font-bold hover:underline">
-              Call (305) 321-9622
-            </a>
-            <span className="hidden sm:block text-white/10">|</span>
-            <a href="mailto:hello@empirechauffeurnyc.com" className="text-gold text-xs uppercase tracking-widest font-bold hover:underline">
-              Email Dispatch
-            </a>
           </div>
-        </motion.div>
+
+          {/* Right Side: FAQ Accordion */}
+          <div className="lg:col-span-7">
+            <div className="space-y-4">
+              {FAQ_DATA.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className={cn(
+                    "border border-border-primary rounded-sm overflow-hidden transition-all duration-500",
+                    openIndex === index ? "bg-charcoal border-gold/30" : "bg-transparent hover:border-gold/20"
+                  )}
+                >
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full px-8 py-6 flex items-center justify-between text-left group"
+                  >
+                    <span className={cn(
+                      "text-lg font-serif transition-colors duration-300",
+                      openIndex === index ? "text-gold" : "text-text-primary group-hover:text-gold"
+                    )}>
+                      {item.question}
+                    </span>
+                    <div className={cn(
+                      "w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-500",
+                      openIndex === index ? "border-gold text-gold rotate-180" : "border-border-primary text-text-secondary"
+                    )}>
+                      <ChevronDown size={18} />
+                    </div>
+                  </button>
+                  
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                      >
+                        <div className="px-8 pb-8">
+                          <div className="w-full h-px bg-border-primary mb-6 opacity-30" />
+                          <p className="text-text-secondary text-base font-light leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

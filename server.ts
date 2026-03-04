@@ -145,6 +145,29 @@ async function startServer() {
     res.json(chauffeurs);
   });
 
+  app.post("/api/bookings/:id/send-email", (req, res) => {
+    const { id } = req.params;
+    const { type } = req.body; // 'confirmation', 'reminder', 'completion'
+    
+    const booking = db.prepare(`
+      SELECT b.*, v.name as vehicle_name, c.name as chauffeur_name 
+      FROM bookings b
+      LEFT JOIN vehicles v ON b.vehicle_id = v.id
+      LEFT JOIN chauffeurs c ON b.chauffeur_id = c.id
+      WHERE b.id = ?
+    `).get(id) as any;
+
+    if (!booking) {
+      return res.status(404).json({ error: "Booking not found" });
+    }
+
+    console.log(`[MOCK EMAIL] Sending ${type} email to ${booking.customer_email}`);
+    console.log(`Subject: Empire Chauffeur NYC - ${type === 'confirmation' ? 'Booking Confirmed' : 'Update'}`);
+    console.log(`Body: Hello ${booking.customer_name}, your booking #BK-${booking.id} for ${booking.pickup_time} is ${booking.status}.`);
+
+    res.json({ success: true, message: `Email (${type}) sent successfully to ${booking.customer_email}` });
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

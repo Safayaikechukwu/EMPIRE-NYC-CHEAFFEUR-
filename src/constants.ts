@@ -127,7 +127,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 15,
     luggage: 15,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://s.alicdn.com/@sc04/kf/H3ebf2d7acd984187b2a0e235b0342875d.jpg?avif=close&webp=close',
     description: 'Reliable airport and event shuttle service.',
     status: 'Available'
   },
@@ -137,7 +137,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 12,
     luggage: 12,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.xtremetransportation.com/wp-content/uploads/2023/05/Xtreme2023-3167-exterior.png',
     description: 'The standard for executive group travel. High-roof comfort.',
     status: 'Available'
   },
@@ -147,7 +147,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 10,
     luggage: 10,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.carscoops.com/wp-content/uploads/2020/09/2021-mercedes-benz-v-class-china-5.jpg',
     description: 'Luxury interior with face-to-face seating and bar.',
     status: 'Available'
   },

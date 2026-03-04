@@ -67,7 +67,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://platform.cstatic-images.com/in/v2/stock_photos/20a40d04-f6ef-4eb3-b1f2-d7444a017828/3d085863-ed50-4505-b53d-202dbccf8237.png',
     description: 'The Titan of luxury SUVs. Massive presence and uncompromising space.',
     status: 'Available'
   },
@@ -87,7 +87,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://platform.cstatic-images.com/in/v2/stock_photos/b6c128c2-e528-4202-a878-c245d5e3b62d/28caa1fa-73d8-4919-9750-ca01a9c924ef.png',
     description: 'Bold and authoritative. The preferred choice for celebrity transport.',
     status: 'Sold Out'
   },

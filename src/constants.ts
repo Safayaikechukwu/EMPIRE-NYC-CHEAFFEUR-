@@ -97,7 +97,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 20,
     luggage: 10,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://lirp.cdn-website.com/2951deb4/dms3rep/multi/opt/Chicago-limo-party-bus-service-1920w.jpg',
     description: 'The ultimate celebration on wheels. Fiber optic lighting and premium sound.',
     status: 'Available'
   },

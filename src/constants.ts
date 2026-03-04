@@ -67,7 +67,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://platform.cstatic-images.com/in/v2/stock_photos/20a40d04-f6ef-4eb3-b1f2-d7444a017828/3d085863-ed50-4505-b53d-202dbccf8237.png',
+    image: 'https://platform.cstatic-images.com/in/v2/color_matched_stock_photos/da31a04b-8d85-44f6-8243-0c3716e7791a/6027c9ab-6f89-4421-884b-130cbbbf1e63.jpg',
     description: 'The Titan of luxury SUVs. Massive presence and uncompromising space.',
     status: 'Available'
   },

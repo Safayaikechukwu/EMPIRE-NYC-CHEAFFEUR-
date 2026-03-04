@@ -37,7 +37,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.netdirector.co.uk/gforces-auto/image/upload/w_1265,h_712,dpr_2.0,q_auto,c_fill,f_auto,fl_lossy/auto-client/f2ae870244ddce5d93d8ddc5e94b2c43/04_s_class_diamond_white_bright_f2.png',
+    image: 'https://images.unsplash.com/photo-1610099610040-ab19f3a5ec35?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     description: 'The Sovereign of the Road. A masterclass in quiet authority and cutting-edge luxury.',
     status: 'Available'
   },

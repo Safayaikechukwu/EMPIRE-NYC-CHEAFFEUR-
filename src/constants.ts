@@ -77,7 +77,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://platform.cstatic-images.com/in/v2/color_matched_stock_photos/da31a04b-8d85-44f6-8243-0c3716e7791a/970862c8-ffaf-4f2a-ab63-07850444c125.jpg',
     description: 'Maximum comfort for group travel. Equipped with premium entertainment systems.',
     status: 'Available'
   },

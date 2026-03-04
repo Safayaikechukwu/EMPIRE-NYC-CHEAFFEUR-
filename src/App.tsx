@@ -23,6 +23,7 @@ import { AdminDashboard } from './admin/AdminDashboard';
 import { AdminBookings } from './admin/AdminBookings';
 import { AdminFleet } from './admin/AdminFleet';
 import { AdminChauffeurs } from './admin/AdminChauffeurs';
+import { Navigate } from 'react-router-dom';
 import { 
   AIRPORT_TRANSFERS_DATA, 
   EXECUTIVE_CAR_DATA, 
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         
         {/* Admin Routes */}
+        <Route path="/ADMIN" element={<Navigate to="/admin" replace />} />
         <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
         <Route path="/admin/bookings" element={<AdminLayout><AdminBookings /></AdminLayout>} />
         <Route path="/admin/fleet" element={<AdminLayout><AdminFleet /></AdminLayout>} />

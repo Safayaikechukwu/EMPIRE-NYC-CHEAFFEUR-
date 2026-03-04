@@ -47,7 +47,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://vegaspreowned-ez360.imgix.net/W1K6G7GB0TA367605/W1K6G7GB0TA367605-2026-Mercedes-Benz-S-Class.sp_turntable_pic.1000.4x3-4032x3024-6660KB-4K.20260113080197.jpg?con=12&sat=15&shad=25&vib=NaN&rect=0%2C9%2C3716%2C2787',
     description: 'The ultimate executive transport. Pristine condition, professional chauffeur.',
     status: 'Available'
   },
@@ -57,7 +57,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://vehicle-images.carscommerce.inc/89b2-11000511/W1KAF4GBXSR288888/4b21dfe1c193e42a8cd7dd3596fde94a.jpg',
     description: 'Elegant and sophisticated. Perfect for high-profile corporate travel.',
     status: 'Reserved'
   },

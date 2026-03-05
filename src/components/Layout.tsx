@@ -27,11 +27,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       
       {!isHomePage && (
-        <div className="fixed top-20 md:top-24 left-0 w-full z-[900] px-6 pointer-events-none">
-          <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+        <div className="absolute top-20 md:top-24 left-0 w-full z-[900] px-6">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
             <button 
-              onClick={() => navigate(-1)}
-              className="flex items-center space-x-2 text-text-secondary hover:text-gold transition-colors group"
+              onClick={() => {
+                if (window.history.length > 1) {
+                  navigate(-1);
+                } else {
+                  navigate('/');
+                }
+              }}
+              className="flex items-center space-x-2 text-text-secondary hover:text-gold transition-colors group pointer-events-auto"
             >
               <div className="w-8 h-8 rounded-full border border-border-primary flex items-center justify-center group-hover:border-gold transition-colors">
                 <ChevronLeft size={16} />
@@ -41,7 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <button 
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center space-x-2 text-text-secondary hover:text-gold transition-colors group"
+              className="flex items-center space-x-2 text-text-secondary hover:text-gold transition-colors group pointer-events-auto"
             >
               <span className="text-[10px] uppercase tracking-widest font-bold">Search</span>
               <div className="w-8 h-8 rounded-full border border-border-primary flex items-center justify-center group-hover:border-gold transition-colors">

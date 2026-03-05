@@ -30,7 +30,7 @@ export const Locations: React.FC = () => {
       address: 'Near JFK International Airport, Queens, NY 11430',
       phone: '(305) 321-9622',
       email: 'queens@empirechauffeurnyc.com',
-      image: 'https://images.unsplash.com/photo-1517733948473-98bb1b186d21?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://www.usa.skanska.com/4af299/siteassets/who-we-are/sustainability/green-campaign/projects/lga/green-lga-1.jpg?w=940',
       type: 'Airport Operations'
     }
   ];

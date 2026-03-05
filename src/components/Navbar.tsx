@@ -61,24 +61,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
 
   return (
     <header 
-      className="fixed top-0 left-0 w-full z-[1000] pointer-events-none px-4 pt-4 md:pt-6"
+      className="fixed top-0 left-0 w-full z-[1000] pointer-events-none px-4 pt-2 md:pt-4"
     >
       <motion.nav 
         initial={false}
         animate={{
-          width: isScrolled ? 'auto' : '100%',
-          maxWidth: isScrolled ? '1000px' : '1280px',
+          width: isScrolled ? '95%' : '100%',
+          maxWidth: isScrolled ? '1200px' : '1440px',
           paddingLeft: isScrolled ? '24px' : '32px',
           paddingRight: isScrolled ? '12px' : '32px',
           backgroundColor: isScrolled ? 'var(--bg-primary)' : isHomePage ? 'rgba(0,0,0,0.2)' : 'var(--bg-primary)',
           backdropFilter: 'blur(16px)',
-          borderRadius: isScrolled ? '9999px' : '4px',
-          boxShadow: isScrolled ? '0 20px 50px rgba(0,0,0,0.3)' : '0 0 0 rgba(0,0,0,0)',
+          borderRadius: isScrolled ? '100px' : '0px',
+          boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.2)' : '0 0 0 rgba(0,0,0,0)',
           borderWidth: '1px',
           borderColor: isScrolled || !isHomePage ? 'var(--border-primary)' : 'rgba(255,255,255,0.1)'
         }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="mx-auto flex items-center justify-between pointer-events-auto h-14 md:h-16"
+        transition={{ type: 'spring', damping: 30, stiffness: 200 }}
+        className="mx-auto flex items-center justify-between pointer-events-auto h-12 md:h-14"
       >
         {/* Logo */}
         <Link to="/" className="flex flex-col group shrink-0">
@@ -131,8 +131,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
         </div>
 
         {/* Desktop Actions - Grouped */}
-        <div className="hidden lg:flex items-center space-x-2">
-          <div className={`flex items-center bg-black/5 rounded-full p-1 border border-border-primary/50 ${
+        <div className="hidden lg:flex items-center space-x-4">
+          <div className={`flex items-center rounded-full p-1 border border-border-primary/50 ${
             isScrolled || !isHomePage ? 'bg-text-primary/5' : 'bg-white/5'
           }`}>
             <a 
@@ -144,40 +144,49 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             >
               <MessageCircle size={14} className="text-emerald-500 group-hover:scale-110 transition-transform" />
             </a>
+            
             <a 
               href="tel:+13053219622" 
-              className="p-2 hover:bg-gold/10 rounded-full transition-colors group"
-              title="Call Us"
+              className="flex items-center space-x-2 px-4 py-2 hover:bg-gold/10 rounded-full transition-colors group"
             >
-              <Phone size={14} className="text-gold group-hover:scale-110 transition-transform" />
+              <Phone size={12} className="text-gold group-hover:scale-110 transition-transform" />
+              <span className={`text-[10px] font-bold tracking-widest whitespace-nowrap ${
+                isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
+              }`}>
+                (305) 321-9622
+              </span>
             </a>
-            <button
-              onClick={toggleTheme}
-              className="p-2 hover:bg-text-primary/10 rounded-full transition-colors"
-              aria-label="Toggle Theme"
+
+            <button 
+              onClick={onBookClick}
+              className="py-2 px-6 text-[9px] tracking-[0.2em] whitespace-nowrap bg-gold text-white hover:bg-white hover:text-black transition-all duration-300 rounded-full h-9 flex items-center justify-center font-bold"
             >
-              {theme === 'dark' ? <Sun size={14} className="text-gold" /> : <Moon size={14} className="text-gold" />}
+              Book Now
             </button>
           </div>
-          
-          <button 
-            onClick={onBookClick}
-            className="primary-button py-2.5 px-6 text-[9px] tracking-[0.2em] whitespace-nowrap !bg-gold !text-white hover:!bg-white hover:!text-black transition-all duration-300 rounded-full h-10 flex items-center justify-center"
+
+          <button
+            onClick={toggleTheme}
+            className={`p-2 transition-colors rounded-full hover:bg-text-primary/10 ${
+              isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
+            }`}
+            aria-label="Toggle Theme"
           >
-            Book Now
+            {theme === 'dark' ? <Sun size={16} className="text-gold" /> : <Moon size={16} className="text-gold" />}
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center space-x-2">
-          <button
-            onClick={toggleTheme}
+        <div className="lg:hidden flex items-center space-x-1">
+          <a 
+            href="tel:+13053219622"
             className={`p-2 transition-colors rounded-full ${
               isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
             }`}
+            aria-label="Call Us"
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+            <Phone size={20} />
+          </a>
           <button 
             className={`p-2 rounded-full transition-colors ${
               isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'

@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
         title="Contact Us | Empire Chauffeur NYC"
         description="Get in touch with our 24/7 dispatch team. Book your executive transfer, inquire about corporate accounts, or plan your special event transportation."
       />
-      <div className="pt-40 pb-24 bg-bg-primary">
+      <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">
@@ -119,7 +119,7 @@ export const Contact: React.FC = () => {
               <div className="gold-card p-8 md:p-12 rounded-sm">
                 <h3 className="text-2xl md:text-3xl font-serif text-text-primary mb-8">Send an Inquiry</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Full Name</label>
                       <input type="text" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" placeholder="John Doe" />
@@ -128,12 +128,12 @@ export const Contact: React.FC = () => {
                       <label className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Email Address</label>
                       <input type="email" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" placeholder="john@company.com" />
                     </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Phone Number</label>
                       <input type="tel" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary" placeholder="(555) 000-0000" />
                     </div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Subject</label>
                       <select className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary appearance-none">
@@ -147,7 +147,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Message</label>
-                    <textarea rows={6} className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary resize-none" placeholder="How can we assist you?"></textarea>
+                    <textarea rows={4} className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-4 px-6 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary resize-none" placeholder="How can we assist you?"></textarea>
                   </div>
                   <button className="primary-button w-full">
                     <span>Submit Inquiry</span>

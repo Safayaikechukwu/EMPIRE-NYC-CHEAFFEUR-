@@ -14,7 +14,7 @@ export const About: React.FC = () => {
         title="About Us | Empire Chauffeur NYC"
         description="Learn about the Empire Legacy. Over 20 years of excellence in NYC executive transportation, built on discretion, reliability, and bespoke service."
       />
-      <div className="pt-40 pb-24 bg-bg-primary">
+      <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Hero Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">

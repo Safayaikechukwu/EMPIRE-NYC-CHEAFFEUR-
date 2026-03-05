@@ -66,13 +66,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
       <motion.nav 
         initial={false}
         animate={{
-          width: isScrolled ? '95%' : '100%',
-          maxWidth: isScrolled ? '1200px' : '1440px',
+          width: isScrolled ? '98%' : '100%',
+          maxWidth: isScrolled ? '1400px' : '1440px',
           paddingLeft: isScrolled ? '24px' : '32px',
           paddingRight: isScrolled ? '12px' : '32px',
           backgroundColor: isScrolled ? 'var(--bg-primary)' : isHomePage ? 'rgba(0,0,0,0.2)' : 'var(--bg-primary)',
           backdropFilter: 'blur(16px)',
-          borderRadius: isScrolled ? '100px' : '0px',
+          borderRadius: isScrolled ? '12px' : '0px',
           boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.2)' : '0 0 0 rgba(0,0,0,0)',
           borderWidth: '1px',
           borderColor: isScrolled || !isHomePage ? 'var(--border-primary)' : 'rgba(255,255,255,0.1)'

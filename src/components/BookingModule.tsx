@@ -64,7 +64,7 @@ export const BookingModule = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row lg:items-end gap-4 sm:gap-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 flex-grow">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6 flex-grow">
           {/* Row 1 */}
           <div className="space-y-1.5 text-left">
             <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">First Name</label>
@@ -72,7 +72,7 @@ export const BookingModule = () => {
               required
               name="firstName"
               type="text" 
-              placeholder="First Name"
+              placeholder="First"
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
             />
           </div>
@@ -83,7 +83,7 @@ export const BookingModule = () => {
               required
               name="lastName"
               type="text" 
-              placeholder="Last Name"
+              placeholder="Last"
               className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
             />
           </div>
@@ -93,7 +93,7 @@ export const BookingModule = () => {
             <div className="relative">
               <Briefcase size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <select required name="eventType" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none text-text-primary">
-                <option value="" className="bg-charcoal">Select Event</option>
+                <option value="" className="bg-charcoal">Select</option>
                 <option value="corporate" className="bg-charcoal">Corporate</option>
                 <option value="wedding" className="bg-charcoal">Wedding</option>
                 <option value="airport" className="bg-charcoal">Airport</option>
@@ -103,7 +103,7 @@ export const BookingModule = () => {
           </div>
 
           <div className="space-y-1.5 text-left">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Email Address</label>
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Email</label>
             <div className="relative">
               <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
@@ -116,9 +116,8 @@ export const BookingModule = () => {
             </div>
           </div>
 
-          {/* Row 2 */}
           <div className="space-y-1.5 text-left">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Date Requested</label>
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Date</label>
             <div className="relative">
               <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
@@ -131,7 +130,7 @@ export const BookingModule = () => {
           </div>
 
           <div className="space-y-1.5 text-left">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Pick up Time</label>
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Time</label>
             <div className="relative">
               <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
@@ -143,8 +142,9 @@ export const BookingModule = () => {
             </div>
           </div>
 
+          {/* Row 2 */}
           <div className="space-y-1.5 text-left">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Number of Hours</label>
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Hours</label>
             <div className="relative">
               <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
@@ -159,7 +159,7 @@ export const BookingModule = () => {
           </div>
 
           <div className="space-y-1.5 text-left">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Passengers</label>
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Guests</label>
             <div className="relative">
               <Users size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
@@ -173,16 +173,15 @@ export const BookingModule = () => {
             </div>
           </div>
 
-          {/* Row 3 */}
-          <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-1">
-            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Phone Number</label>
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Phone</label>
             <div className="relative">
               <Phone size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
               <input 
                 required
                 name="phone"
                 type="tel" 
-                placeholder="Phone Number"
+                placeholder="Phone"
                 className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
               />
             </div>
@@ -191,8 +190,8 @@ export const BookingModule = () => {
           <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-1">
             <AddressInput
               required
-              label="Pick up City"
-              placeholder="e.g. Manhattan, NYC"
+              label="Pickup City"
+              placeholder="e.g. Manhattan"
               value={pickupCity}
               onChange={setPickupCity}
             />
@@ -201,17 +200,17 @@ export const BookingModule = () => {
           <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-2">
             <AddressInput
               required
-              label="Drop off City / Destination"
-              placeholder="e.g. JFK Airport, Queens"
+              label="Destination"
+              placeholder="e.g. JFK Airport"
               value={dropoffCity}
               onChange={setDropoffCity}
             />
           </div>
         </div>
 
-        <div className="lg:w-64 mt-2 lg:mt-0">
+        <div className="lg:w-48 mt-2 lg:mt-0">
           <button className="primary-button w-full group h-[46px] lg:h-[52px]">
-            <span>Submit for Review to Call</span>
+            <span>Submit</span>
             <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const TawkChat = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const tawkScript = () => {
       var Tawk_API: any = (window as any).Tawk_API || {}, Tawk_LoadStart = new Date();
@@ -18,6 +21,29 @@ export const TawkChat = () => {
 
     tawkScript();
   }, []);
+
+  useEffect(() => {
+    // Maximize chat on sub-page load
+    const Tawk_API = (window as any).Tawk_API;
+    if (Tawk_API && location.pathname !== '/') {
+      if (Tawk_API.onLoad) {
+        const originalOnLoad = Tawk_API.onLoad;
+        Tawk_API.onLoad = function() {
+          originalOnLoad();
+          Tawk_API.maximize();
+        };
+      } else {
+        Tawk_API.onLoad = function() {
+          Tawk_API.maximize();
+        };
+      }
+      
+      // If already loaded
+      if (Tawk_API.maximize) {
+        Tawk_API.maximize();
+      }
+    }
+  }, [location]);
 
   return null; // Tawk.to handles its own UI
 };

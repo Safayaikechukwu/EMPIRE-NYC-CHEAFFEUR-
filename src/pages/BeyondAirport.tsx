@@ -44,7 +44,7 @@ export const BeyondAirport: React.FC = () => {
         title="Long Distance & Regional Travel | Empire Chauffeur NYC"
         description="Bespoke city-to-city transfers and long-distance chauffeur services. Travel across the Northeast corridor in absolute comfort and safety."
       />
-      <div className="pt-40 pb-24 bg-bg-primary">
+      <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-20">
@@ -118,6 +118,20 @@ export const BeyondAirport: React.FC = () => {
           </div>
 
           {/* Long Distance Features */}
+          <div className="mb-20 rounded-sm overflow-hidden h-[300px] md:h-[500px] relative group">
+            <img 
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop" 
+              alt="Long Distance Travel"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-60" />
+            <div className="absolute bottom-10 left-10">
+              <h3 className="text-3xl md:text-5xl font-serif text-white mb-2">Long Distance <span className="italic text-gold">Excellence</span></h3>
+              <p className="text-white/70 font-light tracking-widest uppercase text-xs">Premium Interstate Transfers</p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               {

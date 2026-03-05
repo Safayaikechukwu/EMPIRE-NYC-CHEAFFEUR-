@@ -22,7 +22,7 @@ export const Fleet: React.FC = () => {
         title="Our Luxury Fleet | Empire Chauffeur NYC"
         description="Explore our immaculate collection of executive sedans, luxury SUVs, and executive sprinters. Meticulously maintained late-model vehicles for the discerning traveler."
       />
-      <div className="pt-40 pb-24 bg-bg-primary">
+      <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-16">

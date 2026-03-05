@@ -353,7 +353,7 @@ export const Home = () => {
       <section className="py-20 md:py-32 bg-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <img 
-            src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=2070&auto=format&fit=crop" 
+            src="https://www.thenewyorknightlife.com/cdn/shop/products/DISCO_1024x1024.jpg?v=1571438526" 
             alt="NYC Night"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

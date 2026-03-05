@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
               <span className="text-[9px] uppercase tracking-[0.2em] text-text-secondary font-bold mb-4 block">Accepted Payments</span>
               <div className="flex flex-wrap gap-4 opacity-70 hover:opacity-100 transition-all duration-500">
                 <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
+                  <img src="https://1000logos.net/wp-content/uploads/2021/11/VISA-logo-768x432.png" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
                 </div>
                 <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" referrerPolicy="no-referrer" />

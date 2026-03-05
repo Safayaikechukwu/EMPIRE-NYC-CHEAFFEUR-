@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, Plus, Minus, HelpCircle } from 'lucide-react';
+import { ChevronDown, Plus, Minus, HelpCircle, Phone, Mail } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -80,21 +80,21 @@ export const FAQ: React.FC = () => {
               </p>
               <div className="space-y-4">
                 <a href="tel:+13053219622" className="flex items-center space-x-4 group p-4 border border-border-primary rounded-sm hover:border-gold/50 transition-all">
-                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all">
-                    <HelpCircle size={18} />
+                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all shrink-0">
+                    <Phone size={18} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Call 24/7</p>
-                    <p className="text-base font-serif text-text-primary">(305) 321-9622</p>
+                    <p className="text-base font-serif text-text-primary truncate">(305) 321-9622</p>
                   </div>
                 </a>
                 <a href="mailto:hello@empirechauffeurnyc.com" className="flex items-center space-x-4 group p-4 border border-border-primary rounded-sm hover:border-gold/50 transition-all">
-                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all">
-                    <HelpCircle size={18} />
+                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-bg-primary transition-all shrink-0">
+                    <Mail size={18} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">Email Dispatch</p>
-                    <p className="text-base font-serif text-text-primary">hello@empirechauffeurnyc.com</p>
+                    <p className="text-sm sm:text-base font-serif text-text-primary break-all sm:break-normal">hello@empirechauffeurnyc.com</p>
                   </div>
                 </a>
               </div>

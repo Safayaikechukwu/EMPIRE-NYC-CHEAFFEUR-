@@ -41,13 +41,6 @@ export const Home = () => {
   const { theme } = useTheme();
   const { openBookingModal } = useBooking();
 
-  const SERVICE_LINKS = [
-    '/services/airport-transfers',
-    '/services/executive-car-service',
-    '/services/hourly-chauffeur',
-    '/services/city-to-city'
-  ];
-
   return (
     <Layout>
       <SEO 
@@ -69,30 +62,30 @@ export const Home = () => {
             <div className="w-24 h-px bg-gold mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {SERVICES.map((service, index) => (
               <motion.div 
                 key={index}
                 whileHover={{ y: -10 }}
-                className="group relative h-[350px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-sm border border-border-primary hover:border-gold/30 transition-all duration-500"
+                className="group relative h-[400px] overflow-hidden rounded-sm border border-border-primary hover:border-gold/30 transition-all duration-500"
               >
-                <Link to={SERVICE_LINKS[index]} className="absolute inset-0 z-30" />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
+                <Link to={service.link} className="absolute inset-0 z-30" />
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-500 z-10" />
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-end">
+                <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end">
                   <div className="w-12 h-px bg-gold mb-4 group-hover:w-24 transition-all duration-500" />
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-white mb-3">{service.title}</h3>
-                  <p className="text-white/60 text-xs sm:text-sm max-w-sm mb-6 font-light leading-relaxed">
+                  <h3 className="text-xl font-serif text-white mb-3 leading-tight">{service.title}</h3>
+                  <p className="text-white/60 text-xs font-light leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                     {service.description}
                   </p>
-                  <div className="primary-button w-full">
+                  <div className="primary-button w-full h-10 text-[9px]">
                     <span>Explore Service</span>
-                    <ArrowRight size={14} className="ml-2" />
+                    <ArrowRight size={12} className="ml-2" />
                   </div>
                 </div>
               </motion.div>
@@ -236,7 +229,7 @@ export const Home = () => {
               <div className="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-gold/30" />
               <div className="absolute -bottom-10 -right-10 w-40 h-40 border-b border-r border-gold/30" />
               <img 
-                src="https://ekpcc.com/wp-content/uploads/2023/09/Private-Chauffeur-Services-Near-Me-1024x1536.jpg" 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop" 
                 alt="Professional Chauffeur"
                 className="rounded-sm shadow-2xl relative z-10"
                 referrerPolicy="no-referrer"
@@ -353,7 +346,7 @@ export const Home = () => {
       <section className="py-20 md:py-32 bg-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <img 
-            src="https://www.thenewyorknightlife.com/cdn/shop/products/DISCO_1024x1024.jpg?v=1571438526" 
+            src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=2070&auto=format&fit=crop" 
             alt="NYC Night"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -365,9 +358,9 @@ export const Home = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
             <button 
               onClick={openBookingModal}
-              className="primary-button w-full md:w-auto min-w-[280px] !bg-white !text-black hover:!bg-gold hover:!text-white"
+              className="primary-button w-full md:w-auto min-w-[280px] !bg-gold !text-white hover:!bg-white hover:!text-black shadow-[0_0_30px_rgba(212,175,55,0.3)]"
             >
-              Submit for Review to Call
+              Book Now
             </button>
             <a href="tel:+13053219622" className="secondary-button w-full md:w-auto min-w-[280px] space-x-3 !border-white/20 !text-white hover:!bg-white/10">
               <Phone size={18} className="text-gold" />

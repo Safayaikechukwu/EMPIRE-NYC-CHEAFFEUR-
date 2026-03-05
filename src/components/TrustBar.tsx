@@ -27,7 +27,7 @@ export const TrustBar = () => {
         >
           {duplicatedFeatures.map((feature, index) => (
             <div key={index} className="flex items-center space-x-4 shrink-0 group">
-              <div className="p-2.5 rounded-full bg-text-primary/5 group-hover:bg-gold/10 transition-colors border border-border-primary">
+              <div className="p-2.5 rounded-full bg-text-primary/5 group-hover:bg-gold/10 transition-colors border border-border-primary flex items-center justify-center shrink-0">
                 <feature.icon size={16} className="text-gold" />
               </div>
               <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-text-secondary font-medium whitespace-nowrap">

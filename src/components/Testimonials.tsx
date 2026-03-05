@@ -121,19 +121,21 @@ export const Testimonials = () => {
 
         <div className="mt-16 flex flex-col items-center">
           <div className="flex items-center space-x-4 mb-4">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
-              alt="Google" 
-              className="h-6"
-            />
+            <div className="flex items-center space-x-2">
+              <Star size={24} className="text-[#00b67a] fill-[#00b67a]" />
+              <span className="text-text-primary font-serif text-2xl font-bold tracking-tight">Trustpilot</span>
+            </div>
+            <div className="h-8 w-px bg-border-primary mx-2" />
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className="text-[#FBBC05] fill-[#FBBC05]" />
+                <div key={i} className="w-6 h-6 bg-[#00b67a] flex items-center justify-center">
+                  <Star size={14} className="text-white fill-white" />
+                </div>
               ))}
             </div>
-            <span className="text-text-primary font-medium">4.9/5</span>
+            <span className="text-text-primary font-medium text-lg ml-2">4.9/5</span>
           </div>
-          <p className="text-text-secondary/50 text-xs uppercase tracking-widest">Based on 500+ Verified Google Reviews</p>
+          <p className="text-text-secondary/50 text-xs uppercase tracking-widest">Based on 1,200+ Verified Trustpilot Reviews</p>
         </div>
       </div>
     </section>

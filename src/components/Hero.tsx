@@ -6,7 +6,7 @@ const images = [
   "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?q=80&w=2070&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop",
-  "https://www.fabcars.in/assets/images/about/private-tranfer.webp",
+  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2070&auto=format&fit=crop"
 ];
 

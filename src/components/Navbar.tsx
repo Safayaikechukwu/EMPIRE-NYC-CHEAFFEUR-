@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone, MessageCircle, Sun, Moon } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, Sun, Moon, ArrowRight } from 'lucide-react';
 import { useTheme } from './ThemeContext';
 
 interface NavbarProps {
@@ -39,7 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
     { 
       name: 'Services', 
       href: '/services',
@@ -58,63 +57,68 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     { name: 'Contact', href: '/contact' }
   ];
 
-  const scrolledTextColor = 'text-text-primary';
-  const scrolledSecondaryTextColor = 'text-text-secondary';
-  const scrolledHoverColor = 'hover:text-gold';
-
   const isHomePage = location.pathname === '/';
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out z-[1000] ${
-        isScrolled 
-          ? 'bg-bg-primary/95 backdrop-blur-xl py-2.5 border-b border-border-primary shadow-lg' 
-          : isHomePage
-            ? 'bg-black/20 backdrop-blur-sm py-4 md:py-6 border-b border-white/5'
-            : 'bg-bg-primary py-4 md:py-6 border-b border-border-primary'
-      }`}
+      className="fixed top-0 left-0 w-full z-[1000] pointer-events-none px-4 pt-4 md:pt-6"
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <motion.nav 
+        initial={false}
+        animate={{
+          width: isScrolled ? 'auto' : '100%',
+          maxWidth: isScrolled ? '1000px' : '1280px',
+          paddingLeft: isScrolled ? '24px' : '32px',
+          paddingRight: isScrolled ? '12px' : '32px',
+          backgroundColor: isScrolled ? 'var(--bg-primary)' : isHomePage ? 'rgba(0,0,0,0.2)' : 'var(--bg-primary)',
+          backdropFilter: 'blur(16px)',
+          borderRadius: isScrolled ? '9999px' : '4px',
+          boxShadow: isScrolled ? '0 20px 50px rgba(0,0,0,0.3)' : '0 0 0 rgba(0,0,0,0)',
+          borderWidth: '1px',
+          borderColor: isScrolled || !isHomePage ? 'var(--border-primary)' : 'rgba(255,255,255,0.1)'
+        }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        className="mx-auto flex items-center justify-between pointer-events-auto h-14 md:h-16"
+      >
         {/* Logo */}
         <Link to="/" className="flex flex-col group shrink-0">
-          <span className={`text-sm sm:text-base md:text-lg font-serif font-bold tracking-widest transition-colors ${
-            isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
+          <span className={`text-xs sm:text-sm md:text-base font-serif font-bold tracking-widest transition-colors ${
+            isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
           }`}>
-            EMPIRE <span className="text-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]">CHAUFFEUR</span>
+            EMPIRE <span className="text-gold">CHAUFFEUR</span>
           </span>
-          <span className={`text-[6px] sm:text-[7px] md:text-[8px] uppercase tracking-[0.4em] -mt-1 font-medium transition-colors ${
-            isScrolled || !isHomePage ? scrolledSecondaryTextColor : 'text-white/60'
+          <span className={`text-[5px] sm:text-[6px] md:text-[7px] uppercase tracking-[0.4em] -mt-0.5 font-medium transition-colors ${
+            isScrolled || !isHomePage ? 'text-text-secondary' : 'text-white/60'
           }`}>
             New York City
           </span>
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-10 ml-8">
+        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 ml-8">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
               <Link 
                 to={link.href}
-                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative py-2 font-semibold flex items-center ${
-                  isScrolled || !isHomePage ? scrolledTextColor + ' ' + scrolledHoverColor : 'text-white/90 hover:text-gold'
+                className={`text-[9px] xl:text-[10px] uppercase tracking-[0.2em] transition-all duration-300 relative py-2 font-bold flex items-center ${
+                  isScrolled || !isHomePage ? 'text-text-primary hover:text-gold' : 'text-white/90 hover:text-gold'
                 }`}
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
               </Link>
               
               {link.subLinks && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform group-hover:translate-y-0 translate-y-2 z-[1002]">
-                  <div className="bg-bg-primary/95 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 min-w-[280px] rounded-sm relative overflow-hidden">
+                  <div className="bg-bg-primary/95 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 min-w-[240px] rounded-sm relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold/0 via-gold to-gold/0" />
-                    <div className="flex flex-col space-y-5">
+                    <div className="flex flex-col space-y-4">
                       {link.subLinks.map((sub) => (
                         <Link 
                           key={sub.name}
                           to={sub.href}
-                          className="text-[10px] uppercase tracking-[0.2em] text-text-secondary hover:text-gold transition-all font-bold flex items-center group/item"
+                          className="text-[9px] uppercase tracking-[0.2em] text-text-secondary hover:text-gold transition-all font-bold flex items-center group/item"
                         >
-                          <span className="w-0 group-hover/item:w-4 h-px bg-gold mr-0 group-hover/item:mr-3 transition-all duration-300" />
+                          <span className="w-0 group-hover/item:w-3 h-px bg-gold mr-0 group-hover/item:mr-2 transition-all duration-300" />
                           {sub.name}
                         </Link>
                       ))}
@@ -126,58 +130,65 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
           ))}
         </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-          <a 
-            href="https://wa.me/13053219622"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center space-x-2 transition-all duration-300 group ${
-              isScrolled || !isHomePage ? 'text-text-secondary hover:text-emerald-500' : 'text-white hover:text-emerald-500'
-            }`}
-          >
-            <MessageCircle size={14} className="text-emerald-500 group-hover:scale-110 transition-transform" />
-            <span className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider">WhatsApp</span>
-          </a>
-          <a 
-            href="tel:+13053219622" 
-            className={`flex items-center space-x-2 transition-all duration-300 group ${
-              isScrolled || !isHomePage ? 'text-text-secondary hover:text-gold' : 'text-white hover:text-gold'
-            }`}
-          >
-            <Phone size={12} className="text-gold group-hover:scale-110 transition-transform" />
-            <span className="text-[10px] xl:text-[11px] font-bold tracking-widest whitespace-nowrap">(305) 321-9622</span>
-          </a>
+        {/* Desktop Actions - Grouped */}
+        <div className="hidden lg:flex items-center space-x-2">
+          <div className={`flex items-center bg-black/5 rounded-full p-1 border border-border-primary/50 ${
+            isScrolled || !isHomePage ? 'bg-text-primary/5' : 'bg-white/5'
+          }`}>
+            <a 
+              href="https://wa.me/13053219622"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 hover:bg-emerald-500/10 rounded-full transition-colors group"
+              title="WhatsApp"
+            >
+              <MessageCircle size={14} className="text-emerald-500 group-hover:scale-110 transition-transform" />
+            </a>
+            <a 
+              href="tel:+13053219622" 
+              className="p-2 hover:bg-gold/10 rounded-full transition-colors group"
+              title="Call Us"
+            >
+              <Phone size={14} className="text-gold group-hover:scale-110 transition-transform" />
+            </a>
+            <button
+              onClick={toggleTheme}
+              className="p-2 hover:bg-text-primary/10 rounded-full transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun size={14} className="text-gold" /> : <Moon size={14} className="text-gold" />}
+            </button>
+          </div>
+          
           <button 
             onClick={onBookClick}
-            className="primary-button py-2 px-4 xl:px-6 text-[8px] xl:text-[9px] tracking-[0.2em] whitespace-nowrap shadow-md hover:shadow-gold/20"
+            className="primary-button py-2.5 px-6 text-[9px] tracking-[0.2em] whitespace-nowrap !bg-gold !text-white hover:!bg-white hover:!text-black transition-all duration-300 rounded-full h-10 flex items-center justify-center"
           >
             Book Now
           </button>
-          <button
-            onClick={toggleTheme}
-            className={`p-2 transition-colors rounded-full hover:bg-text-primary/5 ${
-              isScrolled || !isHomePage ? scrolledSecondaryTextColor + ' hover:text-gold' : 'text-white/60 hover:text-gold'
-            }`}
-            aria-label="Toggle Theme"
-          >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
         </div>
 
-      {/* Mobile Menu Toggle */}
-      <div className="lg:hidden flex items-center">
-        <button 
-          className={`p-2 rounded-full transition-colors ${
-            isScrolled || !isHomePage ? scrolledTextColor : 'text-white'
-          }`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-    </nav>
+        {/* Mobile Menu Toggle */}
+        <div className="lg:hidden flex items-center space-x-2">
+          <button
+            onClick={toggleTheme}
+            className={`p-2 transition-colors rounded-full ${
+              isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
+            }`}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button 
+            className={`p-2 rounded-full transition-colors ${
+              isScrolled || !isHomePage ? 'text-text-primary' : 'text-white'
+            }`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </motion.nav>
 
     {/* Mobile Menu - Full Screen Overlay */}
       <AnimatePresence>
@@ -290,9 +301,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                   setIsMobileMenuOpen(false);
                   onBookClick();
                 }}
-                className="primary-button w-full py-4 text-[11px] tracking-[0.2em]"
+                className="w-full py-5 bg-gold text-white text-[11px] uppercase tracking-[0.3em] font-bold rounded-full shadow-lg shadow-gold/20 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                Submit for Review to Call
+                <span>Book Your Chauffeur</span>
+                <ArrowRight size={16} />
               </button>
             </div>
           </motion.div>

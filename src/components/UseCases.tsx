@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Heart, Music, Briefcase, Camera } from 'lucide-react';
+import { Heart, Music, Briefcase, Camera, ArrowRight } from 'lucide-react';
 
 const cases = [
   {
@@ -37,12 +37,21 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
   return (
     <section className="py-24 bg-bg-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
-            Versatility
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Beyond the Airport</h2>
-          <div className="w-24 h-px bg-gold mx-auto" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
+          <div className="text-left">
+            <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+              Versatility
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-2">Beyond the Airport</h2>
+            <p className="text-text-secondary text-sm font-light">Bespoke transportation solutions for every milestone.</p>
+          </div>
+          <button 
+            onClick={onBookClick}
+            className="primary-button group !bg-gold !text-white hover:!bg-white hover:!text-black shadow-lg"
+          >
+            <span>Submit for Review to Call</span>
+            <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-12">
@@ -77,16 +86,6 @@ export const UseCases: React.FC<UseCasesProps> = ({ onBookClick }) => {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <button 
-            onClick={onBookClick}
-            className="text-[10px] uppercase tracking-[0.3em] text-text-secondary/50 hover:text-gold transition-colors flex items-center space-x-2 group"
-          >
-            <span>Submit for Review to Call</span>
-            <div className="w-8 h-px bg-border-primary group-hover:bg-gold transition-colors" />
-          </button>
         </div>
       </div>
     </section>

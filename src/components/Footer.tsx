@@ -10,7 +10,8 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  Globe 
+  Globe,
+  MessageCircle
 } from 'lucide-react';
 import { useTheme } from './ThemeContext';
 
@@ -35,16 +36,14 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex items-center space-x-4">
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Instagram">
+                <a href="https://www.instagram.com/empirechauffeurnyc" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Instagram">
                   <Instagram size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Facebook">
+                <a href="https://www.facebook.com/empirechauffeurnyc" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Facebook">
                   <Facebook size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="TikTok">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-                  </svg>
+                <a href="https://wa.me/13053219622" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-emerald-500 hover:border-emerald-500 transition-all" title="WhatsApp">
+                  <MessageCircle size={18} />
                 </a>
                 <a href="mailto:hello@empirechauffeurnyc.com" className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-text-secondary hover:text-gold hover:border-gold transition-all" title="Email">
                   <Mail size={18} />
@@ -114,22 +113,30 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-text-primary text-xs uppercase tracking-widest font-bold mb-8">Contact Us</h4>
             <ul className="space-y-6">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-gold mt-1 shrink-0" />
-                <span className="text-text-secondary text-sm font-light leading-relaxed">
+              <li className="flex items-start space-x-4 group">
+                <div className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-gold shrink-0 group-hover:border-gold transition-all">
+                  <MapPin size={18} />
+                </div>
+                <span className="text-text-secondary text-sm font-light leading-relaxed pt-1">
                   750 Lexington Ave, <br />New York, NY 10022
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-gold shrink-0" />
+              <li className="flex items-center space-x-4 group">
+                <div className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-gold shrink-0 group-hover:border-gold transition-all">
+                  <Phone size={18} />
+                </div>
                 <a href="tel:+13053219622" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">(305) 321-9622</a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-gold shrink-0" />
+              <li className="flex items-center space-x-4 group">
+                <div className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-gold shrink-0 group-hover:border-gold transition-all">
+                  <Mail size={18} />
+                </div>
                 <a href="mailto:hello@empirechauffeurnyc.com" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">hello@empirechauffeurnyc.com</a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Globe size={18} className="text-gold shrink-0" />
+              <li className="flex items-center space-x-4 group">
+                <div className="w-10 h-10 rounded-full border border-border-primary flex items-center justify-center text-gold shrink-0 group-hover:border-gold transition-all">
+                  <Globe size={18} />
+                </div>
                 <a href="https://www.empirechauffeurnyc.com/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-text-primary transition-colors text-sm font-light">empirechauffeurnyc.com</a>
               </li>
             </ul>
@@ -139,7 +146,7 @@ export const Footer: React.FC = () => {
               <span className="text-[9px] uppercase tracking-[0.2em] text-text-secondary font-bold mb-4 block">Accepted Payments</span>
               <div className="flex flex-wrap gap-4 opacity-70 hover:opacity-100 transition-all duration-500">
                 <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
-                  <img src="https://1000logos.net/wp-content/uploads/2021/11/VISA-logo-768x432.png" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" referrerPolicy="no-referrer" />
                 </div>
                 <div className="bg-white px-2 py-1 rounded-sm flex items-center justify-center h-8">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6" referrerPolicy="no-referrer" />

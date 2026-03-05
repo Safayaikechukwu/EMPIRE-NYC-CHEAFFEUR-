@@ -28,13 +28,38 @@ const standards = [
 export const Safety = () => {
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
+  // Duplicate standards for infinite effect
+  const infiniteStandards = [...standards, ...standards, ...standards];
+
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+      const scrollAmount = clientWidth;
+      
+      if (direction === 'left') {
+        if (scrollLeft <= 0) {
+          scrollRef.current.scrollLeft = scrollWidth / 3;
+          scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      } else {
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          scrollRef.current.scrollLeft = scrollWidth / 3 - clientWidth;
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
     }
   };
+
+  // Initialize scroll position to the middle set
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 3;
+    }
+  }, []);
 
   return (
     <section id="safety" className="py-24 bg-bg-primary overflow-hidden">
@@ -52,12 +77,12 @@ export const Safety = () => {
             ref={scrollRef}
             className="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8"
           >
-            {standards.map((standard, index) => (
+            {infiniteStandards.map((standard, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: (index % standards.length) * 0.1 }}
                 viewport={{ once: true }}
                 className="gold-card p-8 min-w-[280px] sm:min-w-[320px] md:w-[calc(25%-1.5rem)] snap-center shrink-0"
               >

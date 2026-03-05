@@ -30,8 +30,40 @@ export const Locations: React.FC = () => {
       address: 'Near JFK International Airport, Queens, NY 11430',
       phone: '(305) 321-9622',
       email: 'queens@empirechauffeurnyc.com',
-      image: 'https://www.usa.skanska.com/4af299/siteassets/who-we-are/sustainability/green-campaign/projects/lga/green-lga-1.jpg?w=940',
+      image: 'https://images.unsplash.com/photo-1517733948473-98bb1b186d21?q=80&w=2070&auto=format&fit=crop',
       type: 'Airport Operations'
+    },
+    {
+      name: 'EWR Executive Terminal',
+      address: '3 Brewster Rd, Newark, NJ 07114',
+      phone: '(305) 321-9622',
+      email: 'newark@empirechauffeurnyc.com',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?q=80&w=2070&auto=format&fit=crop',
+      type: 'NJ Operations'
+    },
+    {
+      name: 'LGA Business Center',
+      address: 'LaGuardia Airport, Queens, NY 11371',
+      phone: '(305) 321-9622',
+      email: 'lga@empirechauffeurnyc.com',
+      image: 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=2070&auto=format&fit=crop',
+      type: 'Domestic Hub'
+    },
+    {
+      name: 'Teterboro Private FBO',
+      address: '111 Industrial Ave, Teterboro, NJ 07608',
+      phone: '(305) 321-9622',
+      email: 'teb@empirechauffeurnyc.com',
+      image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop',
+      type: 'Private Aviation'
+    },
+    {
+      name: 'Westchester County Hub',
+      address: '240 Airport Rd, White Plains, NY 10604',
+      phone: '(305) 321-9622',
+      email: 'hpn@empirechauffeurnyc.com',
+      image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop',
+      type: 'North Hub'
     }
   ];
 
@@ -81,7 +113,7 @@ export const Locations: React.FC = () => {
                 Exclusive Seven Omega partner locations providing priority dispatch and premium lounge access for our clients.
               </p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {NYC_LOCATIONS.map((loc, index) => (
                 <motion.div 
                   key={index}
@@ -151,14 +183,28 @@ export const Locations: React.FC = () => {
           </div>
 
           {/* Beyond the Airport Section */}
-          <div className="p-12 bg-charcoal rounded-sm border border-border-primary relative overflow-hidden">
+          <div className="p-8 sm:p-12 bg-charcoal rounded-sm border border-border-primary relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
+            
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8 relative z-20">
+              <div className="max-w-2xl">
                 <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
                   Beyond the Airport
                 </span>
-                <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Long Distance & <br /><span className="italic text-gold">Interstate Travel</span></h2>
+                <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-2">Long Distance & <br /><span className="italic text-gold">Interstate Travel</span></h2>
+                <p className="text-text-secondary text-sm font-light">Experience the pinnacle of long-range chauffeured excellence.</p>
+              </div>
+              <button 
+                onClick={openBookingModal}
+                className="primary-button group !bg-gold !text-white hover:!bg-white hover:!text-black shadow-lg"
+              >
+                <span>Inquire About Long Distance</span>
+                <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
                 <div className="space-y-8">
                   {[
                     { 
@@ -186,13 +232,6 @@ export const Locations: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <button 
-                  onClick={openBookingModal}
-                  className="mt-12 primary-button"
-                >
-                  <span>Inquire About Long Distance</span>
-                  <ArrowRight size={14} className="ml-2" />
-                </button>
               </div>
               <div className="relative">
                 <img 

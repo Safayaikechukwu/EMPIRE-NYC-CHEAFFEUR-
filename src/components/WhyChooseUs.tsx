@@ -36,16 +36,42 @@ const reasons = [
 ];
 
 export const WhyChooseUs = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
   const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  // Duplicate reasons for infinite effect
+  const infiniteReasons = [...reasons, ...reasons, ...reasons];
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+      const scrollAmount = clientWidth;
+      
+      if (direction === 'left') {
+        if (scrollLeft <= 0) {
+          // Jump to the middle set if at the start
+          scrollRef.current.scrollLeft = scrollWidth / 3;
+          scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      } else {
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          // Jump to the middle set if at the end
+          scrollRef.current.scrollLeft = scrollWidth / 3 - clientWidth;
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
     }
   };
+
+  // Initialize scroll position to the middle set
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 3;
+    }
+  }, []);
 
   return (
     <section className="py-24 bg-bg-primary relative overflow-hidden border-y border-border-primary">
@@ -64,7 +90,7 @@ export const WhyChooseUs = () => {
           ref={scrollRef}
           className="flex space-x-6 px-6 md:px-12 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
         >
-          {reasons.map((reason, index) => (
+          {infiniteReasons.map((reason, index) => (
             <div
               key={index}
               className="gold-card w-[300px] sm:w-[350px] md:w-[400px] p-8 md:p-10 rounded-sm shrink-0 group snap-center"

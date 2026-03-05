@@ -63,152 +63,154 @@ export const BookingModule = () => {
         <p className="text-text-secondary/40 text-[9px] sm:text-[10px] uppercase tracking-widest mt-1">Submit for review to call</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        {/* Row 1 */}
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">First Name</label>
-          <input 
-            required
-            name="firstName"
-            type="text" 
-            placeholder="First Name"
-            className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
-          />
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Last Name</label>
-          <input 
-            required
-            name="lastName"
-            type="text" 
-            placeholder="Last Name"
-            className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
-          />
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Event Type</label>
-          <div className="relative">
-            <Briefcase size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <select required name="eventType" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none text-text-primary">
-              <option value="" className="bg-charcoal">Select Event</option>
-              <option value="corporate" className="bg-charcoal">Corporate</option>
-              <option value="wedding" className="bg-charcoal">Wedding</option>
-              <option value="airport" className="bg-charcoal">Airport</option>
-              <option value="other" className="bg-charcoal">Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Email Address</label>
-          <div className="relative">
-            <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+      <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row lg:items-end gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 flex-grow">
+          {/* Row 1 */}
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">First Name</label>
             <input 
               required
-              name="email"
-              type="email" 
-              placeholder="Email"
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+              name="firstName"
+              type="text" 
+              placeholder="First Name"
+              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+            />
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Last Name</label>
+            <input 
+              required
+              name="lastName"
+              type="text" 
+              placeholder="Last Name"
+              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+            />
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Event Type</label>
+            <div className="relative">
+              <Briefcase size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <select required name="eventType" className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none text-text-primary">
+                <option value="" className="bg-charcoal">Select Event</option>
+                <option value="corporate" className="bg-charcoal">Corporate</option>
+                <option value="wedding" className="bg-charcoal">Wedding</option>
+                <option value="airport" className="bg-charcoal">Airport</option>
+                <option value="other" className="bg-charcoal">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Email Address</label>
+            <div className="relative">
+              <Mail size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="email"
+                type="email" 
+                placeholder="Email"
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+              />
+            </div>
+          </div>
+
+          {/* Row 2 */}
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Date Requested</label>
+            <div className="relative">
+              <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="date"
+                type="date" 
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Pick up Time</label>
+            <div className="relative">
+              <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="time"
+                type="time" 
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Number of Hours</label>
+            <div className="relative">
+              <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="hours"
+                type="number" 
+                min="1"
+                placeholder="Hours"
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Passengers</label>
+            <div className="relative">
+              <Users size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="passengers"
+                type="number" 
+                min="1"
+                placeholder="Guests"
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+              />
+            </div>
+          </div>
+
+          {/* Row 3 */}
+          <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-1">
+            <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Phone Number</label>
+            <div className="relative">
+              <Phone size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
+              <input 
+                required
+                name="phone"
+                type="tel" 
+                placeholder="Phone Number"
+                className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-1">
+            <AddressInput
+              required
+              label="Pick up City"
+              placeholder="e.g. Manhattan, NYC"
+              value={pickupCity}
+              onChange={setPickupCity}
+            />
+          </div>
+
+          <div className="space-y-1.5 text-left sm:col-span-2 lg:col-span-2">
+            <AddressInput
+              required
+              label="Drop off City / Destination"
+              placeholder="e.g. JFK Airport, Queens"
+              value={dropoffCity}
+              onChange={setDropoffCity}
             />
           </div>
         </div>
 
-        {/* Row 2 */}
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Date Requested</label>
-          <div className="relative">
-            <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <input 
-              required
-              name="date"
-              type="date" 
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Pick up Time</label>
-          <div className="relative">
-            <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <input 
-              required
-              name="time"
-              type="time" 
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-2 text-sm focus:outline-none focus:border-gold/50 transition-colors text-text-primary"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Number of Hours</label>
-          <div className="relative">
-            <Clock size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <input 
-              required
-              name="hours"
-              type="number" 
-              min="1"
-              placeholder="Hours"
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-1.5 text-left">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Passengers</label>
-          <div className="relative">
-            <Users size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <input 
-              required
-              name="passengers"
-              type="number" 
-              min="1"
-              placeholder="Guests"
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
-            />
-          </div>
-        </div>
-
-        {/* Row 3 */}
-        <div className="space-y-1.5 text-left sm:col-span-2">
-          <label className="text-[9px] uppercase tracking-widest text-text-secondary/70 font-semibold block">Phone Number</label>
-          <div className="relative">
-            <Phone size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gold" />
-            <input 
-              required
-              name="phone"
-              type="tel" 
-              placeholder="Phone Number"
-              className="w-full bg-text-primary/5 border border-border-primary rounded-sm py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors placeholder:text-text-secondary/40 text-text-primary"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-1.5 text-left sm:col-span-2">
-          <AddressInput
-            required
-            label="Pick up City"
-            placeholder="e.g. Manhattan, NYC"
-            value={pickupCity}
-            onChange={setPickupCity}
-          />
-        </div>
-
-        <div className="space-y-1.5 text-left sm:col-span-2">
-          <AddressInput
-            required
-            label="Drop off City / Destination"
-            placeholder="e.g. JFK Airport, Queens"
-            value={dropoffCity}
-            onChange={setDropoffCity}
-          />
-        </div>
-
-        <div className="sm:col-span-2 lg:col-span-4 mt-2">
-          <button className="primary-button w-full group">
+        <div className="lg:w-64 mt-2 lg:mt-0">
+          <button className="primary-button w-full group h-[46px] lg:h-[52px]">
             <span>Submit for Review to Call</span>
             <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>

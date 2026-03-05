@@ -187,7 +187,7 @@ export const Fleet: React.FC = () => {
               </div>
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
                   alt="Vehicle Detail"
                   className="rounded-sm shadow-2xl"
                   referrerPolicy="no-referrer"

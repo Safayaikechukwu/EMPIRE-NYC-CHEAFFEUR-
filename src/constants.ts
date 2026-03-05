@@ -37,7 +37,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://vegaspreowned-ez360.imgix.net/W1K6G7GB3TA369235/W1K6G7GB3TA369235-2026-Mercedes-Benz-S-Class.sp_turntable_pic.1000.4x3-4032x3024-6432KB-4K.20260205090216.jpg?con=12&sat=15&shad=25&vib=NaN&rect=0%2C3%2C3824%2C2868',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
     description: 'The Sovereign of the Road. A masterclass in quiet authority and cutting-edge luxury.',
     status: 'Available'
   },
@@ -47,7 +47,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://vegaspreowned-ez360.imgix.net/W1K6G7GB0TA367605/W1K6G7GB0TA367605-2026-Mercedes-Benz-S-Class.sp_turntable_pic.1000.4x3-4032x3024-6660KB-4K.20260113080197.jpg?con=12&sat=15&shad=25&vib=NaN&rect=0%2C9%2C3716%2C2787',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
     description: 'The ultimate executive transport. Pristine condition, professional chauffeur.',
     status: 'Available'
   },
@@ -57,7 +57,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://vehicle-images.carscommerce.inc/89b2-11000511/W1KAF4GBXSR288888/4b21dfe1c193e42a8cd7dd3596fde94a.jpg',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
     description: 'Elegant and sophisticated. Perfect for high-profile corporate travel.',
     status: 'Reserved'
   },
@@ -67,7 +67,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://platform.cstatic-images.com/in/v2/color_matched_stock_photos/da31a04b-8d85-44f6-8243-0c3716e7791a/6027c9ab-6f89-4421-884b-130cbbbf1e63.jpg',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
     description: 'The Titan of luxury SUVs. Massive presence and uncompromising space.',
     status: 'Available'
   },
@@ -77,7 +77,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://platform.cstatic-images.com/in/v2/color_matched_stock_photos/da31a04b-8d85-44f6-8243-0c3716e7791a/970862c8-ffaf-4f2a-ab63-07850444c125.jpg',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
     description: 'Maximum comfort for group travel. Equipped with premium entertainment systems.',
     status: 'Available'
   },
@@ -87,7 +87,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://platform.cstatic-images.com/in/v2/stock_photos/b6c128c2-e528-4202-a878-c245d5e3b62d/28caa1fa-73d8-4919-9750-ca01a9c924ef.png',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
     description: 'Bold and authoritative. The preferred choice for celebrity transport.',
     status: 'Sold Out'
   },
@@ -97,7 +97,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 20,
     luggage: 10,
-    image: 'https://lirp.cdn-website.com/2951deb4/dms3rep/multi/opt/Chicago-limo-party-bus-service-1920w.jpg',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'The ultimate celebration on wheels. Fiber optic lighting and premium sound.',
     status: 'Available'
   },
@@ -107,7 +107,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 30,
     luggage: 15,
-    image: 'https://unlimitedcharters.com/wp-content/uploads/2025/04/36_pax_out_black.png.webp',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Spacious and vibrant. Perfect for weddings and large group events.',
     status: 'Reserved'
   },
@@ -117,7 +117,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Short Bus',
     passengers: 14,
     luggage: 10,
-    image: 'https://www.uscoachways.com/static/executiveMiniBus.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Comfortable group transit with executive amenities.',
     status: 'Available'
   },
@@ -127,7 +127,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 15,
     luggage: 15,
-    image: 'https://s.alicdn.com/@sc04/kf/H3ebf2d7acd984187b2a0e235b0342875d.jpg?avif=close&webp=close',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Reliable airport and event shuttle service.',
     status: 'Available'
   },
@@ -137,7 +137,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 12,
     luggage: 12,
-    image: 'https://www.xtremetransportation.com/wp-content/uploads/2023/05/Xtreme2023-3167-exterior.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'The standard for executive group travel. High-roof comfort.',
     status: 'Available'
   },
@@ -147,7 +147,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 10,
     luggage: 10,
-    image: 'https://www.carscoops.com/wp-content/uploads/2020/09/2021-mercedes-benz-v-class-china-5.jpg',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Luxury interior with face-to-face seating and bar.',
     status: 'Available'
   },
@@ -157,7 +157,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://hips.hearstapps.com/hmg-prod/images/p90486128-2023-bmw-760i-xdr-1667835075.jpg?crop=1xw:1xh;center,top',
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop',
     description: 'The Dynamic Sentinel. Engineered for prestige and performance.',
     status: 'Available'
   },
@@ -167,7 +167,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 4,
     luggage: 4,
-    image: 'https://hips.hearstapps.com/hmg-prod/images/2022-range-rover-se-lwb-109-1665593832.jpg?crop=0.619xw:0.525xh;0.345xw,0.434xh&resize=1200:*',
+    image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2070&auto=format&fit=crop',
     description: 'The All-Terrain Guardian. A fortress of luxury for any environment.',
     status: 'Available'
   },
@@ -177,7 +177,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://inkasarmored.com/wp-content/uploads/inkas-armored-chevrolet-suburban-hero-social.webp',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop',
     description: 'The Tactical Command. Ultimate escort for groups.',
     status: 'Available'
   },
@@ -187,7 +187,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Specialty',
     passengers: 3,
     luggage: 2,
-    image: 'https://imageio.forbes.com/specials-images/imageserve/617a778d66fbfc6c231e3a1a/The-new-Rolls-Royce-Ghost-Black-Badge/0x0.jpg?width=960&dpr=1.5',
+    image: 'https://images.unsplash.com/photo-1631214524020-5e18d976517b?q=80&w=2070&auto=format&fit=crop',
     description: 'The Ethereal Phantom. Transcendent luxury for milestones.',
     status: 'Sold Out'
   },
@@ -197,7 +197,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Specialty',
     passengers: 4,
     luggage: 3,
-    image: 'https://www.topgear.com/sites/default/files/2023/05/BlackBadgeCullinanBlueShadow%281%29.jpg?w=1784&h=1004',
+    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop',
     description: 'The Apex Predator. The highest form of luxury and dominance.',
     status: 'Available'
   },
@@ -207,7 +207,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 40,
     luggage: 20,
-    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/45-passenger-party-bus-exterior-1.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Massive capacity for the biggest celebrations.',
     status: 'Sold Out'
   },
@@ -217,7 +217,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 25,
     luggage: 25,
-    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/24-passenger-party-bus-exterior-1.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Efficient group transport for corporate events.',
     status: 'Available'
   },
@@ -227,7 +227,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 2,
     luggage: 50,
-    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/10-passenger-limo-sprinter-exterior-1.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Perfect for equipment transport and logistics.',
     status: 'Available'
   },
@@ -237,7 +237,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Luxury SUV',
     passengers: 6,
     luggage: 6,
-    image: 'https://www.topgear.com/sites/default/files/2025/03/CADILLAC_23328_1.jpg?w=1784&h=1004',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
     description: 'Elegant white Escalade for weddings and special events.',
     status: 'Reserved'
   },
@@ -247,8 +247,8 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://www.topgear.com/sites/default/files/cars-car/carousel/2021/05/210302sclassjl_0063.jpg?w=1784&h=1004',
-    description: 'The pinnacle of the S-Class range. Unrivalled luxury.',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
+    description: 'The pinnacle of the S-Class range. Unrivaled luxury.',
     status: 'Sold Out'
   },
   {
@@ -257,7 +257,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Short Bus',
     passengers: 14,
     luggage: 10,
-    image: 'https://scnmubytflrxvokmrfnc.supabase.co/storage/v1/object/public/Final%20Fleet%20Pics/18-passenger-party-bus-exterior-1.png',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Upgraded interior for premium group travel.',
     status: 'Available'
   },
@@ -267,7 +267,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 10,
     luggage: 10,
-    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/01/vip-shuttle-fuhrpark_1-1.webp',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Private shuttle for small VIP groups.',
     status: 'Sold Out'
   },
@@ -277,17 +277,17 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 9,
     luggage: 9,
-    image: 'https://www.topgear.com/sites/default/files/2024/01/VIPClassMercedes-BenzSprinterbyCliveSutton022.jpg?w=1784&h=1004',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Mobile office setup for executives on the go.',
     status: 'Available'
   },
   {
     id: 'escalade-5',
-    name: 'Cadillac Escalade (Armoured)',
+    name: 'Cadillac Escalade (Armored)',
     category: 'Luxury SUV',
     passengers: 4,
     luggage: 4,
-    image: 'https://www.topgear.com/sites/default/files/2024/07/2025-cadillac-escalade-v-101.jpg?w=1784&h=1004',
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop',
     description: 'Maximum security for high-profile clients.',
     status: 'Sold Out'
   },
@@ -297,7 +297,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Executive Sedan',
     passengers: 3,
     luggage: 3,
-    image: 'https://www.topgear.com/sites/default/files/2022/03/1-Mercedes-S-Class-plug-in.jpg?w=1784&h=1004',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop',
     description: 'Eco-friendly luxury without compromise.',
     status: 'Available'
   },
@@ -307,7 +307,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Party Bus',
     passengers: 15,
     luggage: 5,
-    image: 'https://riverdalesenior.org/wp-content/uploads/2022/01/New-York-party-bus-1.jpg',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Intimate party setting for smaller groups.',
     status: 'Sold Out'
   },
@@ -317,7 +317,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Shuttle',
     passengers: 30,
     luggage: 30,
-    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/03/vip-shuttle-fuhrpark_2-1-1.webp',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'High-capacity airport transfer specialist.',
     status: 'Sold Out'
   },
@@ -327,7 +327,7 @@ export const VEHICLES: Vehicle[] = [
     category: 'Sprinter Van',
     passengers: 4,
     luggage: 20,
-    image: 'https://www.vip-shuttle.com/wp-content/uploads/2025/03/vip-shuttle-fuhrpark_6-5.webp',
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
     description: 'Customized for long-distance luxury travel.',
     status: 'Sold Out'
   }
@@ -345,26 +345,26 @@ export const TRUST_FEATURES = [
 export const SERVICES = [
   {
     title: 'Airport Chauffeur',
-    description: 'Seamless transfers to and from JFK, LGA, and EWR with professional meet-and-greet.',
-    link: '/airport-chauffeur-nyc',
+    description: 'Seamless transfers to JFK, LGA, and EWR with professional meet-and-greet and real-time flight tracking.',
+    link: '/services/airport-transfers',
     image: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=2070&auto=format&fit=crop'
   },
   {
     title: 'Executive Car Service',
-    description: 'Discreet and professional transportation for high-level executives and corporate events.',
-    link: '/executive-chauffeur-nyc',
+    description: 'Discreet and professional transportation for high-level executives, roadshows, and corporate events.',
+    link: '/services/executive-car-service',
     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2070&auto=format&fit=crop'
   },
   {
     title: 'Hourly Chauffeur',
-    description: 'Dedicated chauffeur at your disposal for meetings, events, or city exploration.',
-    link: '/hourly-chauffeur-nyc',
+    description: 'A dedicated chauffeur at your disposal for meetings, events, or bespoke city exploration.',
+    link: '/services/hourly-chauffeur',
     image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop'
   },
   {
     title: 'City-to-City Transfers',
-    description: 'Long-distance premium travel between NYC and major Northeast hubs.',
-    link: '/city-to-city-nyc',
+    description: 'Premium long-distance travel between NYC and major Northeast hubs like Boston and Philadelphia.',
+    link: '/services/city-to-city',
     image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop'
   }
 ];

@@ -236,7 +236,7 @@ export const Home = () => {
               <div className="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-gold/30" />
               <div className="absolute -bottom-10 -right-10 w-40 h-40 border-b border-r border-gold/30" />
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop" 
+                src="https://ekpcc.com/wp-content/uploads/2023/09/Private-Chauffeur-Services-Near-Me-1024x1536.jpg" 
                 alt="Professional Chauffeur"
                 className="rounded-sm shadow-2xl relative z-10"
                 referrerPolicy="no-referrer"

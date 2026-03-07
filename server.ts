@@ -20,6 +20,18 @@ db.exec(`
     role TEXT DEFAULT 'admin'
   );
 
+  CREATE TABLE IF NOT EXISTS blogs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    slug TEXT UNIQUE,
+    content TEXT,
+    excerpt TEXT,
+    image TEXT,
+    author TEXT,
+    published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
+
   CREATE TABLE IF NOT EXISTS vehicles (
     id TEXT PRIMARY KEY,
     name TEXT,
@@ -74,6 +86,34 @@ if (chauffeurCount.count === 0) {
   insertChauffeur.run('Elena Rodriguez', 'Active', 5.0, 850, '(305) 555-0124', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2070&auto=format&fit=crop');
 }
 
+const userCount = db.prepare("SELECT COUNT(*) as count FROM users").get() as { count: number };
+if (userCount.count === 0) {
+  const insertUser = db.prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+  // In a real app, use bcrypt to hash passwords. For this demo, we'll use plain text.
+  insertUser.run('admin', 'empire2025', 'admin');
+}
+
+const blogCount = db.prepare("SELECT COUNT(*) as count FROM blogs").get() as { count: number };
+if (blogCount.count === 0) {
+  const insertBlog = db.prepare("INSERT INTO blogs (title, slug, content, excerpt, image, author) VALUES (?, ?, ?, ?, ?, ?)");
+  insertBlog.run(
+    'The Ultimate Guide to NYC Airport Transfers', 
+    'nyc-airport-transfer-guide', 
+    'Navigating New York City airports can be a daunting task. From JFK to LGA and EWR, each hub has its own set of challenges. In this guide, we explore the best ways to ensure a seamless arrival and departure experience using professional chauffeur services...', 
+    'Everything you need to know about navigating JFK, LGA, and EWR with ease.', 
+    'https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?q=80&w=2070&auto=format&fit=crop', 
+    'Empire Editorial'
+  );
+  insertBlog.run(
+    'Why Executive Chauffeurs are Better Than Ride-Sharing', 
+    'chauffeur-vs-rideshare', 
+    'When it comes to professional business travel, reliability and discretion are paramount. While ride-sharing apps offer convenience, they often lack the consistency and elite standards required by executives. We break down the key differences...', 
+    'Discover why top executives choose private chauffeurs over standard ride-sharing apps.', 
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2070&auto=format&fit=crop', 
+    'James Sterling'
+  );
+}
+
 async function startServer() {
   const app = express();
   const httpServer = createServer(app);
@@ -81,6 +121,71 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+
+  // Auth Routes
+  app.post("/api/auth/login", (req, res) => {
+    const { username, password } = req.body;
+    const user = db.prepare("SELECT * FROM users WHERE username = ? AND password = ?").get(username, password) as any;
+    
+    if (user) {
+      // In a real app, generate a JWT token.
+      res.json({ 
+        success: true, 
+        user: { id: user.id, username: user.username, role: user.role } 
+      });
+    } else {
+      res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+  });
+
+  // Blog Routes
+  app.get("/api/blogs", (req, res) => {
+    const blogs = db.prepare("SELECT * FROM blogs ORDER BY published_at DESC").all();
+    res.json(blogs);
+  });
+
+  app.get("/api/blogs/:slug", (req, res) => {
+    const blog = db.prepare("SELECT * FROM blogs WHERE slug = ?").get(req.params.slug);
+    if (blog) {
+      res.json(blog);
+    } else {
+      res.status(404).json({ error: "Blog not found" });
+    }
+  });
+
+  app.post("/api/blogs", (req, res) => {
+    const { title, slug, content, excerpt, image, author } = req.body;
+    try {
+      const info = db.prepare(`
+        INSERT INTO blogs (title, slug, content, excerpt, image, author)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `).run(title, slug, content, excerpt, image, author);
+      
+      const newBlog = db.prepare("SELECT * FROM blogs WHERE id = ?").get(info.lastInsertRowid);
+      res.json(newBlog);
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  app.patch("/api/blogs/:id", (req, res) => {
+    const { title, slug, content, excerpt, image, author } = req.body;
+    const { id } = req.params;
+    
+    db.prepare(`
+      UPDATE blogs 
+      SET title = ?, slug = ?, content = ?, excerpt = ?, image = ?, author = ?, updated_at = CURRENT_TIMESTAMP 
+      WHERE id = ?
+    `).run(title, slug, content, excerpt, image, author, id);
+    
+    const updatedBlog = db.prepare("SELECT * FROM blogs WHERE id = ?").get(id);
+    res.json(updatedBlog);
+  });
+
+  app.delete("/api/blogs/:id", (req, res) => {
+    db.prepare("DELETE FROM blogs WHERE id = ?").run(req.params.id);
+    res.json({ success: true });
+  });
 
   // API Routes
   app.get("/api/stats", (req, res) => {

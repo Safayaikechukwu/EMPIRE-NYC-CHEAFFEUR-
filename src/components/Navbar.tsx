@@ -53,6 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
     },
     { name: 'Fleet', href: '/fleet' },
     { name: 'Locations', href: '/locations' },
+    { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];

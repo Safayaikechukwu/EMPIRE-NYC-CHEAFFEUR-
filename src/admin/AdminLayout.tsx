@@ -14,10 +14,12 @@ import {
   X,
   TrendingUp,
   DollarSign,
-  Clock
+  Clock,
+  FileText
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useAuth } from '../context/AuthContext';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,6 +32,7 @@ interface AdminLayoutProps {
 export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
 
   const menuItems = [
@@ -37,11 +40,13 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     { name: 'Bookings', href: '/admin/bookings', icon: CalendarDays },
     { name: 'Fleet', href: '/admin/fleet', icon: Car },
     { name: 'Chauffeurs', href: '/admin/chauffeurs', icon: Users },
+    { name: 'Blog', href: '/admin/blogs', icon: FileText },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
 
   const handleLogout = () => {
-    navigate('/');
+    logout();
+    navigate('/admin/login');
   };
 
   return (
@@ -146,11 +151,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
             <div className="flex items-center space-x-4">
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-bold text-white tracking-wider">ADMINISTRATOR</p>
+                <p className="text-xs font-bold text-white tracking-wider uppercase">{user?.username || 'ADMINISTRATOR'}</p>
                 <p className="text-[9px] text-gold uppercase tracking-[0.3em] font-bold">Empire Chauffeur NYC</p>
               </div>
-              <div className="w-10 h-10 rounded-sm bg-gold flex items-center justify-center text-bg-primary font-bold text-sm shadow-lg shadow-gold/10">
-                AD
+              <div className="w-10 h-10 rounded-sm bg-gold flex items-center justify-center text-bg-primary font-bold text-sm shadow-lg shadow-gold/10 uppercase">
+                {user?.username?.substring(0, 2) || 'AD'}
               </div>
             </div>
           </div>

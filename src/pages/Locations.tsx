@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Phone, Mail, Globe, ArrowRight, Plane, Building2, Landmark, Navigation, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, ArrowRight, Plane, Building2, Landmark, Navigation, CheckCircle2, Clock } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { SEO } from '../components/SEO';
 import { ServiceArea } from '../components/ServiceArea';

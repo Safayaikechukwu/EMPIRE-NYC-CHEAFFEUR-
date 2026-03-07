@@ -247,6 +247,65 @@ export const AdminDashboard: React.FC = () => {
         </div>
       </div>
 
+      {/* SEO & Launch Checklist */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="bg-[#0A0A0A] border border-white/5 p-10 rounded-sm">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h3 className="text-xl font-serif font-bold text-white tracking-wide">SEO & Launch Status</h3>
+              <p className="text-white/30 text-xs mt-1">Technical readiness for Google indexing.</p>
+            </div>
+            <div className="px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full">
+              <span className="text-gold text-[10px] uppercase tracking-widest font-bold">85% Ready</span>
+            </div>
+          </div>
+          
+          <div className="space-y-6">
+            {[
+              { label: 'Technical SEO Schema', status: 'Complete', desc: 'AggregateRating, LimoService, and Breadcrumbs active.', icon: CheckCircle2, color: 'text-emerald-400' },
+              { label: 'Sitemap Generation', status: 'Complete', desc: 'sitemap.xml is live and contains all service routes.', icon: CheckCircle2, color: 'text-emerald-400' },
+              { label: 'Robots.txt Configuration', status: 'Complete', desc: 'Search engines are permitted to crawl the site.', icon: CheckCircle2, color: 'text-emerald-400' },
+              { label: 'Custom Domain Connection', status: 'Pending', desc: 'Connect empirechauffeurnyc.com to start ranking.', icon: AlertCircle, color: 'text-amber-400' },
+              { label: 'Google Search Console', status: 'Action Required', desc: 'Submit sitemap to GSC for immediate indexing.', icon: AlertCircle, color: 'text-rose-400' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start space-x-4 p-4 bg-white/[0.02] border border-white/5 rounded-sm">
+                <item.icon size={20} className={cn("shrink-0 mt-0.5", item.color)} />
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="text-sm font-bold text-white tracking-wide">{item.label}</h4>
+                    <span className={cn("text-[9px] uppercase tracking-widest font-bold", item.color)}>{item.status}</span>
+                  </div>
+                  <p className="text-white/30 text-xs font-light leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-gold p-10 rounded-sm shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="relative z-10">
+            <h3 className="text-2xl font-serif font-bold text-bg-primary mb-4">Why am I not on Google yet?</h3>
+            <div className="space-y-6 text-bg-primary/80 text-sm font-light leading-relaxed">
+              <p>
+                <strong className="text-bg-primary font-bold">1. Indexing Delay:</strong> Google takes 4-14 days to crawl new websites. We can speed this up by submitting your sitemap manually.
+              </p>
+              <p>
+                <strong className="text-bg-primary font-bold">2. Development URL:</strong> You are currently viewing the site on a temporary preview URL. Google will only rank your <span className="underline font-medium">official domain</span>.
+              </p>
+              <p>
+                <strong className="text-bg-primary font-bold">3. Local Map Pack:</strong> To appear in the "Map" section, you must verify your <strong className="text-bg-primary font-bold">Google Business Profile</strong>.
+              </p>
+              <div className="pt-6">
+                <button className="w-full bg-bg-primary text-white text-[10px] uppercase tracking-[0.3em] font-bold py-4 hover:bg-white hover:text-black transition-all">
+                  View Launch Guide
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Recent Activity / Active Bookings */}
       <div className="bg-[#0A0A0A] border border-white/5 rounded-sm overflow-hidden">
         <div className="p-10 border-b border-white/5 flex items-center justify-between">

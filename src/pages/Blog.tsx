@@ -10,6 +10,7 @@ interface Blog {
   id: number;
   title: string;
   slug: string;
+  content: string;
   excerpt: string;
   image: string;
   author: string;
@@ -125,15 +126,22 @@ export const Blog: React.FC = () => {
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500" />
-                    <div className="absolute top-6 left-6 bg-gold/90 backdrop-blur-md px-4 py-1.5 border border-border-primary">
-                      <span className="text-[10px] uppercase tracking-widest text-bg-primary font-bold">Luxury Travel</span>
+                    <div className="absolute top-6 left-6 flex flex-col space-y-2">
+                      <div className="bg-gold/90 backdrop-blur-md px-4 py-1.5 border border-border-primary">
+                        <span className="text-[10px] uppercase tracking-widest text-bg-primary font-bold">Luxury Travel</span>
+                      </div>
+                      {blog.content && blog.content.split(/\s+/).length >= 1000 && (
+                        <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 border border-border-primary">
+                          <span className="text-[10px] uppercase tracking-widest text-bg-primary font-bold">Long Read</span>
+                        </div>
+                      )}
                     </div>
                   </Link>
 
                   <div className="flex items-center space-x-6 mb-4 text-[10px] uppercase tracking-widest text-text-secondary font-bold">
                     <div className="flex items-center space-x-2">
                       <Calendar size={12} className="text-gold" />
-                      <span>{format(new Date(blog.published_at), 'MMM dd, yyyy')}</span>
+                      <span>{format(new Date(blog.published_at.replace(' ', 'T')), 'MMM dd, yyyy')}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <User size={12} className="text-gold" />

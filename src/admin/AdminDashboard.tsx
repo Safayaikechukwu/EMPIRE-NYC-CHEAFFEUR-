@@ -9,8 +9,12 @@ import {
   ArrowDownRight,
   Clock,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  Plus,
+  FileText,
+  MessageSquare
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { 
   AreaChart, 
   Area, 
@@ -49,14 +53,29 @@ const vehicleData = [
   { name: 'Specialty', value: 10, color: '#5C4305' },
 ];
 
+const StarIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
+
 export const AdminDashboard: React.FC = () => {
   const [stats, setStats] = useState<any>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/api/stats')
       .then(res => res.json())
       .then(data => setStats(data));
   }, []);
+
+  const quickActions = [
+    { label: 'New Booking', icon: Plus, color: 'bg-gold text-bg-primary', onClick: () => navigate('/admin/bookings') },
+    { label: 'Write Blog', icon: FileText, color: 'bg-white/5 text-white hover:bg-white/10', onClick: () => navigate('/admin/blogs') },
+    { label: 'Fleet Status', icon: Car, color: 'bg-white/5 text-white hover:bg-white/10', onClick: () => navigate('/admin/fleet') },
+    { label: 'Messages', icon: MessageSquare, color: 'bg-white/5 text-white hover:bg-white/10', onClick: () => {} },
+  ];
 
   const statCards = [
     { 
@@ -102,12 +121,19 @@ export const AdminDashboard: React.FC = () => {
           <p className="text-white/30 text-sm mt-2 font-light tracking-wide">Real-time operational intelligence for Empire Chauffeur NYC.</p>
         </div>
         <div className="flex items-center space-x-4">
-          <button className="px-6 py-3 bg-white/5 border border-white/10 rounded-sm text-[10px] uppercase tracking-widest font-bold hover:bg-white/10 transition-all">
-            Export Report
-          </button>
-          <button className="px-6 py-3 bg-gold text-bg-primary rounded-sm text-[10px] uppercase tracking-widest font-bold hover:bg-gold/90 transition-all shadow-xl shadow-gold/10">
-            New Booking
-          </button>
+          {quickActions.map((action, i) => (
+            <button 
+              key={i}
+              onClick={action.onClick}
+              className={cn(
+                "px-6 py-3 rounded-sm text-[10px] uppercase tracking-widest font-bold transition-all flex items-center",
+                action.color
+              )}
+            >
+              <action.icon size={16} className="mr-2" />
+              <span>{action.label}</span>
+            </button>
+          ))}
         </div>
       </div>
 
@@ -355,9 +381,3 @@ export const AdminDashboard: React.FC = () => {
     </div>
   );
 };
-
-const StarIcon = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);

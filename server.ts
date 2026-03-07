@@ -27,7 +27,11 @@ db.exec(`
     content TEXT,
     excerpt TEXT,
     image TEXT,
+    image_alt TEXT,
     author TEXT,
+    meta_title TEXT,
+    meta_description TEXT,
+    focus_keyword TEXT,
     published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
@@ -112,6 +116,66 @@ if (blogCount.count === 0) {
     'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2070&auto=format&fit=crop', 
     'James Sterling'
   );
+  insertBlog.run(
+    'Navigating Teterboro (TEB): The Private Jet Traveler\'s Guide', 
+    'teterboro-airport-chauffeur-guide', 
+    'Teterboro Airport (TEB) is the primary gateway for private aviation in the New York metropolitan area. Unlike JFK or EWR, Teterboro offers a level of discretion and efficiency that elite travelers demand. However, the transition from the tarmac to the city requires precision. At Empire Chauffeur NYC, we specialize in FBO (Fixed Base Operator) pickups at Signature, Jet Aviation, and Atlantic Aviation. Our chauffeurs are vetted for security and discretion, ensuring that your ground transportation is as seamless as your flight. We monitor tail numbers in real-time and coordinate directly with flight crews to ensure your vehicle is waiting on the ramp or at the terminal the moment you land.', 
+    'A comprehensive guide for private jet travelers arriving at Teterboro Airport, focusing on seamless transitions to Manhattan.', 
+    'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop', 
+    'Empire Logistics Team'
+  );
+  insertBlog.run(
+    'Mastering the Manhattan Corporate Roadshow', 
+    'manhattan-corporate-roadshow-logistics', 
+    'In the fast-paced world of finance and global business, a corporate roadshow is a high-stakes endeavor. Multiple meetings across Midtown, the Financial District, and Hudson Yards require a logistics partner who understands the rhythm of the city. Our hourly chauffeur service is designed for this exact scenario. With a dedicated vehicle and a chauffeur who knows every shortcut and back entrance in Manhattan, executives can focus on their presentations while we handle the traffic. We provide Wi-Fi equipped vehicles and bottled water, turning your car into a mobile office between stops. Our dispatch team monitors traffic patterns 24/7 to reroute your chauffeur instantly if a delay occurs.', 
+    'How professional chauffeur services ensure executive productivity during high-stakes multi-stop meetings in NYC.', 
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop', 
+    'Elena Rodriguez'
+  );
+  insertBlog.run(
+    'Luxury Transportation for NYC Gala & Event Season', 
+    'nyc-gala-event-transportation-luxury', 
+    'New York City\'s social calendar is legendary. From the glamour of the Met Gala to the high-stakes fundraisers at Cipriani, arriving in style is not just about the vehicle—it\'s about the experience. Our fleet of late-model Mercedes-Benz S-Class sedans and Cadillac Escalades provides the perfect backdrop for your evening. We understand the complexities of event drop-offs and the importance of being ready for immediate pickup the moment the event concludes. Our chauffeurs coordinate with event security and valets to ensure a smooth arrival, allowing you to make an entrance that matches the prestige of the occasion. For larger groups, our Executive Sprinters offer the same level of luxury with expanded capacity for your entire party.', 
+    'Arrive in style during New York City\'s most prestigious event seasons, from the Met Gala to Wall Street fundraisers.', 
+    'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop', 
+    'Empire Lifestyle'
+  );
+}
+
+// Ensure specific SEO blogs exist
+const seoBlogs = [
+  {
+    title: 'Navigating Teterboro (TEB): The Private Jet Traveler\'s Guide',
+    slug: 'teterboro-airport-chauffeur-guide',
+    content: 'Teterboro Airport (TEB) is the primary gateway for private aviation in the New York metropolitan area. Unlike JFK or EWR, Teterboro offers a level of discretion and efficiency that elite travelers demand. However, the transition from the tarmac to the city requires precision. At Empire Chauffeur NYC, we specialize in FBO (Fixed Base Operator) pickups at Signature, Jet Aviation, and Atlantic Aviation. Our chauffeurs are vetted for security and discretion, ensuring that your ground transportation is as seamless as your flight. We monitor tail numbers in real-time and coordinate directly with flight crews to ensure your vehicle is waiting on the ramp or at the terminal the moment you land.',
+    excerpt: 'A comprehensive guide for private jet travelers arriving at Teterboro Airport, focusing on seamless transitions to Manhattan.',
+    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop',
+    author: 'Empire Logistics Team'
+  },
+  {
+    title: 'Mastering the Manhattan Corporate Roadshow',
+    slug: 'manhattan-corporate-roadshow-logistics',
+    content: 'In the fast-paced world of finance and global business, a corporate roadshow is a high-stakes endeavor. Multiple meetings across Midtown, the Financial District, and Hudson Yards require a logistics partner who understands the rhythm of the city. Our hourly chauffeur service is designed for this exact scenario. With a dedicated vehicle and a chauffeur who knows every shortcut and back entrance in Manhattan, executives can focus on their presentations while we handle the traffic. We provide Wi-Fi equipped vehicles and bottled water, turning your car into a mobile office between stops. Our dispatch team monitors traffic patterns 24/7 to reroute your chauffeur instantly if a delay occurs.',
+    excerpt: 'How professional chauffeur services ensure executive productivity during high-stakes multi-stop meetings in NYC.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
+    author: 'Elena Rodriguez'
+  },
+  {
+    title: 'Luxury Transportation for NYC Gala & Event Season',
+    slug: 'nyc-gala-event-transportation-luxury',
+    content: 'New York City\'s social calendar is legendary. From the glamour of the Met Gala to the high-stakes fundraisers at Cipriani, arriving in style is not just about the vehicle—it\'s about the experience. Our fleet of late-model Mercedes-Benz S-Class sedans and Cadillac Escalades provides the perfect backdrop for your evening. We understand the complexities of event drop-offs and the importance of being ready for immediate pickup the moment the event concludes. Our chauffeurs coordinate with event security and valets to ensure a smooth arrival, allowing you to make an entrance that matches the prestige of the occasion. For larger groups, our Executive Sprinters offer the same level of luxury with expanded capacity for your entire party.',
+    excerpt: 'Arrive in style during New York City\'s most prestigious event seasons, from the Met Gala to Wall Street fundraisers.',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
+    author: 'Empire Lifestyle'
+  }
+];
+
+for (const blog of seoBlogs) {
+  const exists = db.prepare("SELECT id FROM blogs WHERE slug = ?").get(blog.slug);
+  if (!exists) {
+    db.prepare("INSERT INTO blogs (title, slug, content, excerpt, image, author) VALUES (?, ?, ?, ?, ?, ?)")
+      .run(blog.title, blog.slug, blog.content, blog.excerpt, blog.image, blog.author);
+  }
 }
 
 async function startServer() {
@@ -154,12 +218,12 @@ async function startServer() {
   });
 
   app.post("/api/blogs", (req, res) => {
-    const { title, slug, content, excerpt, image, author } = req.body;
+    const { title, slug, content, excerpt, image, image_alt, author, meta_title, meta_description, focus_keyword } = req.body;
     try {
       const info = db.prepare(`
-        INSERT INTO blogs (title, slug, content, excerpt, image, author)
-        VALUES (?, ?, ?, ?, ?, ?)
-      `).run(title, slug, content, excerpt, image, author);
+        INSERT INTO blogs (title, slug, content, excerpt, image, image_alt, author, meta_title, meta_description, focus_keyword)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).run(title, slug, content, excerpt, image, image_alt, author, meta_title, meta_description, focus_keyword);
       
       const newBlog = db.prepare("SELECT * FROM blogs WHERE id = ?").get(info.lastInsertRowid);
       res.json(newBlog);
@@ -169,14 +233,14 @@ async function startServer() {
   });
 
   app.patch("/api/blogs/:id", (req, res) => {
-    const { title, slug, content, excerpt, image, author } = req.body;
+    const { title, slug, content, excerpt, image, image_alt, author, meta_title, meta_description, focus_keyword } = req.body;
     const { id } = req.params;
     
     db.prepare(`
       UPDATE blogs 
-      SET title = ?, slug = ?, content = ?, excerpt = ?, image = ?, author = ?, updated_at = CURRENT_TIMESTAMP 
+      SET title = ?, slug = ?, content = ?, excerpt = ?, image = ?, image_alt = ?, author = ?, meta_title = ?, meta_description = ?, focus_keyword = ?, updated_at = CURRENT_TIMESTAMP 
       WHERE id = ?
-    `).run(title, slug, content, excerpt, image, author, id);
+    `).run(title, slug, content, excerpt, image, image_alt, author, meta_title, meta_description, focus_keyword, id);
     
     const updatedBlog = db.prepare("SELECT * FROM blogs WHERE id = ?").get(id);
     res.json(updatedBlog);

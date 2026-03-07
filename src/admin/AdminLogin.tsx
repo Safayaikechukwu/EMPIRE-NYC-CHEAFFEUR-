@@ -93,6 +93,11 @@ export const AdminLogin: React.FC = () => {
               </div>
             </div>
 
+            <div className="p-4 bg-gold/5 border border-gold/10 rounded-sm">
+              <p className="text-[10px] text-gold/60 uppercase tracking-widest font-bold mb-1">Demo Credentials</p>
+              <p className="text-xs text-text-secondary">User: <span className="text-text-primary font-mono">admin</span> | Pass: <span className="text-text-primary font-mono">empire2025</span></p>
+            </div>
+
             <button 
               type="submit" 
               disabled={isLoading}

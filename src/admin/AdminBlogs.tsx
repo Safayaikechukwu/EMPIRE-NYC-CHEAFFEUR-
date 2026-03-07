@@ -18,6 +18,13 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 interface Blog {
   id: number;
   title: string;
@@ -25,7 +32,11 @@ interface Blog {
   content: string;
   excerpt: string;
   image: string;
+  image_alt: string;
   author: string;
+  meta_title: string;
+  meta_description: string;
+  focus_keyword: string;
   published_at: string;
 }
 
@@ -35,13 +46,18 @@ export const AdminBlogs: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
+  const [activeTab, setActiveTab] = useState<'content' | 'seo'>('content');
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
     content: '',
     excerpt: '',
     image: '',
-    author: 'Empire Editorial'
+    image_alt: '',
+    author: 'Empire Editorial',
+    meta_title: '',
+    meta_description: '',
+    focus_keyword: ''
   });
 
   const fetchBlogs = async () => {
@@ -69,7 +85,11 @@ export const AdminBlogs: React.FC = () => {
         content: blog.content,
         excerpt: blog.excerpt,
         image: blog.image,
-        author: blog.author
+        image_alt: blog.image_alt || '',
+        author: blog.author,
+        meta_title: blog.meta_title || '',
+        meta_description: blog.meta_description || '',
+        focus_keyword: blog.focus_keyword || ''
       });
     } else {
       setEditingBlog(null);
@@ -79,9 +99,14 @@ export const AdminBlogs: React.FC = () => {
         content: '',
         excerpt: '',
         image: '',
-        author: 'Empire Editorial'
+        image_alt: '',
+        author: 'Empire Editorial',
+        meta_title: '',
+        meta_description: '',
+        focus_keyword: ''
       });
     }
+    setActiveTab('content');
     setIsModalOpen(true);
   };
 
@@ -131,6 +156,59 @@ export const AdminBlogs: React.FC = () => {
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     blog.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const getSEOScore = () => {
+    let score = 0;
+    const checks = [];
+
+    // Title checks
+    if (formData.title.length >= 50 && formData.title.length <= 60) {
+      score += 20;
+      checks.push({ label: 'Title length is ideal (50-60 chars)', pass: true });
+    } else {
+      checks.push({ label: 'Title should be 50-60 chars', pass: false });
+    }
+
+    // Meta description checks
+    if (formData.meta_description.length >= 120 && formData.meta_description.length <= 160) {
+      score += 20;
+      checks.push({ label: 'Meta description length is ideal', pass: true });
+    } else {
+      checks.push({ label: 'Meta description should be 120-160 chars', pass: false });
+    }
+
+    // Keyword checks
+    if (formData.focus_keyword && formData.title.toLowerCase().includes(formData.focus_keyword.toLowerCase())) {
+      score += 20;
+      checks.push({ label: 'Focus keyword in title', pass: true });
+    } else {
+      checks.push({ label: 'Focus keyword missing from title', pass: false });
+    }
+
+    // Content length
+    const wordCount = formData.content.split(/\s+/).length;
+    if (wordCount >= 1000) {
+      score += 20;
+      checks.push({ label: 'Content length is excellent (1000+ words)', pass: true });
+    } else if (wordCount >= 500) {
+      score += 10;
+      checks.push({ label: 'Content length is good (500+ words)', pass: true });
+    } else {
+      checks.push({ label: 'Content is too short (< 500 words)', pass: false });
+    }
+
+    // Image alt text
+    if (formData.image_alt) {
+      score += 20;
+      checks.push({ label: 'Image alt text provided', pass: true });
+    } else {
+      checks.push({ label: 'Image alt text missing', pass: false });
+    }
+
+    return { score, checks };
+  };
+
+  const seoAnalysis = getSEOScore();
 
   return (
     <div className="p-8">
@@ -210,7 +288,17 @@ export const AdminBlogs: React.FC = () => {
                 <td className="px-6 py-6">
                   <div className="flex items-center space-x-2 text-white/60 text-sm">
                     <Calendar size={14} className="text-gold" />
-                    <span>{format(new Date(blog.published_at), 'MMM dd, yyyy')}</span>
+                    <span>
+                      {(() => {
+                        try {
+                          // SQLite timestamp to ISO
+                          const dateStr = blog.published_at.includes(' ') ? blog.published_at.replace(' ', 'T') : blog.published_at;
+                          return format(new Date(dateStr), 'MMM dd, yyyy');
+                        } catch (e) {
+                          return 'Pending';
+                        }
+                      })()}
+                    </span>
                   </div>
                 </td>
                 <td className="px-6 py-6">
@@ -281,91 +369,235 @@ export const AdminBlogs: React.FC = () => {
                 </button>
               </div>
 
+              <div className="flex border-b border-white/10 bg-white/[0.02]">
+                <button 
+                  onClick={() => setActiveTab('content')}
+                  className={cn(
+                    "px-8 py-4 text-[10px] uppercase tracking-widest font-bold transition-all border-b-2",
+                    activeTab === 'content' ? "border-gold text-gold bg-gold/5" : "border-transparent text-white/40 hover:text-white"
+                  )}
+                >
+                  Content Editor
+                </button>
+                <button 
+                  onClick={() => setActiveTab('seo')}
+                  className={cn(
+                    "px-8 py-4 text-[10px] uppercase tracking-widest font-bold transition-all border-b-2 flex items-center",
+                    activeTab === 'seo' ? "border-gold text-gold bg-gold/5" : "border-transparent text-white/40 hover:text-white"
+                  )}
+                >
+                  SEO Settings
+                  <div className={cn(
+                    "ml-2 w-2 h-2 rounded-full",
+                    seoAnalysis.score >= 80 ? "bg-emerald-500" : seoAnalysis.score >= 50 ? "bg-amber-500" : "bg-rose-500"
+                  )} />
+                </button>
+              </div>
+
               <div className="flex-grow overflow-y-auto p-8">
-                <form id="blog-form" onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Article Title</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={formData.title}
-                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
-                        placeholder="Enter a compelling title"
-                      />
+                {activeTab === 'content' ? (
+                  <form id="blog-form" onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Article Title</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={formData.title}
+                          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                          placeholder="Enter a compelling title"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">URL Slug</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={formData.slug}
+                          onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                          placeholder="article-url-slug"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Excerpt</label>
+                        <textarea 
+                          required
+                          value={formData.excerpt}
+                          onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white h-24 resize-none"
+                          placeholder="A brief summary for the listing page..."
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Author Name</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={formData.author}
+                          onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                        />
+                      </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">URL Slug</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
-                        placeholder="article-url-slug"
-                      />
-                    </div>
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Cover Image URL</label>
+                        <div className="flex space-x-2">
+                          <div className="relative flex-grow">
+                            <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
+                            <input 
+                              type="url" 
+                              required
+                              value={formData.image}
+                              onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                              className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                              placeholder="https://images.unsplash.com/..."
+                            />
+                          </div>
+                        </div>
+                        {formData.image && (
+                          <div className="mt-4 aspect-video rounded-sm overflow-hidden border border-white/10">
+                            <img src={formData.image} alt="Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                          </div>
+                        )}
+                      </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Excerpt</label>
-                      <textarea 
-                        required
-                        value={formData.excerpt}
-                        onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white h-24 resize-none"
-                        placeholder="A brief summary for the listing page..."
-                      />
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Article Content</label>
+                        <textarea 
+                          required
+                          value={formData.content}
+                          onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white h-64 resize-none font-light leading-relaxed"
+                          placeholder="Write your article content here..."
+                        />
+                      </div>
                     </div>
+                  </form>
+                ) : (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div className="space-y-8">
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Focus Keyword</label>
+                        <input 
+                          type="text" 
+                          value={formData.focus_keyword}
+                          onChange={(e) => setFormData({ ...formData, focus_keyword: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                          placeholder="e.g. Chauffeur NYC"
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Author Name</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={formData.author}
-                        onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Cover Image URL</label>
-                      <div className="flex space-x-2">
-                        <div className="relative flex-grow">
-                          <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20" size={18} />
-                          <input 
-                            type="url" 
-                            required
-                            value={formData.image}
-                            onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                            className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
-                            placeholder="https://images.unsplash.com/..."
-                          />
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Meta Title</label>
+                        <input 
+                          type="text" 
+                          value={formData.meta_title}
+                          onChange={(e) => setFormData({ ...formData, meta_title: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                          placeholder="SEO Title (50-60 chars)"
+                        />
+                        <div className="flex justify-between text-[10px] uppercase tracking-widest font-bold">
+                          <span className="text-white/20">Length</span>
+                          <span className={cn(
+                            formData.meta_title.length >= 50 && formData.meta_title.length <= 60 ? "text-emerald-500" : "text-rose-500"
+                          )}>{formData.meta_title.length} / 60</span>
                         </div>
                       </div>
-                      {formData.image && (
-                        <div className="mt-4 aspect-video rounded-sm overflow-hidden border border-white/10">
-                          <img src={formData.image} alt="Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Meta Description</label>
+                        <textarea 
+                          value={formData.meta_description}
+                          onChange={(e) => setFormData({ ...formData, meta_description: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white h-32 resize-none"
+                          placeholder="SEO Description (120-160 chars)"
+                        />
+                        <div className="flex justify-between text-[10px] uppercase tracking-widest font-bold">
+                          <span className="text-white/20">Length</span>
+                          <span className={cn(
+                            formData.meta_description.length >= 120 && formData.meta_description.length <= 160 ? "text-emerald-500" : "text-rose-500"
+                          )}>{formData.meta_description.length} / 160</span>
                         </div>
-                      )}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Image Alt Text</label>
+                        <input 
+                          type="text" 
+                          value={formData.image_alt}
+                          onChange={(e) => setFormData({ ...formData, image_alt: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white"
+                          placeholder="Describe the cover image for bots"
+                        />
+                      </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Article Content</label>
-                      <textarea 
-                        required
-                        value={formData.content}
-                        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm py-3 px-4 text-sm focus:outline-none focus:border-gold/50 transition-colors text-white h-64 resize-none font-light leading-relaxed"
-                        placeholder="Write your article content here..."
-                      />
+                    <div className="space-y-8">
+                      <div className="bg-white/[0.02] border border-white/10 p-8 rounded-sm">
+                        <h3 className="text-sm font-serif text-white mb-6 flex items-center">
+                          <AlertCircle size={16} className="mr-2 text-gold" />
+                          SEO Analysis
+                        </h3>
+                        
+                        <div className="mb-8">
+                          <div className="flex justify-between items-end mb-2">
+                            <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">SEO Score</span>
+                            <span className={cn(
+                              "text-2xl font-serif font-bold",
+                              seoAnalysis.score >= 80 ? "text-emerald-500" : seoAnalysis.score >= 50 ? "text-amber-500" : "text-rose-500"
+                            )}>{seoAnalysis.score}%</span>
+                          </div>
+                          <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: `${seoAnalysis.score}%` }}
+                              className={cn(
+                                "h-full transition-all duration-1000",
+                                seoAnalysis.score >= 80 ? "bg-emerald-500" : seoAnalysis.score >= 50 ? "bg-amber-500" : "bg-rose-500"
+                              )}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-4">
+                          {seoAnalysis.checks.map((check, i) => (
+                            <div key={i} className="flex items-center text-xs">
+                              <div className={cn(
+                                "w-4 h-4 rounded-full flex items-center justify-center mr-3 shrink-0",
+                                check.pass ? "bg-emerald-500/20 text-emerald-500" : "bg-rose-500/20 text-rose-500"
+                              )}>
+                                {check.pass ? <Save size={10} /> : <AlertCircle size={10} />}
+                              </div>
+                              <span className={check.pass ? "text-white/60" : "text-white/30"}>{check.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="bg-gold/5 border border-gold/10 p-8 rounded-sm">
+                        <h3 className="text-[10px] uppercase tracking-widest text-gold font-bold mb-4">Google Preview</h3>
+                        <div className="space-y-1">
+                          <div className="text-blue-400 text-lg hover:underline cursor-pointer truncate">
+                            {formData.meta_title || formData.title || 'Article Title'}
+                          </div>
+                          <div className="text-emerald-600 text-xs truncate">
+                            https://empirechauffeurnyc.com/blog/{formData.slug || 'slug'}
+                          </div>
+                          <div className="text-white/40 text-xs line-clamp-2">
+                            {formData.meta_description || formData.excerpt || 'Article description will appear here...'}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </form>
+                )}
               </div>
 
               <div className="p-6 border-t border-white/10 bg-white/5 flex items-center justify-between">

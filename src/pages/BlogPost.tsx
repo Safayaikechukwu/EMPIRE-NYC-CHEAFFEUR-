@@ -13,7 +13,11 @@ interface Blog {
   content: string;
   excerpt: string;
   image: string;
+  image_alt: string;
   author: string;
+  meta_title: string;
+  meta_description: string;
+  focus_keyword: string;
   published_at: string;
 }
 
@@ -22,6 +26,12 @@ export const BlogPost: React.FC = () => {
   const [blog, setBlog] = useState<Blog | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  const calculateReadTime = (text: string) => {
+    const wordsPerMinute = 200;
+    const words = text.trim().split(/\s+/).length;
+    return Math.ceil(words / wordsPerMinute);
+  };
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -56,9 +66,10 @@ export const BlogPost: React.FC = () => {
   return (
     <Layout>
       <SEO 
-        title={`${blog.title} | Empire Chauffeur NYC Blog`}
-        description={blog.excerpt}
+        title={blog.meta_title || `${blog.title} | Empire Chauffeur NYC Blog`}
+        description={blog.meta_description || blog.excerpt}
         ogImage={blog.image}
+        keywords={blog.focus_keyword}
         breadcrumbItems={[
           { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
           { name: "Blog", item: "https://www.empirechauffeurnyc.com/blog" },
@@ -71,7 +82,7 @@ export const BlogPost: React.FC = () => {
         <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <img 
             src={blog.image} 
-            alt={blog.title}
+            alt={blog.image_alt || blog.title}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -95,7 +106,7 @@ export const BlogPost: React.FC = () => {
                 <div className="flex items-center space-x-6 text-[10px] uppercase tracking-widest text-gold font-bold">
                   <div className="flex items-center space-x-2">
                     <Calendar size={12} />
-                    <span>{format(new Date(blog.published_at), 'MMM dd, yyyy')}</span>
+                    <span>{format(new Date(blog.published_at.replace(' ', 'T')), 'MMM dd, yyyy')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <User size={12} />
@@ -103,7 +114,7 @@ export const BlogPost: React.FC = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Clock size={12} />
-                    <span>8 Min Read</span>
+                    <span>{calculateReadTime(blog.content)} Min Read</span>
                   </div>
                 </div>
 

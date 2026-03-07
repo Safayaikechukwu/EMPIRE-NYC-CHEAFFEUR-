@@ -72,6 +72,10 @@ export const Locations: React.FC = () => {
       <SEO 
         title="NYC Service Locations | Empire Chauffeur NYC"
         description="Serving all major NYC airports and hubs. JFK, LGA, EWR, and private FBOs. Experience the Empire Standard at every major regional hub."
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "Locations", item: "https://www.empirechauffeurnyc.com/locations" }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
@@ -180,6 +184,42 @@ export const Locations: React.FC = () => {
               </p>
             </div>
             <ServiceArea />
+          </div>
+
+          {/* Popular Routes & Landmarks */}
+          <div className="mb-32">
+            <div className="text-center mb-16">
+              <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+                Local Expertise
+              </span>
+              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Popular NYC Routes</h2>
+              <p className="max-w-2xl mx-auto text-text-secondary text-lg font-light">
+                Our chauffeurs are experts in navigating the most frequent executive routes across the city.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { route: 'JFK to Manhattan', time: '45-60 min', landmarks: 'Midtown, Wall St, Upper East Side' },
+                { route: 'LGA to Times Square', time: '30-45 min', landmarks: 'Broadway, Theater District, Midtown West' },
+                { route: 'EWR to Financial District', time: '40-55 min', landmarks: 'World Trade Center, Battery Park, Wall St' },
+                { route: 'Teterboro to Upper West Side', time: '25-40 min', landmarks: 'Lincoln Center, Central Park, Riverside' },
+                { route: 'Manhattan to Hamptons', time: '2-3 hours', landmarks: 'Southampton, East Hampton, Montauk' },
+                { route: 'Greenwich to JFK', time: '50-70 min', landmarks: 'Westchester, Bronx, Queens' },
+                { route: 'Brooklyn to LGA', time: '25-40 min', landmarks: 'Williamsburg, DUMBO, Astoria' },
+                { route: 'Staten Island to EWR', time: '20-35 min', landmarks: 'Goethals Bridge, Jersey City' }
+              ].map((item, i) => (
+                <div key={i} className="p-6 bg-charcoal border border-border-primary rounded-sm hover:border-gold/30 transition-all">
+                  <h4 className="text-lg font-serif text-text-primary mb-2">{item.route}</h4>
+                  <div className="flex items-center space-x-2 text-gold text-[10px] uppercase tracking-widest font-bold mb-4">
+                    <Clock size={12} />
+                    <span>Est. {item.time}</span>
+                  </div>
+                  <p className="text-text-secondary text-xs font-light leading-relaxed">
+                    <span className="text-text-primary/60 font-medium">Serving:</span> {item.landmarks}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Beyond the Airport Section */}

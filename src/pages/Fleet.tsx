@@ -21,6 +21,10 @@ export const Fleet: React.FC = () => {
       <SEO 
         title="Our Luxury Fleet | Empire Chauffeur NYC"
         description="Explore our immaculate collection of executive sedans, luxury SUVs, and executive sprinters. Meticulously maintained late-model vehicles for the discerning traveler."
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "Fleet", item: "https://www.empirechauffeurnyc.com/fleet" }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">

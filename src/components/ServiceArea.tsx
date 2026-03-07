@@ -71,9 +71,9 @@ export const ServiceArea = () => {
             <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
               Coverage
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">Our Service Areas</h2>
+            <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-8">NYC Chauffeur Service Areas</h2>
             <p className="text-text-secondary text-lg font-light leading-relaxed mb-10">
-              Empire Chauffeur NYC provides comprehensive executive transportation across the entire Tri-State area. We offer seamless transfers between all major hubs and residential enclaves.
+              Empire Chauffeur NYC provides comprehensive executive transportation across the entire Tri-State area. We offer seamless transfers between all major hubs, including Manhattan, Brooklyn, Queens, and the Bronx, as well as premium service to JFK, LGA, and EWR airports.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

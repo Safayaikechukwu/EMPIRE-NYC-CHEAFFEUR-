@@ -16,6 +16,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.empirechauffeurnyc.com/services/airport-transfers</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.empirechauffeurnyc.com/services/executive-car-service</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.empirechauffeurnyc.com/services/hourly-chauffeur</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.empirechauffeurnyc.com/services/city-to-city</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.empirechauffeurnyc.com/locations</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.empirechauffeurnyc.com/about</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.5</priority>

@@ -30,6 +30,11 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
       <SEO 
         title={`${title} | Empire Chauffeur NYC`}
         description={description}
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "Services", item: "https://www.empirechauffeurnyc.com/services" },
+          { name: title, item: window.location.href }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">

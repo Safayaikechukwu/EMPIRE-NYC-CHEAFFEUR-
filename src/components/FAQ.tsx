@@ -8,7 +8,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const FAQ_DATA = [
+export const FAQ_DATA = [
   {
     question: "How far in advance should I book my chauffeur?",
     answer: "We recommend booking at least 24 hours in advance to guarantee your preferred vehicle. However, we often accommodate last-minute requests within 2-4 hours depending on availability in the NYC area."

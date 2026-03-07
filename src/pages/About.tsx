@@ -13,6 +13,10 @@ export const About: React.FC = () => {
       <SEO 
         title="About Us | Empire Chauffeur NYC"
         description="Learn about the Empire Legacy. Over 20 years of excellence in NYC executive transportation, built on discretion, reliability, and bespoke service."
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "About", item: "https://www.empirechauffeurnyc.com/about" }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">
@@ -134,6 +138,31 @@ export const About: React.FC = () => {
                   <span className="text-bg-primary/80 text-[10px] uppercase tracking-widest font-bold">Chauffeur Training</span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Local Associations & Partnerships */}
+          <div className="mb-32">
+            <div className="text-center mb-16">
+              <span className="text-gold text-xs uppercase tracking-[0.4em] font-bold mb-4 block">Our Network</span>
+              <h2 className="text-3xl md:text-5xl font-serif text-text-primary mb-6">Local Associations</h2>
+              <p className="max-w-2xl mx-auto text-text-secondary font-light">We are proud members of the leading industry associations in New York and beyond.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { name: 'NLA', fullName: 'National Limousine Association' },
+                { name: 'LANY', fullName: 'Limousine Association of New York' },
+                { name: 'NYC & Co', fullName: 'NYC Tourism + Conventions' },
+                { name: 'TLC', fullName: 'NYC Taxi & Limousine Commission' }
+              ].map((item, i) => (
+                <div key={i} className="p-8 bg-charcoal border border-border-primary rounded-sm flex flex-col items-center justify-center text-center group hover:border-gold/30 transition-all">
+                  <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-bg-primary transition-all">
+                    <Building2 size={32} />
+                  </div>
+                  <h4 className="text-xl font-serif text-text-primary mb-1">{item.name}</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-text-secondary font-bold">{item.fullName}</p>
+                </div>
+              ))}
             </div>
           </div>
 

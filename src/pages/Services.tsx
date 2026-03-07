@@ -21,6 +21,10 @@ export const Services: React.FC = () => {
       <SEO 
         title="Executive Chauffeur Services | Empire Chauffeur NYC"
         description="Comprehensive luxury transportation solutions including airport transfers, corporate accounts, private aviation logistics, and special event chauffeur services."
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "Services", item: "https://www.empirechauffeurnyc.com/services" }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">

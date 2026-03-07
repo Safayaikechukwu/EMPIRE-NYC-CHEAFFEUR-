@@ -33,7 +33,7 @@ import { SERVICES, AIRPORTS, VEHICLES } from '../constants';
 import { useTheme } from '../components/ThemeContext';
 import { Layout } from '../components/Layout';
 import { SEO } from '../components/SEO';
-import { FAQ } from '../components/FAQ';
+import { FAQ, FAQ_DATA } from '../components/FAQ';
 
 import { useBooking } from '../context/BookingContext';
 
@@ -46,6 +46,10 @@ export const Home = () => {
       <SEO 
         title="Empire Chauffeur NYC | Premier Executive Transportation & Limo Service"
         description="Experience the ultimate in NYC luxury transportation. Empire Chauffeur offers professional airport transfers, corporate travel, and bespoke chauffeur services across the Northeast."
+        faqData={FAQ_DATA}
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" }
+        ]}
       />
       <Hero />
       <TrustBar />
@@ -58,7 +62,7 @@ export const Home = () => {
             <span className="text-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
               Excellence in Motion
             </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Our Premium Services</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-text-primary mb-6">Premium Chauffeur Services in NYC</h2>
             <div className="w-24 h-px bg-gold mx-auto" />
           </div>
 

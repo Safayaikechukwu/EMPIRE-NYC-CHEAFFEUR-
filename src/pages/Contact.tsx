@@ -17,6 +17,10 @@ export const Contact: React.FC = () => {
       <SEO 
         title="Contact Us | Empire Chauffeur NYC"
         description="Get in touch with our 24/7 dispatch team. Book your executive transfer, inquire about corporate accounts, or plan your special event transportation."
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.empirechauffeurnyc.com/" },
+          { name: "Contact", item: "https://www.empirechauffeurnyc.com/contact" }
+        ]}
       />
       <div className="pt-24 pb-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6">

@@ -31,7 +31,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     }, 3000);
   };
 
-  const nextStep = () => setStep(Math.min(step + 1, totalSteps));
+  const handleClose = () => {
+    setStep(1);
+    onClose();
+  };
+
   const prevStep = () => setStep(Math.max(step - 1, 1));
 
   return (
@@ -42,7 +46,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
           />
           
@@ -73,7 +77,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
                 )}
               </div>
               <button 
-                onClick={onClose}
+                onClick={handleClose}
                 className="text-text-secondary hover:text-text-primary transition-colors p-2"
               >
                 <X size={24} />

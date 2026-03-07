@@ -10,7 +10,7 @@ export const TawkChat = () => {
       (function(){
         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
         s1.async = true;
-        s1.src = 'https://embed.tawk.to/69a5a211e2f23c1c34acb48c/1jing25oi';
+        s1.src = 'https://embed.tawk.to/67c81678f73914190f84964f/1iliv68id';
         s1.charset = 'UTF-8';
         s1.setAttribute('crossorigin', '*');
         if (s0 && s0.parentNode) {

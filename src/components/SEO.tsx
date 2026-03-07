@@ -42,6 +42,48 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="robots" content="index, follow" />
       <meta name="googlebot" content="index, follow" />
       <meta name="theme-color" content="#C5A059" />
+
+      {/* Local Business Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LimoService",
+          "name": "Empire Chauffeur NYC",
+          "image": ogImage,
+          "@id": canonical,
+          "url": canonical,
+          "telephone": "+13053219622",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Manhattan",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10001",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7128,
+            "longitude": -74.0060
+          },
+          "areaServed": ["New York City", "Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island", "JFK", "LGA", "EWR"],
+          "priceRange": "$$$",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        })}
+      </script>
     </Helmet>
   );
 };
